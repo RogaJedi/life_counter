@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
 
 class ItemCard extends StatelessWidget {
+  final int playerId;
   final String colorHex;
   final int counter;
   final double aspectRatio;
 
-  ItemCard({
+  const ItemCard({
+    Key? key,
+    required this.playerId,
     required this.colorHex,
     required this.counter,
     required this.aspectRatio,
-  });
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -23,11 +26,21 @@ class ItemCard extends StatelessWidget {
           angle: 90 * 3.14159 / 180,
           child: Text(
             counter.toString(),
-            style: TextStyle(fontSize: textSize, fontWeight: FontWeight.bold, color: Colors.white),
+            style: TextStyle(
+              fontSize: textSize,
+              fontWeight: FontWeight.bold,
+              color: Colors.white,
+            ),
           ),
         ),
       ),
     );
   }
-
+/*
+counter.toString(),
+            style: TextStyle(
+                fontSize: textSize,
+                fontWeight: FontWeight.bold,
+                color: Colors.white
+ */
 }

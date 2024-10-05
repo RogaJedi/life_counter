@@ -3,6 +3,7 @@ import 'item_card.dart';
 import 'custom_button.dart';
 
 class PlayerCard extends StatelessWidget {
+  final int playerId;
   final String colorHex;
   final int counter;
   final double aspectRatio;
@@ -11,7 +12,9 @@ class PlayerCard extends StatelessWidget {
   final VoidCallback bottomOnTap;
   final VoidCallback bottomOnLongTap;
 
-  PlayerCard({
+  const PlayerCard({
+    Key? key,
+    required this.playerId,
     required this.colorHex,
     required this.counter,
     required this.aspectRatio,
@@ -19,13 +22,14 @@ class PlayerCard extends StatelessWidget {
     required this.topOnLongTap,
     required this.bottomOnTap,
     required this.bottomOnLongTap,
-  });
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Stack(
       children: [
         ItemCard(
+          playerId: playerId,
           colorHex: colorHex,
           counter: counter,
           aspectRatio: aspectRatio,

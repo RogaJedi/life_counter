@@ -92,6 +92,7 @@ class _HomePageState extends State<HomePage> {
                   return Transform.rotate(
                       angle: 180 * 3.14159 / 180,
                       child: PlayerCard(
+                        playerId: item.id + 1,
                         colorHex: item.colorHex,
                         counter: item.counter,
                         aspectRatio: aspectRatio,
@@ -112,6 +113,7 @@ class _HomePageState extends State<HomePage> {
                   );
                 }
                 return PlayerCard(
+                  playerId: item.id + 1,
                   colorHex: item.colorHex,
                   counter: item.counter,
                   aspectRatio: aspectRatio,

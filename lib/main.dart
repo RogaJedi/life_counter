@@ -3,13 +3,9 @@ import 'package:flutter/services.dart';
 import 'home_page.dart';
 
 void main() {
-  SystemChrome.setEnabledSystemUIMode(SystemUiMode.leanBack);
   WidgetsFlutterBinding.ensureInitialized();
-  SystemChrome.setPreferredOrientations([
-    DeviceOrientation.portraitUp,
-  ]).then((_) {
-    runApp(const MyApp());
-  });
+  SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
+  runApp(MyApp());
 
 }
 

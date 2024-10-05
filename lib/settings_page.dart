@@ -24,7 +24,7 @@ class _SettingsPageState extends State<SettingsPage> {
 
   AlertDialog pickColorForPlayer(BuildContext context, int playerId){
     return AlertDialog(
-      title: Text('Pick a color'),
+      title: const Text('Pick a color'),
       content: SingleChildScrollView(
         child: ColorPicker(
           pickerColor: currentColor,
@@ -34,13 +34,13 @@ class _SettingsPageState extends State<SettingsPage> {
       ),
       actions: <Widget>[
         ElevatedButton(
-            child: Text("Cancel"),
+            child: const Text("Cancel"),
           onPressed: () {
             Navigator.of(context).pop();
           },
         ),
         ElevatedButton(
-          child: Text('Select'),
+          child: const Text('Select'),
           onPressed: () {
             Item newItem = Item(
               colorHex: colorToHex(currentColor),
@@ -57,73 +57,87 @@ class _SettingsPageState extends State<SettingsPage> {
 
   @override
   Widget build(BuildContext context) {
+    double screenWidth = MediaQuery.of(context).size.width;
+    double screenHeight = MediaQuery.of(context).size.height;
+    double aspectRatio = (screenWidth / 2) / (screenHeight / 2);
+    double textSize = aspectRatio * 70;
     return Scaffold(
-      appBar: AppBar(title: Text('Settings')),
+      appBar: AppBar(title: const Text('Settings')),
       body: Center(
-        child: ElevatedButton(
-          child: Text('Change color'),
-          onPressed: () {
-            showDialog(
-              context: context,
-              builder: (BuildContext context) {
-                return AlertDialog(
-                  title: Text('Pick a player'),
-                  actions: <Widget>[
-                    ElevatedButton(
-                      child: Text('Player 1'),
-                      onPressed: () {
-                        showDialog(
+        child: FractionallySizedBox(
+          widthFactor: 1,
+          heightFactor: 0.1,
+          child: ElevatedButton(
+            child: Text(
+              'Change color',
+              style: TextStyle(
+                fontSize: textSize,
+                color: const Color(0xff504bff),
+              ),
+            ),
+            onPressed: () {
+              showDialog(
+                context: context,
+                builder: (BuildContext context) {
+                  return AlertDialog(
+                    title: const Text('Pick a player'),
+                    actions: <Widget>[
+                      ElevatedButton(
+                        child: const Text('Player 1'),
+                        onPressed: () {
+                          showDialog(
+                              context: context,
+                              builder: (BuildContext context) {
+                                return pickColorForPlayer(context, 0);
+                              },
+                          );
+                        },
+                      ),
+                      ElevatedButton(
+                        child: const Text('Player 2'),
+                        onPressed: () {
+                          showDialog(
                             context: context,
                             builder: (BuildContext context) {
-                              return pickColorForPlayer(context, 0);
+                              return pickColorForPlayer(context, 1);
                             },
-                        );
-                      },
-                    ),
-                    ElevatedButton(
-                      child: Text('Player 2'),
-                      onPressed: () {
-                        showDialog(
-                          context: context,
-                          builder: (BuildContext context) {
-                            return pickColorForPlayer(context, 1);
-                          },
-                        );
-                      },
-                    ),
-                    ElevatedButton(
-                      child: Text('Player 3'),
-                      onPressed: () {
-                        showDialog(
-                          context: context,
-                          builder: (BuildContext context) {
-                            return pickColorForPlayer(context, 2);
-                          },
-                        );
-                      },
-                    ),
-                    ElevatedButton(
-                      child: Text('Player 4'),
-                      onPressed: () {
-                        showDialog(
-                          context: context,
-                          builder: (BuildContext context) {
-                            return pickColorForPlayer(context, 3);
-                          },
-                        );
-                      },
-                    ),
-                    ElevatedButton(
-                      child: Text("Cancel"),
-                      onPressed: () {
-                        Navigator.of(context).pop();
-                      },
-                    ),
-                  ],
-                );
-              },
-            );
-          },
+                          );
+                        },
+                      ),
+                      ElevatedButton(
+                        child: const Text('Player 3'),
+                        onPressed: () {
+                          showDialog(
+                            context: context,
+                            builder: (BuildContext context) {
+                              return pickColorForPlayer(context, 2);
+                            },
+                          );
+                        },
+                      ),
+                      ElevatedButton(
+                        child: const Text('Player 4'),
+                        onPressed: () {
+                          showDialog(
+                            context: context,
+                            builder: (BuildContext context) {
+                              return pickColorForPlayer(context, 3);
+                            },
+                          );
+                        },
+                      ),
+                      ElevatedButton(
+                        child: const Text("Cancel"),
+                        onPressed: () {
+                          Navigator.of(context).pop();
+                        },
+                      ),
+                    ],
+                  );
+                },
+              );
+            },
+          ),
         ),
       ),
     );
