@@ -65,6 +65,7 @@ class _PlayerInterfaceState extends State<PlayerInerface> {
                   _resetBottomCard();
                 }
               }, //PlayerSettingsCard(playerId: widget.playerId),
+              //the bottom card
               child: PlayerSettingsCard(
                 playerId: widget.playerId,
                 aspectRatio: widget.aspectRatio,
@@ -96,6 +97,7 @@ class _PlayerInterfaceState extends State<PlayerInerface> {
                   _resetTopCard();
                 }
               },
+              //the top card
               child: PlayerCard(
                 playerId: widget.playerId,
                 colorHex: widget.colorHex,

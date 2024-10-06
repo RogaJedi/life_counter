@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:life_count_2/settings_page.dart';
+import 'settings_page.dart';
 import 'player_card_components/items.dart';
 import 'player_inerface.dart';
 
