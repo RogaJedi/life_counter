@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'player_card.dart';
+import 'player_card_components/player_card.dart';
 import 'player_settings_card.dart';
 
 class PlayerInerface extends StatefulWidget {
@@ -11,6 +11,7 @@ class PlayerInerface extends StatefulWidget {
   final VoidCallback topOnLongTap;
   final VoidCallback bottomOnTap;
   final VoidCallback bottomOnLongTap;
+  final VoidCallback onSettingsTap;
 
   const PlayerInerface({
     required this.playerId,
@@ -21,6 +22,7 @@ class PlayerInerface extends StatefulWidget {
     required this.topOnLongTap,
     required this.bottomOnTap,
     required this.bottomOnLongTap,
+    required this.onSettingsTap,
   });
 
 
@@ -66,6 +68,7 @@ class _PlayerInterfaceState extends State<PlayerInerface> {
               child: PlayerSettingsCard(
                 playerId: widget.playerId,
                 aspectRatio: widget.aspectRatio,
+                onSettingsTap: widget.onSettingsTap,
               ),
             ),
           ),

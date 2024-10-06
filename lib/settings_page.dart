@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
-import 'items.dart';
+import 'player_card_components/items.dart';
 
 class SettingsPage extends StatefulWidget {
   @override

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:life_count_2/settings_page.dart';
-import 'items.dart';
+import 'player_card_components/items.dart';
 import 'player_inerface.dart';
 
 Item player1 = Item(counter: 40, colorHex: "0xff504bff", id: 0);
@@ -81,8 +81,8 @@ class _HomePageState extends State<HomePage> {
               padding: const EdgeInsets.all(2.0),
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2,
-                crossAxisSpacing: 4.0,
-                mainAxisSpacing: 4.0,
+                crossAxisSpacing: 2.0,
+                mainAxisSpacing: 1.0,
                 childAspectRatio: aspectRatio * 1,
               ),
               itemCount: items.length,
@@ -108,6 +108,9 @@ class _HomePageState extends State<HomePage> {
                         bottomOnLongTap: () {
                           bigPlus(item);
                         },
+                        onSettingsTap: () {
+                          _navigateToSettingsPage();
+                        },
 
                       ),
                   );
@@ -129,23 +132,14 @@ class _HomePageState extends State<HomePage> {
                   bottomOnLongTap: () {
                     bigPlus(item);
                   },
+                  onSettingsTap: () {
+                    _navigateToSettingsPage();
+                  },
                 );
               },
             ),
           ),
         ),
-          Center(
-            child: GestureDetector(
-              onTap: () {
-                _navigateToSettingsPage();
-              },
-              child: CircleAvatar(
-                radius: aspectRatio * 70,
-                backgroundColor: Colors.white,
-                child: const Icon(Icons.settings, color: Colors.black),
-              ),
-            ),
-          ),
         ],
       ),
     );
