@@ -1,16 +1,9 @@
-# life_count_2
+# Life counter app
 
-A new Flutter project.
+Gain or loss of HP:
 
-## Getting Started
+![alt_text](https://github.com/RogaJedi/life_counter/blob/master/LC-0.2-demo-1.1.gif)
 
-This project is a starting point for a Flutter application.
+Changing player color:
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+![alt_text](https://github.com/RogaJedi/life_counter/blob/master/LC-0.2-demo-2.gif)
