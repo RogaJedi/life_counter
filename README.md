@@ -2,7 +2,7 @@
 
 Gain or loss of HP
 
-Use a single tap to change amount by 1 or hold to change by 5
+Use a single tap to change your HP by 1 or hold to change it by 5
 
 ![alt_text](https://github.com/RogaJedi/life_counter/blob/master/LC-0.2-demo-1.1.gif)
 
