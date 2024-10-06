@@ -36,11 +36,4 @@ class ItemCard extends StatelessWidget {
       ),
     );
   }
-/*
-counter.toString(),
-            style: TextStyle(
-                fontSize: textSize,
-                fontWeight: FontWeight.bold,
-                color: Colors.white
- */
 }
