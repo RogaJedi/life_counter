@@ -53,12 +53,13 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
-  void _navigateToSettingsPage(int playerId) {
+  void _navigateToSettingsPage(int playerId, String playerColor) {
     Navigator.push(
       context,
       MaterialPageRoute(
         builder: (context) => SettingsPage(
           playerId: playerId,
+          playerColor: playerColor,
           onColorSelected: changePlayerColor,
         ),
       ),
@@ -110,7 +111,7 @@ class _HomePageState extends State<HomePage> {
                           bigPlus(item);
                         },
                         onSettingsTap: () {
-                          _navigateToSettingsPage(item.id);
+                          _navigateToSettingsPage(item.id, item.colorHex);
                         },
 
                       ),
@@ -134,7 +135,7 @@ class _HomePageState extends State<HomePage> {
                     bigPlus(item);
                   },
                   onSettingsTap: () {
-                    _navigateToSettingsPage(item.id);
+                    _navigateToSettingsPage(item.id, item.colorHex);
                   },
                 );
               },

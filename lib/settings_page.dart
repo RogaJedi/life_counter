@@ -6,15 +6,28 @@ class SettingsPage extends StatefulWidget {
   @override
   _SettingsPageState createState() => _SettingsPageState();
   final int playerId;
+  final String playerColor;
   final Function(Item) onColorSelected;
+
   const SettingsPage({super.key, 
     required this.playerId,
+    required this.playerColor,
     required this.onColorSelected,
   });
+
 }
 
 class _SettingsPageState extends State<SettingsPage> {
-  Color currentColor = Colors.blue;
+
+  late Color currentColor;
+
+  @override
+  void initState() {
+    super.initState();
+    String hex = widget.playerColor.replaceAll('0x', '');
+    int colorInt = int.parse(hex, radix: 16);
+    currentColor = Color(colorInt);
+  }
 
   void changeColor(Color color) {
     setState(() => currentColor = color);
