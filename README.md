@@ -1,4 +1,8 @@
-# Life counter app
+# Raccoon Counter
+
+Life counter app for MTG and other games
+
+![alt_text](https://github.com/RogaJedi/life_counter/blob/master/Raccoon_Counter.png)
 
 Gain or loss of HP
 
