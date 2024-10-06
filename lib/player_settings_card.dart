@@ -18,6 +18,7 @@ class PlayerSettingsCard extends StatelessWidget{
         const Card(
         color: Colors.white,
         child: Center(
+          //for some reason if don't put anything in the card, it doesn't work :P
           child: Text(""),
         ),
       ),

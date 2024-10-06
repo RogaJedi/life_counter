@@ -5,8 +5,12 @@ import 'player_card_components/items.dart';
 class SettingsPage extends StatefulWidget {
   @override
   _SettingsPageState createState() => _SettingsPageState();
+  final int playerId;
   final Function(Item) onColorSelected;
-  SettingsPage({required this.onColorSelected});
+  SettingsPage({
+    required this.playerId,
+    required this.onColorSelected,
+  });
 }
 
 class _SettingsPageState extends State<SettingsPage> {
@@ -79,61 +83,7 @@ class _SettingsPageState extends State<SettingsPage> {
               showDialog(
                 context: context,
                 builder: (BuildContext context) {
-                  return AlertDialog(
-                    title: const Text('Pick a player'),
-                    actions: <Widget>[
-                      ElevatedButton(
-                        child: const Text('Player 1'),
-                        onPressed: () {
-                          showDialog(
-                              context: context,
-                              builder: (BuildContext context) {
-                                return pickColorForPlayer(context, 0);
-                              },
-                          );
-                        },
-                      ),
-                      ElevatedButton(
-                        child: const Text('Player 2'),
-                        onPressed: () {
-                          showDialog(
-                            context: context,
-                            builder: (BuildContext context) {
-                              return pickColorForPlayer(context, 1);
-                            },
-                          );
-                        },
-                      ),
-                      ElevatedButton(
-                        child: const Text('Player 3'),
-                        onPressed: () {
-                          showDialog(
-                            context: context,
-                            builder: (BuildContext context) {
-                              return pickColorForPlayer(context, 2);
-                            },
-                          );
-                        },
-                      ),
-                      ElevatedButton(
-                        child: const Text('Player 4'),
-                        onPressed: () {
-                          showDialog(
-                            context: context,
-                            builder: (BuildContext context) {
-                              return pickColorForPlayer(context, 3);
-                            },
-                          );
-                        },
-                      ),
-                      ElevatedButton(
-                        child: const Text("Cancel"),
-                        onPressed: () {
-                          Navigator.of(context).pop();
-                        },
-                      ),
-                    ],
-                  );
+                  return pickColorForPlayer(context, widget.playerId);
                 },
               );
             },
