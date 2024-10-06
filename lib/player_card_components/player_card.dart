@@ -13,7 +13,7 @@ class PlayerCard extends StatelessWidget {
   final VoidCallback bottomOnLongTap;
 
   const PlayerCard({
-    Key? key,
+    super.key,
     required this.playerId,
     required this.colorHex,
     required this.counter,
@@ -22,7 +22,7 @@ class PlayerCard extends StatelessWidget {
     required this.topOnLongTap,
     required this.bottomOnTap,
     required this.bottomOnLongTap,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

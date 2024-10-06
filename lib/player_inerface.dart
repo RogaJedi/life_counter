@@ -13,7 +13,7 @@ class PlayerInerface extends StatefulWidget {
   final VoidCallback bottomOnLongTap;
   final VoidCallback onSettingsTap;
 
-  const PlayerInerface({
+  const PlayerInerface({super.key, 
     required this.playerId,
     required this.colorHex,
     required this.counter,
@@ -43,7 +43,7 @@ class _PlayerInterfaceState extends State<PlayerInerface> {
         children: [
           // Bottom card
           AnimatedPositioned(
-            duration: Duration(milliseconds: 300),
+            duration: const Duration(milliseconds: 300),
             curve: Curves.easeInOut,
             left: 0,
             right: 0,
@@ -75,7 +75,7 @@ class _PlayerInterfaceState extends State<PlayerInerface> {
           ),
           // Top card
           AnimatedPositioned(
-            duration: Duration(milliseconds: 300),
+            duration: const Duration(milliseconds: 300),
             curve: Curves.easeInOut,
             left: 0,
             right: 0,

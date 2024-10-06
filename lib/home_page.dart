@@ -59,7 +59,7 @@ class _HomePageState extends State<HomePage> {
       MaterialPageRoute(
         builder: (context) => SettingsPage(
           playerId: playerId,
-          onColorSelected: this.changePlayerColor,
+          onColorSelected: changePlayerColor,
         ),
       ),
     );

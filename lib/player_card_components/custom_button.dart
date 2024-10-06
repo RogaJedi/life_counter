@@ -6,10 +6,10 @@ class CustomButton extends StatelessWidget {
   final VoidCallback onLongTap;
 
   const CustomButton({
-    Key? key,
+    super.key,
     required this.onTap,
     required this.onLongTap,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

@@ -7,7 +7,7 @@ class SettingsPage extends StatefulWidget {
   _SettingsPageState createState() => _SettingsPageState();
   final int playerId;
   final Function(Item) onColorSelected;
-  SettingsPage({
+  const SettingsPage({super.key, 
     required this.playerId,
     required this.onColorSelected,
   });

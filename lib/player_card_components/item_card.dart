@@ -7,12 +7,12 @@ class ItemCard extends StatelessWidget {
   final double aspectRatio;
 
   const ItemCard({
-    Key? key,
+    super.key,
     required this.playerId,
     required this.colorHex,
     required this.counter,
     required this.aspectRatio,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

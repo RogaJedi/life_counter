@@ -5,7 +5,7 @@ class PlayerSettingsCard extends StatelessWidget{
   final double aspectRatio;
   final VoidCallback onSettingsTap;
 
-  PlayerSettingsCard({
+  const PlayerSettingsCard({super.key, 
     required this.playerId,
     required this.aspectRatio,
     required this.onSettingsTap,
