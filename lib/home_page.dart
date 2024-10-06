@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:life_count_2/settings_page.dart';
 import 'items.dart';
-import 'player_card.dart';
+import 'player_inerface.dart';
 
 Item player1 = Item(counter: 40, colorHex: "0xff504bff", id: 0);
 
@@ -91,7 +91,7 @@ class _HomePageState extends State<HomePage> {
                 if (index % 2 != 0) {
                   return Transform.rotate(
                       angle: 180 * 3.14159 / 180,
-                      child: PlayerCard(
+                      child: PlayerInerface(
                         playerId: item.id + 1,
                         colorHex: item.colorHex,
                         counter: item.counter,
@@ -112,7 +112,7 @@ class _HomePageState extends State<HomePage> {
                       ),
                   );
                 }
-                return PlayerCard(
+                return PlayerInerface(
                   playerId: item.id + 1,
                   colorHex: item.colorHex,
                   counter: item.counter,
