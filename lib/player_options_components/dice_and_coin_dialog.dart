@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:raccoon_counter/custom_icons.dart';
+import 'dice_and_coin_randomizer.dart';
 
 class DiceAndCoinDialog extends StatelessWidget {
 
@@ -11,6 +12,8 @@ class DiceAndCoinDialog extends StatelessWidget {
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
     double screenHeight = MediaQuery.of(context).size.height;
+    double aspectRatio = screenWidth / screenHeight;
+    double textSize = aspectRatio * 55;
     return AlertDialog(
       title: const Text("Dice & Coin"),
       content: SizedBox(
@@ -26,7 +29,12 @@ class DiceAndCoinDialog extends StatelessWidget {
                   padding: WidgetStateProperty.all(EdgeInsets.all(screenHeight * 0.03)),
                 ),
                 onPressed: () {
-                  print("option 1");
+                  showDialog(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return DiceAndCoinRandomizer(max: 6, screenWidth: screenWidth, screenHeight: screenHeight, textSize: textSize).getDialog(context);
+                      }
+                  );
                 },
                 icon: Icon(CustomIcons.dice_d6, size: screenHeight * 0.06, color: Colors.white),
               ),
@@ -37,7 +45,12 @@ class DiceAndCoinDialog extends StatelessWidget {
                   padding: WidgetStateProperty.all(EdgeInsets.all(screenHeight * 0.03)),
                 ),
                 onPressed: () {
-                  print("option 2");
+                  showDialog(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return DiceAndCoinRandomizer(max: 20, screenWidth: screenWidth, screenHeight: screenHeight, textSize: textSize).getDialog(context);
+                      }
+                  );
                 },
                 icon: Icon(CustomIcons.dice_d20, size: screenHeight * 0.06, color: Colors.white),
               ),
@@ -48,7 +61,12 @@ class DiceAndCoinDialog extends StatelessWidget {
                   padding: WidgetStateProperty.all(EdgeInsets.all(screenHeight * 0.03)),
                 ),
                 onPressed: () {
-                  print("option 3");
+                  showDialog(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return DiceAndCoinRandomizer(max: 2, screenWidth: screenWidth, screenHeight: screenHeight, textSize: textSize).getDialog(context);
+                      }
+                  );
                 },
                 icon: Icon(CustomIcons.coins, size: screenHeight * 0.06, color: Colors.white),
               ),
