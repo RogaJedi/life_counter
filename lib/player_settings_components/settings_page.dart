@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'player_card_components/items.dart';
+import '../player_card_components/items.dart';
 import 'pick_color_for_player.dart';
 
 class SettingsPage extends StatefulWidget {
