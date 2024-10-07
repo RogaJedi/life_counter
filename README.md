@@ -8,14 +8,22 @@ Gain or loss of HP
 
 Use a single tap to change your HP by 1 or hold to change it by 5
 
-![alt_text](https://github.com/RogaJedi/life_counter/blob/master/LC-0.2-demo-1.1.gif)
+![alt_text](https://github.com/RogaJedi/life_counter/blob/master/LC-0.3-demo-1.gif)
 
-Changing player color
+Open options
 
-Swipe your counter to the right to open settings
+Swipe down to open options and swipe up to close them
 
-Use color picker to change colors
+![alt_text](https://github.com/RogaJedi/life_counter/blob/master/LC-0.3-demo-2.gif)
 
-Close settings by swiping to the left
+Change your color
 
-![alt_text](https://github.com/RogaJedi/life_counter/blob/master/LC-0.2-demo-2.gif)
+Use colorpicker to set your color to the one you like
+
+![alt_text](https://github.com/RogaJedi/life_counter/blob/master/LC-0.3-demo-3.gif)
+
+Roll dice and flip coins
+
+Get randomized results for D6, D20, or a coin
+
+![alt_text](https://github.com/RogaJedi/life_counter/blob/master/LC-0.3-demo-4.gif)
