@@ -20,6 +20,18 @@ class pickColorForPlayer extends StatefulWidget {
 }
 
 class _pickColorForPlayerState extends State<pickColorForPlayer> {
+  late HSVColor hsvColor;
+
+  @override
+  void initState() {
+    super.initState();
+    hsvColor = HSVColor.fromColor(widget.currentColor);
+  }
+
+  void changeColor(HSVColor newColor) {
+    setState(() => hsvColor = newColor);
+    widget.onChanged(newColor);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -41,17 +53,15 @@ class _pickColorForPlayerState extends State<pickColorForPlayer> {
                 mainAxisSize: MainAxisSize.min,
                 children: <Widget>[
                   FloatingActionButton(
-                    onPressed: () {
-                      print("pressed");
-                    },
-                    backgroundColor: widget.currentColor,
+                    onPressed: () {},
+                    backgroundColor: hsvColor.toColor(),
                   ),
                   const Divider(),
 
                   ///---------------------------------
                   HSVPicker(
-                    color: widget.colorHSV,
-                    onChanged: widget.onChanged,
+                    color: hsvColor,
+                    onChanged: changeColor,
                   ),
 
 
@@ -64,16 +74,15 @@ class _pickColorForPlayerState extends State<pickColorForPlayer> {
       ),
       actions: [
         ElevatedButton(
-          child: const Text("Cancel"),
           onPressed: () {
             Navigator.of(context).pop();
           },
+          child: const Text("Cancel"),
         ),
         ElevatedButton(
-          child: const Text('Select'),
           onPressed: widget.onPressed,
+          child: const Text("Select"),
         ),
-
       ],
     );
   }

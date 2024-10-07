@@ -27,7 +27,6 @@ class ItemCard extends StatelessWidget {
           child: Text(
             counter.toString(),
             style: TextStyle(
-              fontFamily: 'K2D',
               fontSize: textSize,
               fontWeight: FontWeight.bold,
               color: Colors.white,
