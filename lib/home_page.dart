@@ -53,7 +53,7 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
-  void _navigateToSettingsPage(BuildContext context, int playerId, String playerColor) {
+  void _navigateToOptionsDialog(BuildContext context, int playerId, String playerColor) {
     showDialog(
       context: context,
       builder: (BuildContext context) {
@@ -110,7 +110,7 @@ class _HomePageState extends State<HomePage> {
                           bigPlus(item);
                         },
                         onSettingsTap: () {
-                          _navigateToSettingsPage(context, item.id, item.colorHex);
+                          _navigateToOptionsDialog(context, item.id, item.colorHex);
                         },
                       ),
                     );
@@ -133,7 +133,7 @@ class _HomePageState extends State<HomePage> {
                       bigPlus(item);
                     },
                     onSettingsTap: () {
-                      _navigateToSettingsPage(context, item.id, item.colorHex);
+                      _navigateToOptionsDialog(context, item.id, item.colorHex);
                     },
                   );
                 },

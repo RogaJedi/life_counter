@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../player_card_components/items.dart';
 import 'pick_color_for_player.dart';
+import 'option_button.dart';
 
 class OptionsDialog extends StatefulWidget {
   @override
@@ -38,66 +39,98 @@ class _OptionsDialogState extends State<OptionsDialog> {
     return hexColor;
   }
 
-
   @override
   Widget build(BuildContext context) {
-    double screenWidth = MediaQuery.of(context).size.width;
-    double screenHeight = MediaQuery.of(context).size.height;
-    double aspectRatio = (screenWidth / 2) / (screenHeight / 2);
-    double textSize = aspectRatio * 70;
+    return LayoutBuilder(
+        builder: (context, constraints) {
+          double screenWidth = constraints.maxWidth;
+          double screenHeight = constraints.maxHeight;
+          double aspectRatio = screenWidth / screenHeight;
+          double textSize = aspectRatio * 55; // Adjusted for better scaling
 
-    return AlertDialog(
-      title: const Text('Options'),
-      content: SizedBox(
-        width: screenWidth,
-        height: screenHeight * 0.4,
-        child: Center(
-          child: FractionallySizedBox(
-            widthFactor: 1,
-            heightFactor: 0.2,
-            child: ElevatedButton(
-              child: Text(
-                'Change color',
-                style: TextStyle(
-                  fontSize: textSize,
-                  color: const Color(0xff504bff),
+          return AlertDialog(
+            title: const Text('Options'),
+            content: SizedBox(
+              width: screenWidth * 0.6,
+              height: screenHeight * 0.4,
+              child: Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    OptionsButton(
+                      screenWidth: screenWidth,
+                      screenHeight: screenHeight,
+                      text: "Change Color",
+                      textSize: textSize,
+                      onPressed: () {
+                        showDialog(
+                          context: context,
+                          builder: (BuildContext context) {
+                            return StatefulBuilder(
+                              builder: (context, setState) => PickColorForPlayer(
+                                currentColor: currentColor,
+                                onChanged: (newColor) =>
+                                    setState(() => changeColor(newColor)),
+                                onPressed: () {
+                                  Item newItem = Item(
+                                    colorHex: colorToHex(currentColor),
+                                    counter: 40,
+                                    id: widget.playerId,
+                                  );
+                                  widget.onColorSelected(newItem);
+                                  Navigator.of(context).pop();
+                                },
+                              ),
+                            );
+                          },
+                        );
+                      },
+                    ),
+                    const SizedBox(height: 8),
+                    OptionsButton(
+                        screenWidth: screenWidth,
+                        screenHeight: screenHeight,
+                        text: "Roll Dice",
+                        textSize: textSize,
+                        onPressed: () {
+                          print("roll dice");
+                        },
+                    ),
+                    const SizedBox(height: 8),
+                    OptionsButton(
+                      screenWidth: screenWidth,
+                      screenHeight: screenHeight,
+                      text: "Reset Game",
+                      textSize: textSize,
+                      onPressed: () {
+                        print("reset game");
+                      },
+                    ),
+                    const SizedBox(height: 8),
+                    OptionsButton(
+                      screenWidth: screenWidth,
+                      screenHeight: screenHeight,
+                      text: "Settings",
+                      textSize: textSize,
+                      onPressed: () {
+                        print("settings");
+                      },
+                    ),
+                  ],
                 ),
               ),
-              onPressed: () {
-                showDialog(
-                  context: context,
-                  builder: (BuildContext context) {
-                    return StatefulBuilder(
-                      builder: (context, setState) => PickColorForPlayer(
-                        currentColor: currentColor,
-                        onChanged: (newColor) =>
-                            setState(() => changeColor(newColor)),
-                        onPressed: () {
-                          Item newItem = Item(
-                            colorHex: colorToHex(currentColor),
-                            counter: 40,
-                            id: widget.playerId,
-                          );
-                          widget.onColorSelected(newItem);
-                          Navigator.of(context).pop();
-                        },
-                      ),
-                    );
-                  },
-                );
-              },
             ),
-          ),
-        ),
-      ),
-      actions: [
-        ElevatedButton(
-          onPressed: () {
-            Navigator.of(context).pop();
-          },
-          child: const Text("Close"),
-        ),
-      ],
+            actions: [
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+                child: const Text("Close"),
+              ),
+            ],
+          );
+        }
     );
   }
+
 }

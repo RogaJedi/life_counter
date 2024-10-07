@@ -13,39 +13,41 @@ class PlayerSettingsCard extends StatelessWidget{
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        const Card(
-        color: Colors.white,
-        child: Center(
-          //for some reason if don't put anything in the card, it doesn't work :P
-          child: Text(""),
-        ),
-      ),
-        Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+    return LayoutBuilder(
+        builder: (context, constraints) {
+          return Stack(
             children: [
-              Padding(
-                padding: const EdgeInsets.all(4.0),
-                child: IconButton(
-                  style: ButtonStyle(backgroundColor: WidgetStateProperty.all(Colors.black), padding: WidgetStateProperty.all(EdgeInsets.all(aspectRatio * 30,))),
-                  onPressed: onSettingsTap,
-                  icon: Icon(Icons.settings, color: Colors.white),
+              Card(
+                color: Colors.white,
+                child: SizedBox(
+                  width: constraints.maxWidth,
+                  height: constraints.maxHeight,
+                  child: const Center(
+                    child: Text(""),
+                  ),
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.all(4.0),
-                child: IconButton(
-                  style: ButtonStyle(backgroundColor: WidgetStateProperty.all(Colors.black), padding: WidgetStateProperty.all(EdgeInsets.all(aspectRatio * 30,))),
-                  onPressed: onSettingsTap,
-                  icon: Icon(Icons.settings, color: Colors.white),
+              Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(2.0),
+                      child: IconButton(
+                        style: ButtonStyle(
+                          backgroundColor: WidgetStateProperty.all(Colors.black),
+                          padding: WidgetStateProperty.all(EdgeInsets.all(constraints.maxWidth * 0.07)),
+                        ),
+                        onPressed: onSettingsTap,
+                        icon: Icon(Icons.settings, color: Colors.white),
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ],
-          ),
-        ),
-      ],
+          );
+        }
     );
   }
 }

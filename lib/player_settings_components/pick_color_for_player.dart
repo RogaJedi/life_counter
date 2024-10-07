@@ -21,7 +21,7 @@ class PickColorForPlayer extends StatelessWidget {
       title: const Text("Pick a color"),
       content: SingleChildScrollView(
         child:  SizedBox(
-          width: screenWidth,
+          width: screenWidth * 0.6,
           height: screenHeight * 0.4,
           child: Card(
             shape: const RoundedRectangleBorder(
