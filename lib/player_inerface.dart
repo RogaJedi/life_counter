@@ -43,22 +43,22 @@ class _PlayerInterfaceState extends State<PlayerInerface> {
         children: [
           // Bottom card
           AnimatedPositioned(
-            duration: const Duration(milliseconds: 300),
+            duration: Duration(milliseconds: 300),
             curve: Curves.easeInOut,
-            left: 0,
-            right: 0,
-            top: _bottomCardPosition,
+            left: -_bottomCardPosition,
+            right: _bottomCardPosition,
+            top: 0,
             bottom: 0,
             child: GestureDetector(
-              onVerticalDragUpdate: (details) {
+              onHorizontalDragUpdate: (details) {
                 if (!_isTopCardVisible) {
                   setState(() {
-                    _bottomCardPosition += details.delta.dy;
+                    _bottomCardPosition -= details.delta.dx;
                     _bottomCardPosition = _bottomCardPosition.clamp(-100.0, 0.0);
                   });
                 }
               },
-              onVerticalDragEnd: (details) {
+              onHorizontalDragEnd: (details) {
                 if (!_isTopCardVisible && _bottomCardPosition < -50) {
                   _showTopCard();
                 } else {
@@ -75,22 +75,22 @@ class _PlayerInterfaceState extends State<PlayerInerface> {
           ),
           // Top card
           AnimatedPositioned(
-            duration: const Duration(milliseconds: 300),
+            duration: Duration(milliseconds: 300),
             curve: Curves.easeInOut,
-            left: 0,
-            right: 0,
-            top: _topCardPosition,
+            left: -_topCardPosition,
+            right: _topCardPosition,
+            top: 0,
             bottom: 0,
             child: GestureDetector(
-              onVerticalDragUpdate: (details) {
+              onHorizontalDragUpdate: (details) {
                 if (_isTopCardVisible) {
                   setState(() {
-                    _topCardPosition += details.delta.dy;
+                    _topCardPosition -= details.delta.dx;
                     _topCardPosition = _topCardPosition.clamp(0.0, 100.0);
                   });
                 }
               },
-              onVerticalDragEnd: (details) {
+              onHorizontalDragEnd: (details) {
                 if (_isTopCardVisible && _topCardPosition > 50) {
                   _hideTopCard();
                 } else {
