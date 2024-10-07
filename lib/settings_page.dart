@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 import 'player_card_components/items.dart';
+import 'pick_color_for_player.dart';
 
 class SettingsPage extends StatefulWidget {
   @override
@@ -20,6 +20,7 @@ class SettingsPage extends StatefulWidget {
 class _SettingsPageState extends State<SettingsPage> {
 
   late Color currentColor;
+  late HSVColor colorHSV;
 
   @override
   void initState() {
@@ -27,49 +28,20 @@ class _SettingsPageState extends State<SettingsPage> {
     String hex = widget.playerColor.replaceAll('0x', '');
     int colorInt = int.parse(hex, radix: 16);
     currentColor = Color(colorInt);
+    colorHSV = HSVColor.fromColor(currentColor);
   }
 
-  void changeColor(Color color) {
-    setState(() => currentColor = color);
+  void changeColor(HSVColor color) {
+    setState(()  {
+      currentColor = color.toColor();
+      colorHSV = color;
+    });
   }
 
   String colorToHex(Color color) {
     String hexRaw =  '#${color.value.toRadixString(16).padLeft(8, '0')}';
     String hexColor = hexRaw.replaceAll('#ff', '0xff');
     return hexColor;
-  }
-
-  AlertDialog pickColorForPlayer(BuildContext context, int playerId){
-    return AlertDialog(
-      title: const Text('Pick a color'),
-      content: SingleChildScrollView(
-        child: ColorPicker(
-          pickerColor: currentColor,
-          onColorChanged: changeColor,
-          pickerAreaHeightPercent: 0.8,
-        ),
-      ),
-      actions: <Widget>[
-        ElevatedButton(
-            child: const Text("Cancel"),
-          onPressed: () {
-            Navigator.of(context).pop();
-          },
-        ),
-        ElevatedButton(
-          child: const Text('Select'),
-          onPressed: () {
-            Item newItem = Item(
-              colorHex: colorToHex(currentColor),
-              counter: 40,
-              id: playerId,
-            );
-            widget.onColorSelected(newItem);
-            Navigator.of(context).pop();
-          },
-        ),
-      ],
-    );
   }
 
   @override
@@ -96,7 +68,20 @@ class _SettingsPageState extends State<SettingsPage> {
               showDialog(
                 context: context,
                 builder: (BuildContext context) {
-                  return pickColorForPlayer(context, widget.playerId);
+                  return pickColorForPlayer(
+                    currentColor: currentColor,
+                    colorHSV: colorHSV,
+                    onChanged: changeColor,
+                    onPressed: () {
+                      Item newItem = Item(
+                        colorHex: colorToHex(currentColor),
+                        counter: 40,
+                        id: widget.playerId,
+                      );
+                      widget.onColorSelected(newItem);
+                      Navigator.of(context).pop();
+                    },
+                  );
                 },
               );
             },
