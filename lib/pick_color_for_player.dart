@@ -16,7 +16,7 @@ class PickColorForPlayer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      title: const Text("color picker"),
+      title: const Text("Pick a color"),
       content: SingleChildScrollView(
         child: SizedBox(
           width: 260,
