@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:raccoon_counter/custom_icons.dart';
 
 class DiceAndCoinDialog extends StatelessWidget {
 
@@ -21,32 +22,35 @@ class DiceAndCoinDialog extends StatelessWidget {
             children: [
               IconButton(
                 style: ButtonStyle(
-                  backgroundColor: WidgetStateProperty.all(Colors.black),
+                  backgroundColor: WidgetStateProperty.all(Color(0xff504bff)),
+                  padding: WidgetStateProperty.all(EdgeInsets.all(screenHeight * 0.03)),
                 ),
                 onPressed: () {
                   print("option 1");
                 },
-                icon: const Icon(Icons.looks_one, color: Colors.white),
+                icon: Icon(CustomIcons.dice_d6, size: screenHeight * 0.06, color: Colors.white),
               ),
               const SizedBox(height: 8),
               IconButton(
                 style: ButtonStyle(
-                  backgroundColor: WidgetStateProperty.all(Colors.black),
+                  backgroundColor: WidgetStateProperty.all(Color(0xff504bff)),
+                  padding: WidgetStateProperty.all(EdgeInsets.all(screenHeight * 0.03)),
                 ),
                 onPressed: () {
                   print("option 2");
                 },
-                icon: const Icon(Icons.looks_two, color: Colors.white),
+                icon: Icon(CustomIcons.dice_d20, size: screenHeight * 0.06, color: Colors.white),
               ),
               const SizedBox(height: 8),
               IconButton(
                 style: ButtonStyle(
-                  backgroundColor: WidgetStateProperty.all(Colors.black),
+                  backgroundColor: WidgetStateProperty.all(Color(0xff504bff)),
+                  padding: WidgetStateProperty.all(EdgeInsets.all(screenHeight * 0.03)),
                 ),
                 onPressed: () {
                   print("option 3");
                 },
-                icon: const Icon(Icons.three_k, color: Colors.white),
+                icon: Icon(CustomIcons.coins, size: screenHeight * 0.06, color: Colors.white),
               ),
             ],
           ),

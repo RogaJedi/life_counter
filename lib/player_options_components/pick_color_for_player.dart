@@ -57,11 +57,9 @@ class PickColorForPlayer extends StatelessWidget {
               borderRadius: BorderRadius.circular(10),
             ),
           ),
-          onPressed: () {
-            Navigator.of(context).pop();
-          },
+          onPressed: onPressed,
           child: const Text(
-            "Cancel",
+            'Select',
             style: TextStyle(
               color: Color(0xff504bff),
             ),
@@ -73,9 +71,11 @@ class PickColorForPlayer extends StatelessWidget {
               borderRadius: BorderRadius.circular(10),
             ),
           ),
-          onPressed: onPressed,
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
           child: const Text(
-            'Select',
+            "Cancel",
             style: TextStyle(
               color: Color(0xff504bff),
             ),

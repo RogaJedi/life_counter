@@ -81,6 +81,10 @@ flutter:
     - family: K2D
       fonts:
         - asset: fonts/K2D-Medium.ttf
+
+    - family: CustomIcons
+      fonts:
+        - asset: fonts/CustomIcons.ttf
   # fonts:
   #   - family: Schyler
   #     fonts:
