@@ -26,7 +26,7 @@ class PickColorForPlayer extends StatelessWidget {
           child: Card(
             shape: const RoundedRectangleBorder(
               borderRadius: BorderRadius.all(
-                Radius.circular(0.0),
+                Radius.circular(10.0),
               ),
             ),
             elevation: 2.0,
@@ -52,14 +52,34 @@ class PickColorForPlayer extends StatelessWidget {
       ),
       actions: [
         ElevatedButton(
+          style: ElevatedButton.styleFrom(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(10),
+            ),
+          ),
           onPressed: () {
             Navigator.of(context).pop();
           },
-          child: const Text("Cancel"),
+          child: const Text(
+            "Cancel",
+            style: TextStyle(
+              color: Color(0xff504bff),
+            ),
+          ),
         ),
         ElevatedButton(
+          style: ElevatedButton.styleFrom(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(10),
+            ),
+          ),
           onPressed: onPressed,
-          child: const Text('Select'),
+          child: const Text(
+            'Select',
+            style: TextStyle(
+              color: Color(0xff504bff),
+            ),
+          ),
         ),
       ],
     );

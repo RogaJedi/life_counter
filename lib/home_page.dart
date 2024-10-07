@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'player_settings_components/options_dialog.dart';
+import 'player_options_components/options_dialog.dart';
 import 'player_card_components/items.dart';
 import 'player_inerface.dart';
 

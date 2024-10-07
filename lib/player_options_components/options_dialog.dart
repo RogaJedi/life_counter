@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import '../player_card_components/items.dart';
-import 'pick_color_for_player.dart';
 import 'option_button.dart';
+import 'pick_color_for_player.dart';
+import 'dice_and_coin_dialog.dart';
+import 'reset_game_dialog.dart';
+import '../app_settings_components/settings_page.dart';
 
 class OptionsDialog extends StatefulWidget {
   @override
@@ -90,10 +93,15 @@ class _OptionsDialogState extends State<OptionsDialog> {
                     OptionsButton(
                         screenWidth: screenWidth,
                         screenHeight: screenHeight,
-                        text: "Roll Dice",
+                        text: "Dice & Coin",
                         textSize: textSize,
                         onPressed: () {
-                          print("roll dice");
+                          showDialog(
+                              context: context,
+                              builder: (BuildContext context) {
+                                return DiceAndCoinDialog();
+                              }
+                          );
                         },
                     ),
                     const SizedBox(height: 8),
@@ -103,7 +111,12 @@ class _OptionsDialogState extends State<OptionsDialog> {
                       text: "Reset Game",
                       textSize: textSize,
                       onPressed: () {
-                        print("reset game");
+                        showDialog(
+                            context: context,
+                            builder: (BuildContext context) {
+                              return ResetGameDialog();
+                            }
+                        );
                       },
                     ),
                     const SizedBox(height: 8),
@@ -113,7 +126,10 @@ class _OptionsDialogState extends State<OptionsDialog> {
                       text: "Settings",
                       textSize: textSize,
                       onPressed: () {
-                        print("settings");
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => SettingsPage()),
+                        );
                       },
                     ),
                   ],
@@ -122,10 +138,20 @@ class _OptionsDialogState extends State<OptionsDialog> {
             ),
             actions: [
               ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                ),
                 onPressed: () {
                   Navigator.of(context).pop();
                 },
-                child: const Text("Close"),
+                child: const Text(
+                  "Close",
+                  style: TextStyle(
+                    color: Color(0xff504bff),
+                  ),
+                ),
               ),
             ],
           );

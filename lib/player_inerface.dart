@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'player_card_components/player_card.dart';
-import 'player_settings_components/player_settings_card.dart';
+import 'player_options_components/player_settings_card.dart';
 
 class PlayerInerface extends StatefulWidget {
   final int playerId;
