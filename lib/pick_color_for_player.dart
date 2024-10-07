@@ -1,37 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hsvcolor_picker/flutter_hsvcolor_picker.dart';
 
-class pickColorForPlayer extends StatefulWidget {
+class PickColorForPlayer extends StatelessWidget {
   final Color currentColor;
-  final HSVColor colorHSV;
   final ValueChanged<HSVColor> onChanged;
   final void Function() onPressed;
 
-  const pickColorForPlayer({
-    Key? key,
+  const PickColorForPlayer({
+    super.key,
     required this.currentColor,
-    required this.colorHSV,
     required this.onChanged,
     required this.onPressed,
-  }) : super(key: key);
-
-  @override
-  State<pickColorForPlayer> createState() => _pickColorForPlayerState();
-}
-
-class _pickColorForPlayerState extends State<pickColorForPlayer> {
-  late HSVColor hsvColor;
-
-  @override
-  void initState() {
-    super.initState();
-    hsvColor = HSVColor.fromColor(widget.currentColor);
-  }
-
-  void changeColor(HSVColor newColor) {
-    setState(() => hsvColor = newColor);
-    widget.onChanged(newColor);
-  }
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -53,19 +33,14 @@ class _pickColorForPlayerState extends State<pickColorForPlayer> {
                 mainAxisSize: MainAxisSize.min,
                 children: <Widget>[
                   FloatingActionButton(
-                    onPressed: () {},
-                    backgroundColor: hsvColor.toColor(),
+                    onPressed: null,
+                    backgroundColor: currentColor,
                   ),
                   const Divider(),
-
-                  ///---------------------------------
                   HSVPicker(
-                    color: hsvColor,
-                    onChanged: changeColor,
+                    color: HSVColor.fromColor(currentColor),
+                    onChanged: onChanged,
                   ),
-
-
-                  ///---------------------------------
                 ],
               ),
             ),
@@ -80,8 +55,8 @@ class _pickColorForPlayerState extends State<pickColorForPlayer> {
           child: const Text("Cancel"),
         ),
         ElevatedButton(
-          onPressed: widget.onPressed,
-          child: const Text("Select"),
+          onPressed: onPressed,
+          child: const Text('Select'),
         ),
       ],
     );
