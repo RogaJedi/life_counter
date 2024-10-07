@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'player_settings_components/settings_page.dart';
+import 'player_settings_components/options_dialog.dart';
 import 'player_card_components/items.dart';
 import 'player_inerface.dart';
 
@@ -53,16 +53,16 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
-  void _navigateToSettingsPage(int playerId, String playerColor) {
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => SettingsPage(
+  void _navigateToSettingsPage(BuildContext context, int playerId, String playerColor) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return OptionsDialog(
           playerId: playerId,
           playerColor: playerColor,
           onColorSelected: changePlayerColor,
-        ),
-      ),
+        ); // Your modified widget
+      },
     );
   }
 
@@ -110,7 +110,7 @@ class _HomePageState extends State<HomePage> {
                           bigPlus(item);
                         },
                         onSettingsTap: () {
-                          _navigateToSettingsPage(item.id, item.colorHex);
+                          _navigateToSettingsPage(context, item.id, item.colorHex);
                         },
                       ),
                     );
@@ -133,7 +133,7 @@ class _HomePageState extends State<HomePage> {
                       bigPlus(item);
                     },
                     onSettingsTap: () {
-                      _navigateToSettingsPage(item.id, item.colorHex);
+                      _navigateToSettingsPage(context, item.id, item.colorHex);
                     },
                   );
                 },

@@ -15,11 +15,14 @@ class PickColorForPlayer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double screenWidth = MediaQuery.of(context).size.width;
+    double screenHeight = MediaQuery.of(context).size.height;
     return AlertDialog(
       title: const Text("Pick a color"),
       content: SingleChildScrollView(
-        child: SizedBox(
-          width: 260,
+        child:  SizedBox(
+          width: screenWidth,
+          height: screenHeight * 0.4,
           child: Card(
             shape: const RoundedRectangleBorder(
               borderRadius: BorderRadius.all(
