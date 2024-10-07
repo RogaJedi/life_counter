@@ -9,18 +9,16 @@ class SettingsPage extends StatefulWidget {
   final String playerColor;
   final Function(Item) onColorSelected;
 
-  const SettingsPage({super.key, 
+  const SettingsPage({
+    super.key,
     required this.playerId,
     required this.playerColor,
     required this.onColorSelected,
   });
-
 }
 
 class _SettingsPageState extends State<SettingsPage> {
-
   late Color currentColor;
-  late HSVColor colorHSV;
 
   @override
   void initState() {
@@ -28,18 +26,14 @@ class _SettingsPageState extends State<SettingsPage> {
     String hex = widget.playerColor.replaceAll('0x', '');
     int colorInt = int.parse(hex, radix: 16);
     currentColor = Color(colorInt);
-    colorHSV = HSVColor.fromColor(currentColor);
   }
 
   void changeColor(HSVColor color) {
-    setState(()  {
-      currentColor = color.toColor();
-      colorHSV = color;
-    });
+    setState(() => currentColor = color.toColor());
   }
 
   String colorToHex(Color color) {
-    String hexRaw =  '#${color.value.toRadixString(16).padLeft(8, '0')}';
+    String hexRaw = '#${color.value.toRadixString(16).padLeft(8, '0')}';
     String hexColor = hexRaw.replaceAll('#ff', '0xff');
     return hexColor;
   }
@@ -50,6 +44,7 @@ class _SettingsPageState extends State<SettingsPage> {
     double screenHeight = MediaQuery.of(context).size.height;
     double aspectRatio = (screenWidth / 2) / (screenHeight / 2);
     double textSize = aspectRatio * 70;
+
     return Scaffold(
       appBar: AppBar(title: const Text('Settings')),
       body: Center(
@@ -68,19 +63,21 @@ class _SettingsPageState extends State<SettingsPage> {
               showDialog(
                 context: context,
                 builder: (BuildContext context) {
-                  return pickColorForPlayer(
-                    currentColor: currentColor,
-                    colorHSV: colorHSV,
-                    onChanged: changeColor,
-                    onPressed: () {
-                      Item newItem = Item(
-                        colorHex: colorToHex(currentColor),
-                        counter: 40,
-                        id: widget.playerId,
-                      );
-                      widget.onColorSelected(newItem);
-                      Navigator.of(context).pop();
-                    },
+                  return StatefulBuilder(
+                    builder: (context, setState) => PickColorForPlayer(
+                      currentColor: currentColor,
+                      onChanged: (newColor) =>
+                          setState(() => changeColor(newColor)),
+                      onPressed: () {
+                        Item newItem = Item(
+                          colorHex: colorToHex(currentColor),
+                          counter: 40,
+                          id: widget.playerId,
+                        );
+                        widget.onColorSelected(newItem);
+                        Navigator.of(context).pop();
+                      },
+                    ),
                   );
                 },
               );

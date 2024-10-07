@@ -21,31 +21,31 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   List<Item> items = [player1, player2, player3, player4];
 
-  void minus(Item player){
+  void minus(Item player) {
     setState(() {
       player.counter -= 1;
     });
   }
 
-  void bigMinus(Item player){
+  void bigMinus(Item player) {
     setState(() {
       player.counter -= 5;
     });
   }
 
-  void plus(Item player){
+  void plus(Item player) {
     setState(() {
       player.counter += 1;
     });
   }
 
-  void bigPlus(Item player){
+  void bigPlus(Item player) {
     setState(() {
       player.counter += 5;
     });
   }
 
-  void changePlayerColor(Item newItem){
+  void changePlayerColor(Item newItem) {
     String newColor = newItem.colorHex;
     int playerId = newItem.id;
     setState(() {
@@ -64,7 +64,6 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
     );
-
   }
 
   @override
@@ -77,21 +76,21 @@ class _HomePageState extends State<HomePage> {
       body: Stack(
         children: [
           Padding(
-          padding: const EdgeInsets.all(1.0),
-          child: Center(
-            child: GridView.builder(
-              padding: const EdgeInsets.all(2.0),
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-                crossAxisSpacing: 2.0,
-                mainAxisSpacing: 1.0,
-                childAspectRatio: aspectRatio * 1,
-              ),
-              itemCount: items.length,
-              itemBuilder: (context, index){
-                final item = items[index];
-                if (index % 2 != 0) {
-                  return Transform.rotate(
+            padding: const EdgeInsets.all(1.0),
+            child: Center(
+              child: GridView.builder(
+                padding: const EdgeInsets.all(2.0),
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  crossAxisSpacing: 2.0,
+                  mainAxisSpacing: 1.0,
+                  childAspectRatio: aspectRatio * 1,
+                ),
+                itemCount: items.length,
+                itemBuilder: (context, index) {
+                  final item = items[index];
+                  if (index % 2 != 0) {
+                    return Transform.rotate(
                       angle: 180 * 3.14159 / 180,
                       child: PlayerInerface(
                         playerId: item.id + 1,
@@ -113,35 +112,34 @@ class _HomePageState extends State<HomePage> {
                         onSettingsTap: () {
                           _navigateToSettingsPage(item.id, item.colorHex);
                         },
-
                       ),
+                    );
+                  }
+                  return PlayerInerface(
+                    playerId: item.id + 1,
+                    colorHex: item.colorHex,
+                    counter: item.counter,
+                    aspectRatio: aspectRatio,
+                    topOnTap: () {
+                      minus(item);
+                    },
+                    topOnLongTap: () {
+                      bigMinus(item);
+                    },
+                    bottomOnTap: () {
+                      plus(item);
+                    },
+                    bottomOnLongTap: () {
+                      bigPlus(item);
+                    },
+                    onSettingsTap: () {
+                      _navigateToSettingsPage(item.id, item.colorHex);
+                    },
                   );
-                }
-                return PlayerInerface(
-                  playerId: item.id + 1,
-                  colorHex: item.colorHex,
-                  counter: item.counter,
-                  aspectRatio: aspectRatio,
-                  topOnTap: () {
-                    minus(item);
-                  },
-                  topOnLongTap: () {
-                    bigMinus(item);
-                  },
-                  bottomOnTap: () {
-                    plus(item);
-                  },
-                  bottomOnLongTap: () {
-                    bigPlus(item);
-                  },
-                  onSettingsTap: () {
-                    _navigateToSettingsPage(item.id, item.colorHex);
-                  },
-                );
-              },
+                },
+              ),
             ),
           ),
-        ),
         ],
       ),
     );
