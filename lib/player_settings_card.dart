@@ -23,13 +23,25 @@ class PlayerSettingsCard extends StatelessWidget{
         ),
       ),
         Center(
-          child: GestureDetector(
-            onTap: onSettingsTap,
-            child: CircleAvatar(
-              radius: aspectRatio * 50,
-              backgroundColor: Colors.black,
-              child: const Icon(Icons.settings, color: Colors.white),
-            ),
+          child: Column(
+            children: [
+              GestureDetector(
+                onTap: onSettingsTap,
+                child: CircleAvatar(
+                  radius: aspectRatio * 50,
+                  backgroundColor: Colors.black,
+                  child: const Icon(Icons.settings, color: Colors.white),
+                ),
+              ),
+              GestureDetector(
+                onTap: onSettingsTap,
+                child: CircleAvatar(
+                  radius: aspectRatio * 50,
+                  backgroundColor: Colors.black,
+                  child: const Icon(Icons.settings, color: Colors.white),
+                ),
+              ),
+            ],
           ),
         ),
       ],
