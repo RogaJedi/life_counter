@@ -1,17 +1,15 @@
 import 'package:flutter/material.dart';
 
-class OptionsButton extends StatelessWidget {
+class SettingsButton extends StatelessWidget {
   final double screenWidth;
   final double screenHeight;
-  final double textSizeScale;
   final String text;
   final VoidCallback onPressed;
 
-  const OptionsButton({
+  const SettingsButton({
     Key? key,
     required this.screenWidth,
     required this.screenHeight,
-    required this.textSizeScale,
     required this.text,
     required this.onPressed,
   }) : super(key: key);
@@ -19,11 +17,11 @@ class OptionsButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: screenWidth,
+      width: screenWidth * 0.22,
       height: screenHeight * 0.08, // 8% of the screen height
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
-          backgroundColor: Color(0xff504bff),
+          backgroundColor: Colors.white,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10),
           ),
@@ -34,8 +32,8 @@ class OptionsButton extends StatelessWidget {
           child: Text(
             text,
             style: TextStyle(
-              fontSize: (screenWidth / screenHeight) * textSizeScale,
-              color: Colors.white,
+              fontSize: ((screenWidth / 2) / (screenHeight / 2)) * 60,
+              color: Color(0xff504bff),
             ),
           ),
         ),

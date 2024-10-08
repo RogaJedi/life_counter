@@ -47,9 +47,7 @@ class _OptionsDialogState extends State<OptionsDialog> {
     return LayoutBuilder(
         builder: (context, constraints) {
           double screenWidth = constraints.maxWidth;
-          double screenHeight = constraints.maxHeight;
-          double aspectRatio = screenWidth / screenHeight;
-          double textSize = aspectRatio * 55; // Adjusted for better scaling
+          double screenHeight = constraints.maxHeight;// Adjusted for better scaling
 
           return AlertDialog(
             title: const Text('Options'),
@@ -64,8 +62,8 @@ class _OptionsDialogState extends State<OptionsDialog> {
                     OptionsButton(
                       screenWidth: screenWidth,
                       screenHeight: screenHeight,
+                      textSizeScale: 55,
                       text: "Change Color",
-                      textSize: textSize,
                       onPressed: () {
                         showDialog(
                           context: context,
@@ -95,8 +93,8 @@ class _OptionsDialogState extends State<OptionsDialog> {
                     OptionsButton(
                         screenWidth: screenWidth,
                         screenHeight: screenHeight,
+                        textSizeScale: 55,
                         text: "Dice & Coin",
-                        textSize: textSize,
                         onPressed: () {
                           showDialog(
                               context: context,
@@ -111,8 +109,8 @@ class _OptionsDialogState extends State<OptionsDialog> {
                     OptionsButton(
                       screenWidth: screenWidth,
                       screenHeight: screenHeight,
+                      textSizeScale: 55,
                       text: "Reset Game",
-                      textSize: textSize,
                       onPressed: () {
                         showDialog(
                             context: context,
@@ -127,8 +125,8 @@ class _OptionsDialogState extends State<OptionsDialog> {
                     OptionsButton(
                       screenWidth: screenWidth,
                       screenHeight: screenHeight,
+                      textSizeScale: 55,
                       text: "Settings",
-                      textSize: textSize,
                       onPressed: () {
                         Navigator.push(
                           context,

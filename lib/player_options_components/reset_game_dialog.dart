@@ -11,8 +11,6 @@ class ResetGameDialog extends StatelessWidget {
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
     double screenHeight = MediaQuery.of(context).size.height;
-    double aspectRatio = screenWidth / screenHeight;
-    double textSize = aspectRatio * 55;
     return AlertDialog(
       title: const Text("Reset game"),
       content: SizedBox(
@@ -25,7 +23,7 @@ class ResetGameDialog extends StatelessWidget {
               Text(
                 "Are you sure?",
                 style: TextStyle(
-                  fontSize: textSize,
+                  fontSize: (screenWidth / screenHeight) * 55,
                   color: Color(0xff504bff),
                 ),
               ),
@@ -33,8 +31,8 @@ class ResetGameDialog extends StatelessWidget {
               OptionsButton(
                   screenWidth: screenWidth,
                   screenHeight: screenHeight,
+                  textSizeScale: 55,
                   text: "Yes",
-                  textSize: textSize,
                   onPressed: () {
                     print("yes");
                   }
