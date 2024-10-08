@@ -60,6 +60,7 @@ class _OptionsDialogState extends State<OptionsDialog> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
+                    //Change color
                     OptionsButton(
                       screenWidth: screenWidth,
                       screenHeight: screenHeight,
@@ -90,6 +91,7 @@ class _OptionsDialogState extends State<OptionsDialog> {
                       },
                     ),
                     const SizedBox(height: 8),
+                    //Dice & coin
                     OptionsButton(
                         screenWidth: screenWidth,
                         screenHeight: screenHeight,
@@ -105,6 +107,7 @@ class _OptionsDialogState extends State<OptionsDialog> {
                         },
                     ),
                     const SizedBox(height: 8),
+                    //Reset game
                     OptionsButton(
                       screenWidth: screenWidth,
                       screenHeight: screenHeight,
@@ -120,6 +123,7 @@ class _OptionsDialogState extends State<OptionsDialog> {
                       },
                     ),
                     const SizedBox(height: 8),
+                    //Settings
                     OptionsButton(
                       screenWidth: screenWidth,
                       screenHeight: screenHeight,

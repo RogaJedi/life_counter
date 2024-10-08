@@ -32,7 +32,7 @@ class DiceAndCoinDialog extends StatelessWidget {
                   showDialog(
                       context: context,
                       builder: (BuildContext context) {
-                        return DiceAndCoinRandomizer(max: 6, screenWidth: screenWidth, screenHeight: screenHeight, textSize: textSize).getDialog(context);
+                        return DiceAndCoinRandomizer(max: 6, title: "Roll a D6", screenWidth: screenWidth, screenHeight: screenHeight, textSize: textSize).getDialog(context);
                       }
                   );
                 },
@@ -48,7 +48,7 @@ class DiceAndCoinDialog extends StatelessWidget {
                   showDialog(
                       context: context,
                       builder: (BuildContext context) {
-                        return DiceAndCoinRandomizer(max: 20, screenWidth: screenWidth, screenHeight: screenHeight, textSize: textSize).getDialog(context);
+                        return DiceAndCoinRandomizer(max: 20, title: "Roll a D20", screenWidth: screenWidth, screenHeight: screenHeight, textSize: textSize).getDialog(context);
                       }
                   );
                 },
@@ -64,7 +64,7 @@ class DiceAndCoinDialog extends StatelessWidget {
                   showDialog(
                       context: context,
                       builder: (BuildContext context) {
-                        return DiceAndCoinRandomizer(max: 2, screenWidth: screenWidth, screenHeight: screenHeight, textSize: textSize).getDialog(context);
+                        return DiceAndCoinRandomizer(max: 2, title: "Flip a coin", screenWidth: screenWidth, screenHeight: screenHeight, textSize: textSize).getDialog(context);
                       }
                   );
                 },

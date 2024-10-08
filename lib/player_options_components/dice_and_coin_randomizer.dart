@@ -3,12 +3,14 @@ import 'package:flutter/material.dart';
 
 class DiceAndCoinRandomizer {
   final int max;
+  final String title;
   final double screenWidth;
   final double screenHeight;
   final double textSize;
 
   DiceAndCoinRandomizer({
     required this.max,
+    required this.title,
     required this.screenWidth,
     required this.screenHeight,
     required this.textSize,
@@ -27,22 +29,69 @@ class DiceAndCoinRandomizer {
     }
   }
 
+  Widget getDialog(BuildContext context) {
+    return _RandomizerDialog(
+      max: max,
+      title: title,
+      screenWidth: screenWidth,
+      screenHeight: screenHeight,
+      textSize: textSize,
+      getTextForNumber: _getTextForNumber,
+    );
+  }
+}
 
-  AlertDialog getDialog(BuildContext context) {
+class _RandomizerDialog extends StatefulWidget {
+  final int max;
+  final String title;
+  final double screenWidth;
+  final double screenHeight;
+  final double textSize;
+  final String Function(int) getTextForNumber;
+
+  const _RandomizerDialog({
+    Key? key,
+    required this.max,
+    required this.title,
+    required this.screenWidth,
+    required this.screenHeight,
+    required this.textSize,
+    required this.getTextForNumber,
+  }) : super(key: key);
+
+  @override
+  _RandomizerDialogState createState() => _RandomizerDialogState();
+}
+
+class _RandomizerDialogState extends State<_RandomizerDialog> {
+  late String displayText;
+
+  @override
+  void initState() {
+    super.initState();
+    _generateNewResult();
+  }
+
+  void _generateNewResult() {
     final random = Random();
-    final randomNumber = 1 + random.nextInt(max);
-    final displayText = _getTextForNumber(randomNumber);
+    final randomNumber = 1 + random.nextInt(widget.max);
+    setState(() {
+      displayText = widget.getTextForNumber(randomNumber);
+    });
+  }
 
+  @override
+  Widget build(BuildContext context) {
     return AlertDialog(
-      title: Text('Random Result'),
+      title: Text(widget.title),
       content: SizedBox(
-        width: screenWidth * 0.6,
-        height: screenHeight * 0.4,
+        width: widget.screenWidth * 0.6,
+        height: widget.screenHeight * 0.4,
         child: Center(
           child: Text(
             displayText,
             style: TextStyle(
-              fontSize: textSize,
+              fontSize: widget.textSize,
               color: const Color(0xff504bff),
             ),
           ),
@@ -55,19 +104,13 @@ class DiceAndCoinRandomizer {
               borderRadius: BorderRadius.circular(10),
             ),
           ),
+          onPressed: _generateNewResult,
           child: const Text(
             'Generate New',
             style: TextStyle(
               color: Color(0xff504bff),
             ),
           ),
-          onPressed: () {
-            Navigator.of(context).pop();
-            showDialog(
-              context: context,
-              builder: (BuildContext context) => getDialog(context),
-            );
-          },
         ),
         ElevatedButton(
           style: ElevatedButton.styleFrom(
