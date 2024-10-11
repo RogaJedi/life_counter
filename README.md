@@ -2,7 +2,7 @@
 
 Life counter app for MTG and other games
 
-![alt_text](https://github.com/RogaJedi/life_counter/blob/master/Raccoon_Counter.png)
+![alt_text](https://github.com/RogaJedi/life_counter/blob/media/Raccoon_Counter.png)
 
 Gain or loss of HP
 
@@ -14,16 +14,16 @@ Open options
 
 Swipe down to open options and swipe up to close them
 
-![alt_text](https://github.com/RogaJedi/life_counter/blob/master/LC-0.3-demo-2.gif)
+![alt_text](https://github.com/RogaJedi/life_counter/blob/media/LC-0.3-demo-2.gif)
 
 Change your color
 
 Use colorpicker to set your color to the one you like
 
-![alt_text](https://github.com/RogaJedi/life_counter/blob/master/LC-0.3-demo-3.gif)
+![alt_text](https://github.com/RogaJedi/life_counter/blob/media/LC-0.3-demo-3.gif)
 
 Roll dice and flip coins
 
 Get randomized results for D6, D20, or a coin
 
-![alt_text](https://github.com/RogaJedi/life_counter/blob/master/LC-0.3-demo-4.gif)
+![alt_text](https://github.com/RogaJedi/life_counter/blob/media/LC-0.3-demo-4.gif)
