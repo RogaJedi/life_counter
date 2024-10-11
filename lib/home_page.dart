@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'player_options_components/options_dialog.dart';
+import 'player_counters_components/counters_dialog.dart';
 import 'player_card_components/items.dart';
 import 'player_inerface.dart';
 
@@ -66,6 +67,15 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
+  void _navigateToCountersDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return CountersDialog(); // Your modified widget
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
@@ -112,6 +122,9 @@ class _HomePageState extends State<HomePage> {
                         onSettingsTap: () {
                           _navigateToOptionsDialog(context, item.id, item.colorHex);
                         },
+                        onCountersTap: () {
+                          _navigateToCountersDialog(context);
+                        },
                       ),
                     );
                   }
@@ -134,6 +147,9 @@ class _HomePageState extends State<HomePage> {
                     },
                     onSettingsTap: () {
                       _navigateToOptionsDialog(context, item.id, item.colorHex);
+                    },
+                    onCountersTap: () {
+                      _navigateToCountersDialog(context);
                     },
                   );
                 },

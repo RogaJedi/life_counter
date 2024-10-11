@@ -85,6 +85,10 @@ flutter:
     - family: CustomIcons
       fonts:
         - asset: fonts/CustomIcons.ttf
+
+    - family: CountersIcons
+      fonts:
+        - asset: fonts/CountersIcons.ttf
   # fonts:
   #   - family: Schyler
   #     fonts:

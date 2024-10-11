@@ -4,11 +4,13 @@ class PlayerSettingsCard extends StatelessWidget{
   final int playerId;
   final double aspectRatio;
   final VoidCallback onSettingsTap;
+  final VoidCallback onCountersTap;
 
   const PlayerSettingsCard({super.key, 
     required this.playerId,
     required this.aspectRatio,
     required this.onSettingsTap,
+    required this.onCountersTap,
   });
 
   @override
@@ -52,9 +54,7 @@ class PlayerSettingsCard extends StatelessWidget{
                         backgroundColor: WidgetStateProperty.all(Colors.black),
                         padding: WidgetStateProperty.all(EdgeInsets.all(constraints.maxWidth * 0.05)),
                       ),
-                      onPressed: () {
-                        print("add counters");
-                      },
+                      onPressed: onCountersTap,
                       icon: Icon(
                           Icons.add,
                           size: constraints.maxWidth * 0.25,

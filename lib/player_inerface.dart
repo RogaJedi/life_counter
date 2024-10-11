@@ -12,6 +12,7 @@ class PlayerInerface extends StatefulWidget {
   final VoidCallback bottomOnTap;
   final VoidCallback bottomOnLongTap;
   final VoidCallback onSettingsTap;
+  final VoidCallback onCountersTap;
 
   const PlayerInerface({super.key, 
     required this.playerId,
@@ -23,6 +24,7 @@ class PlayerInerface extends StatefulWidget {
     required this.bottomOnTap,
     required this.bottomOnLongTap,
     required this.onSettingsTap,
+    required this.onCountersTap,
   });
 
 
@@ -70,6 +72,7 @@ class _PlayerInterfaceState extends State<PlayerInerface> {
                 playerId: widget.playerId,
                 aspectRatio: widget.aspectRatio,
                 onSettingsTap: widget.onSettingsTap,
+                onCountersTap: widget.onCountersTap,
               ),
             ),
           ),

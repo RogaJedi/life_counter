@@ -31,47 +31,45 @@ class _SettingsPageState extends State<SettingsPage> {
             ),
           ),
           const SizedBox(width: 4),
-          Center(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                SettingsButton(
-                    screenWidth: screenWidth,
-                    screenHeight: screenHeight,
-                    text: "20",
-                    onPressed: () {
-                      print("20");
-                    },
-                ),
-                const SizedBox(width: 8),
-                SettingsButton(
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              SettingsButton(
                   screenWidth: screenWidth,
                   screenHeight: screenHeight,
-                  text: "30",
+                  text: "20",
                   onPressed: () {
-                    print("30");
+                    print("20");
                   },
-                ),
-                const SizedBox(width: 8),
-                SettingsButton(
-                  screenWidth: screenWidth,
-                  screenHeight: screenHeight,
-                  text: "40",
-                  onPressed: () {
-                    print("40");
-                  },
-                ),
-                const SizedBox(width: 8),
-                SettingsButton(
-                  screenWidth: screenWidth,
-                  screenHeight: screenHeight,
-                  text: "100",
-                  onPressed: () {
-                    print("100");
-                  },
-                ),
-              ],
-            ),
+              ),
+              const SizedBox(width: 8),
+              SettingsButton(
+                screenWidth: screenWidth,
+                screenHeight: screenHeight,
+                text: "30",
+                onPressed: () {
+                  print("30");
+                },
+              ),
+              const SizedBox(width: 8),
+              SettingsButton(
+                screenWidth: screenWidth,
+                screenHeight: screenHeight,
+                text: "40",
+                onPressed: () {
+                  print("40");
+                },
+              ),
+              const SizedBox(width: 8),
+              SettingsButton(
+                screenWidth: screenWidth,
+                screenHeight: screenHeight,
+                text: "100",
+                onPressed: () {
+                  print("100");
+                },
+              ),
+            ],
           ),
           const SizedBox(height: 8),
           Center(
