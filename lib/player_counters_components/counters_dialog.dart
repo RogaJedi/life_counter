@@ -1,10 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:raccoon_counter/counters_icons_icons.dart';
 
-class CountersDialog extends StatelessWidget {
+class CountersDialog extends StatefulWidget {
   const CountersDialog({
     super.key,
   });
+
+  @override
+  _CountersDialogState createState() => _CountersDialogState();
+}
+
+class _CountersDialogState extends State<CountersDialog> {
+  Map<String, bool> buttonStates = {};
 
   @override
   Widget build(BuildContext context) {
@@ -62,30 +69,43 @@ class CountersDialog extends StatelessWidget {
   }
 
   Widget _buildIconButton(BuildContext context, IconData icon, String label, double screenHeight) {
+    // Initialize the state for this button if it doesn't exist
+    buttonStates.putIfAbsent(label, () => false);
+
     return Container(
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(10), // Adjust the radius as needed
+        borderRadius: BorderRadius.circular(10),
         boxShadow: [
           BoxShadow(
             color: Colors.grey.withOpacity(0.3),
             spreadRadius: 1,
             blurRadius: 5,
-            offset: Offset(0, 3), // changes position of shadow
+            offset: Offset(0, 3),
           ),
         ],
       ),
       child: IconButton(
         style: ButtonStyle(
-          backgroundColor: WidgetStateProperty.all(Colors.white),
+          backgroundColor: WidgetStateProperty.all(
+            buttonStates[label]! ? Color(0xff504bff) : Colors.white,
+          ),
           padding: WidgetStateProperty.all(EdgeInsets.all(screenHeight * 0.02)),
           shape: WidgetStateProperty.all(RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(10), // Match this with the Container's borderRadius
+            borderRadius: BorderRadius.circular(10),
           )),
         ),
         onPressed: () {
+          setState(() {
+            // Toggle the button state
+            buttonStates[label] = !buttonStates[label]!;
+          });
           print(label);
         },
-        icon: Icon(icon, size: screenHeight * 0.04, color: Color(0xff504bff)),
+        icon: Icon(
+          icon,
+          size: screenHeight * 0.04,
+          color: buttonStates[label]! ? Colors.white : Color(0xff504bff),
+        ),
       ),
     );
   }

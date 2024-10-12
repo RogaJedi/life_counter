@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 
 class PlayerSettingsCard extends StatelessWidget{
-  final int playerId;
   final double aspectRatio;
   final VoidCallback onSettingsTap;
   final VoidCallback onCountersTap;
 
-  const PlayerSettingsCard({super.key, 
-    required this.playerId,
+  const PlayerSettingsCard({super.key,
     required this.aspectRatio,
     required this.onSettingsTap,
     required this.onCountersTap,

@@ -3,6 +3,7 @@ import 'player_options_components/options_dialog.dart';
 import 'player_counters_components/counters_dialog.dart';
 import 'player_card_components/items.dart';
 import 'player_inerface.dart';
+import 'counters_icons_icons.dart';
 
 Item player1 = Item(counter: 40, colorHex: "0xff504bff", id: 0);
 
@@ -21,6 +22,12 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   List<Item> items = [player1, player2, player3, player4];
+  List<IconData> counters = [
+    CountersIcons.circle,
+    CountersIcons.clock,
+    CountersIcons.radiation,
+    CountersIcons.fire_alt,
+  ];
 
   void minus(Item player) {
     setState(() {
@@ -125,6 +132,7 @@ class _HomePageState extends State<HomePage> {
                         onCountersTap: () {
                           _navigateToCountersDialog(context);
                         },
+                        counters: counters,
                       ),
                     );
                   }
@@ -151,6 +159,7 @@ class _HomePageState extends State<HomePage> {
                     onCountersTap: () {
                       _navigateToCountersDialog(context);
                     },
+                    counters: counters,
                   );
                 },
               ),

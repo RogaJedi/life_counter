@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'player_card_components/player_card.dart';
 import 'player_options_components/player_settings_card.dart';
+import 'player_counters_components/player_counters_card.dart';
 
 class PlayerInerface extends StatefulWidget {
+  final List<IconData> counters;
   final int playerId;
   final String colorHex;
   final int counter;
@@ -14,7 +16,8 @@ class PlayerInerface extends StatefulWidget {
   final VoidCallback onSettingsTap;
   final VoidCallback onCountersTap;
 
-  const PlayerInerface({super.key, 
+  const PlayerInerface({super.key,
+    required this.counters,
     required this.playerId,
     required this.colorHex,
     required this.counter,
@@ -36,6 +39,7 @@ class _PlayerInterfaceState extends State<PlayerInerface> {
   bool _isTopCardVisible = true;
   double _topCardPosition = 0;
   double _bottomCardPosition = 0;
+  double _rightCardPosition = 200;
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +47,7 @@ class _PlayerInterfaceState extends State<PlayerInerface> {
       backgroundColor: Colors.black,
       body: Stack(
         children: [
-          // Bottom card
+          // Settings card
           AnimatedPositioned(
             duration: Duration(milliseconds: 300),
             curve: Curves.easeInOut,
@@ -56,7 +60,7 @@ class _PlayerInterfaceState extends State<PlayerInerface> {
                 if (!_isTopCardVisible) {
                   setState(() {
                     _bottomCardPosition -= details.delta.dx;
-                    _bottomCardPosition = _bottomCardPosition.clamp(-100.0, 0.0);
+                    _bottomCardPosition = _bottomCardPosition.clamp(-100.0, 0);
                   });
                 }
               },
@@ -66,14 +70,39 @@ class _PlayerInterfaceState extends State<PlayerInerface> {
                 } else {
                   _resetBottomCard();
                 }
-              }, //PlayerSettingsCard(playerId: widget.playerId),
-              //the bottom card
+              },
               child: PlayerSettingsCard(
-                playerId: widget.playerId,
                 aspectRatio: widget.aspectRatio,
                 onSettingsTap: widget.onSettingsTap,
                 onCountersTap: widget.onCountersTap,
               ),
+            ),
+          ),
+          //Counters card
+          AnimatedPositioned(
+            duration: Duration(milliseconds: 300),
+            curve: Curves.easeInOut,
+            left: -_rightCardPosition,
+            right: _rightCardPosition,
+            top: 0,
+            bottom: 0,
+            child: GestureDetector(
+              onHorizontalDragUpdate: (details) {
+                if (_isTopCardVisible) {
+                  setState(() {
+                    _rightCardPosition += details.delta.dx;
+                    _rightCardPosition = _rightCardPosition.clamp(0, 100.0);
+                  });
+                }
+              },
+              onHorizontalDragEnd: (details) {
+                if (!_isTopCardVisible && _rightCardPosition < 50) {
+                  _showTopCard();
+                } else {
+                  _resetRightCard();
+                }
+              },
+              child: PlayerCountersCard(counters: widget.counters,), // Replace with your actual right card widget
             ),
           ),
           // Top card
@@ -88,16 +117,29 @@ class _PlayerInterfaceState extends State<PlayerInerface> {
               onHorizontalDragUpdate: (details) {
                 if (_isTopCardVisible) {
                   setState(() {
-                    _topCardPosition -= details.delta.dx;
-                    _topCardPosition = _topCardPosition.clamp(0.0, 100.0);
+                    if (details.delta.dx < 0) {
+                      // Swiping left
+                      _topCardPosition -= details.delta.dx;
+                      _topCardPosition = _topCardPosition.clamp(0, 100.0);
+                    } else {
+                      // Swiping right
+                      _rightCardPosition += details.delta.dx;
+                      _rightCardPosition = _rightCardPosition.clamp(0, -100.0);
+                    }
                   });
                 }
               },
               onHorizontalDragEnd: (details) {
-                if (_isTopCardVisible && _topCardPosition > 50) {
-                  _hideTopCard();
-                } else {
-                  _resetTopCard();
+                if (_isTopCardVisible) {
+                  if (_topCardPosition > 50) {
+                    _hideTopCard(1);
+                  } else if (_topCardPosition < 50) {
+                    _hideTopCard(2);
+                    _showRightCard();
+                  } else {
+                    _resetTopCard();
+                    _resetRightCard();
+                  }
                 }
               },
               //the top card
@@ -118,25 +160,48 @@ class _PlayerInterfaceState extends State<PlayerInerface> {
     );
   }
 
-  void _showTopCard() {
+  void _showRightCard() {
     setState(() {
-      _isTopCardVisible = true;
-      _topCardPosition = 0;
-      _bottomCardPosition = 0;
+      _rightCardPosition = 0;
+      _isTopCardVisible = false;
     });
   }
 
-  void _hideTopCard() {
+
+  void _showTopCard() {
     setState(() {
-      _isTopCardVisible = false;
-      _topCardPosition = MediaQuery.of(context).size.height;
+      _topCardPosition = 0;
       _bottomCardPosition = 0;
+      _rightCardPosition = 200;
+      _isTopCardVisible = true;
     });
+  }
+
+  void _hideTopCard(int direction) {
+    if (direction == 1){
+      setState(() {
+        _topCardPosition = 200;
+        _isTopCardVisible = false;
+      });
+    } else {
+      setState(() {
+        _topCardPosition = -200;
+        _bottomCardPosition = -200;
+        _isTopCardVisible = false;
+      });
+    }
   }
 
   void _resetTopCard() {
     setState(() {
       _topCardPosition = 0;
+      _rightCardPosition = 200;
+    });
+  }
+
+  void _resetRightCard() {
+    setState(() {
+      _rightCardPosition = 200;
     });
   }
 
