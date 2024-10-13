@@ -1,17 +1,50 @@
 import 'package:flutter/material.dart';
 import 'player_options_components/options_dialog.dart';
 import 'player_counters_components/counters_dialog.dart';
-import 'player_card_components/items.dart';
+import 'items.dart';
 import 'player_inerface.dart';
 import 'counters_icons_icons.dart';
+import 'player_counters_components/c_items.dart';
 
-Item player1 = Item(counter: 40, colorHex: "0xff504bff", id: 0);
+Item player1 = Item(
+    counter: 40,
+    colorHex: "0xff504bff",
+    player_counters: [
+      C_Item(
+          counter_icon: CountersIcons.circle,
+          counter_amount: 0),
+      C_Item(
+          counter_icon: CountersIcons.vial,
+          counter_amount: 0
+      ),
+      C_Item(
+          counter_icon: CountersIcons.sun,
+          counter_amount: 0
+      ),
+    ],
+    id: 0);
 
-Item player2 = Item(counter: 40, colorHex: "0xffffce00", id: 1);
+Item player2 = Item(
+    counter: 40,
+    colorHex: "0xffffce00",
+    player_counters: [
+      C_Item(
+          counter_icon: CountersIcons.clock,
+          counter_amount: 0),
+      C_Item(
+          counter_icon: CountersIcons.skull,
+          counter_amount: 0
+      ),
+      C_Item(
+          counter_icon: CountersIcons.tree,
+          counter_amount: 0
+      ),
+    ],
+    id: 1);
 
-Item player3 = Item(counter: 40, colorHex: "0xffff504b", id: 2);
+Item player3 = Item(counter: 40, colorHex: "0xffff504b", player_counters: [], id: 2);
 
-Item player4 = Item(counter: 40, colorHex: "0xff00ce51", id: 3);
+Item player4 = Item(counter: 40, colorHex: "0xff00ce51", player_counters: [], id: 3);
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -22,12 +55,6 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   List<Item> items = [player1, player2, player3, player4];
-  List<IconData> counters = [
-    CountersIcons.circle,
-    CountersIcons.clock,
-    CountersIcons.radiation,
-    CountersIcons.fire_alt,
-  ];
 
   void minus(Item player) {
     setState(() {
@@ -74,11 +101,11 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  void _navigateToCountersDialog(BuildContext context) {
+  void _navigateToCountersDialog(BuildContext context, Item player) {
     showDialog(
       context: context,
       builder: (BuildContext context) {
-        return CountersDialog(); // Your modified widget
+        return CountersDialog(player: player); // Your modified widget
       },
     );
   }
@@ -110,9 +137,7 @@ class _HomePageState extends State<HomePage> {
                     return Transform.rotate(
                       angle: 180 * 3.14159 / 180,
                       child: PlayerInerface(
-                        playerId: item.id + 1,
-                        colorHex: item.colorHex,
-                        counter: item.counter,
+                        player: item,
                         aspectRatio: aspectRatio,
                         topOnTap: () {
                           minus(item);
@@ -130,16 +155,13 @@ class _HomePageState extends State<HomePage> {
                           _navigateToOptionsDialog(context, item.id, item.colorHex);
                         },
                         onCountersTap: () {
-                          _navigateToCountersDialog(context);
+                          _navigateToCountersDialog(context, item);
                         },
-                        counters: counters,
                       ),
                     );
                   }
                   return PlayerInerface(
-                    playerId: item.id + 1,
-                    colorHex: item.colorHex,
-                    counter: item.counter,
+                    player: item,
                     aspectRatio: aspectRatio,
                     topOnTap: () {
                       minus(item);
@@ -157,9 +179,8 @@ class _HomePageState extends State<HomePage> {
                       _navigateToOptionsDialog(context, item.id, item.colorHex);
                     },
                     onCountersTap: () {
-                      _navigateToCountersDialog(context);
+                      _navigateToCountersDialog(context, item);
                     },
-                    counters: counters,
                   );
                 },
               ),

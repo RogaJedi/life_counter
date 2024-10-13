@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../player_card_components/items.dart';
+import '../items.dart';
 import 'option_button.dart';
 import 'pick_color_for_player.dart';
 import 'dice_and_coin_dialog.dart';
@@ -77,6 +77,7 @@ class _OptionsDialogState extends State<OptionsDialog> {
                                   Item newItem = Item(
                                     colorHex: colorToHex(currentColor),
                                     counter: 40,
+                                    player_counters: [],
                                     id: widget.playerId,
                                   );
                                   widget.onColorSelected(newItem);

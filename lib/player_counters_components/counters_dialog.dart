@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:raccoon_counter/counters_icons_icons.dart';
+import '../items.dart';
+import 'c_items.dart';
 
 class CountersDialog extends StatefulWidget {
+  final Item player;
+
   const CountersDialog({
     super.key,
+    required this.player,
   });
 
   @override
@@ -87,7 +92,7 @@ class _CountersDialogState extends State<CountersDialog> {
       child: IconButton(
         style: ButtonStyle(
           backgroundColor: WidgetStateProperty.all(
-            buttonStates[label]! ? Color(0xff504bff) : Colors.white,
+            buttonStates[label]! ? Color(0xfffaff4b) : Colors.white,
           ),
           padding: WidgetStateProperty.all(EdgeInsets.all(screenHeight * 0.02)),
           shape: WidgetStateProperty.all(RoundedRectangleBorder(
@@ -98,13 +103,14 @@ class _CountersDialogState extends State<CountersDialog> {
           setState(() {
             // Toggle the button state
             buttonStates[label] = !buttonStates[label]!;
+            widget.player.player_counters.add(C_Item(counter_icon: icon, counter_amount: 0));
           });
           print(label);
         },
         icon: Icon(
           icon,
           size: screenHeight * 0.04,
-          color: buttonStates[label]! ? Colors.white : Color(0xff504bff),
+          color: Color(0xff504bff),
         ),
       ),
     );

@@ -2,12 +2,10 @@ import 'package:flutter/material.dart';
 import 'player_card_components/player_card.dart';
 import 'player_options_components/player_settings_card.dart';
 import 'player_counters_components/player_counters_card.dart';
+import 'items.dart';
 
 class PlayerInerface extends StatefulWidget {
-  final List<IconData> counters;
-  final int playerId;
-  final String colorHex;
-  final int counter;
+  final Item player;
   final double aspectRatio;
   final VoidCallback topOnTap;
   final VoidCallback topOnLongTap;
@@ -17,10 +15,7 @@ class PlayerInerface extends StatefulWidget {
   final VoidCallback onCountersTap;
 
   const PlayerInerface({super.key,
-    required this.counters,
-    required this.playerId,
-    required this.colorHex,
-    required this.counter,
+    required this.player,
     required this.aspectRatio,
     required this.topOnTap,
     required this.topOnLongTap,
@@ -60,7 +55,7 @@ class _PlayerInterfaceState extends State<PlayerInerface> {
                 if (!_isTopCardVisible) {
                   setState(() {
                     _bottomCardPosition -= details.delta.dx;
-                    _bottomCardPosition = _bottomCardPosition.clamp(-100.0, 0);
+                    _bottomCardPosition = _bottomCardPosition.clamp(-100, 0);
                   });
                 }
               },
@@ -91,7 +86,7 @@ class _PlayerInterfaceState extends State<PlayerInerface> {
                 if (_isTopCardVisible) {
                   setState(() {
                     _rightCardPosition += details.delta.dx;
-                    _rightCardPosition = _rightCardPosition.clamp(0, 100.0);
+                    _rightCardPosition = _rightCardPosition.clamp(0, 100);
                   });
                 }
               },
@@ -102,7 +97,7 @@ class _PlayerInterfaceState extends State<PlayerInerface> {
                   _resetRightCard();
                 }
               },
-              child: PlayerCountersCard(counters: widget.counters,), // Replace with your actual right card widget
+              child: PlayerCountersCard(player: widget.player), // Replace with your actual right card widget
             ),
           ),
           // Top card
@@ -120,11 +115,11 @@ class _PlayerInterfaceState extends State<PlayerInerface> {
                     if (details.delta.dx < 0) {
                       // Swiping left
                       _topCardPosition -= details.delta.dx;
-                      _topCardPosition = _topCardPosition.clamp(0, 100.0);
+                      _topCardPosition = _topCardPosition.clamp(0, 100);
                     } else {
                       // Swiping right
                       _rightCardPosition += details.delta.dx;
-                      _rightCardPosition = _rightCardPosition.clamp(0, -100.0);
+                      _rightCardPosition = _rightCardPosition.clamp(0, -100);
                     }
                   });
                 }
@@ -144,9 +139,9 @@ class _PlayerInterfaceState extends State<PlayerInerface> {
               },
               //the top card
               child: PlayerCard(
-                playerId: widget.playerId,
-                colorHex: widget.colorHex,
-                counter: widget.counter,
+                playerId: widget.player.id + 1,
+                colorHex: widget.player.colorHex,
+                counter: widget.player.counter,
                 aspectRatio: widget.aspectRatio,
                 topOnTap: widget.topOnTap,
                 topOnLongTap: widget.topOnLongTap,
