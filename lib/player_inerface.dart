@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'player_card_components/player_card.dart';
 import 'player_options_components/player_settings_card.dart';
-import 'player_counters_components/player_counters_card.dart';
+import 'player_card_components/interactive_player_card.dart';
+import 'player_counters_components/counters_display_card.dart';
 import 'items.dart';
 
 class PlayerInerface extends StatefulWidget {
@@ -97,7 +97,7 @@ class _PlayerInterfaceState extends State<PlayerInerface> {
                   _resetRightCard();
                 }
               },
-              child: PlayerCountersCard(player: widget.player), // Replace with your actual right card widget
+              child: CountersDisplayCard(player: widget.player), // Replace with your actual right card widget
             ),
           ),
           // Top card
@@ -138,10 +138,8 @@ class _PlayerInterfaceState extends State<PlayerInerface> {
                 }
               },
               //the top card
-              child: PlayerCard(
-                playerId: widget.player.id + 1,
-                colorHex: widget.player.colorHex,
-                counter: widget.player.counter,
+              child: InteractivePlayerCard(
+                player: widget.player,
                 aspectRatio: widget.aspectRatio,
                 topOnTap: widget.topOnTap,
                 topOnLongTap: widget.topOnLongTap,

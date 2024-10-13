@@ -3,48 +3,30 @@ import 'player_options_components/options_dialog.dart';
 import 'player_counters_components/counters_dialog.dart';
 import 'items.dart';
 import 'player_inerface.dart';
-import 'counters_icons_icons.dart';
-import 'player_counters_components/c_items.dart';
 
 Item player1 = Item(
     counter: 40,
     colorHex: "0xff504bff",
-    player_counters: [
-      C_Item(
-          counter_icon: CountersIcons.circle,
-          counter_amount: 0),
-      C_Item(
-          counter_icon: CountersIcons.vial,
-          counter_amount: 0
-      ),
-      C_Item(
-          counter_icon: CountersIcons.sun,
-          counter_amount: 0
-      ),
-    ],
+    player_counters: [],
     id: 0);
 
 Item player2 = Item(
     counter: 40,
     colorHex: "0xffffce00",
-    player_counters: [
-      C_Item(
-          counter_icon: CountersIcons.clock,
-          counter_amount: 0),
-      C_Item(
-          counter_icon: CountersIcons.skull,
-          counter_amount: 0
-      ),
-      C_Item(
-          counter_icon: CountersIcons.tree,
-          counter_amount: 0
-      ),
-    ],
+    player_counters: [],
     id: 1);
 
-Item player3 = Item(counter: 40, colorHex: "0xffff504b", player_counters: [], id: 2);
+Item player3 = Item(
+    counter: 40,
+    colorHex: "0xffff504b",
+    player_counters: [],
+    id: 2);
 
-Item player4 = Item(counter: 40, colorHex: "0xff00ce51", player_counters: [], id: 3);
+Item player4 = Item(
+    counter: 40,
+    colorHex: "0xff00ce51",
+    player_counters: [],
+    id: 3);
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});

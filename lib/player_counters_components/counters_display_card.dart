@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import '../items.dart';
+import 'interactive_counters_card.dart';
 
-class PlayerCountersCard extends StatelessWidget {
+class CountersDisplayCard extends StatelessWidget {
   final Item player;
 
-  const PlayerCountersCard({
+  const CountersDisplayCard({
     Key? key,
     required this.player,
   }) : super(key: key);
@@ -27,12 +28,12 @@ class PlayerCountersCard extends StatelessWidget {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Transform.rotate(
-                          angle: 90 * 3.14159 / 180,
-                          child: Icon(
-                            player.player_counters[index].counter_icon,
-                            size: constraints.maxWidth * 0.3,
-                            color: Colors.blue,
+                        SizedBox(
+                          width: 180,
+                          height: 110,
+                          child: InteractiveCountersCard(
+                              player: player,
+                              index: index,
                           ),
                         ),
                       ],
