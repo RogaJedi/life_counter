@@ -1,11 +1,30 @@
 import 'package:flutter/material.dart';
 import 'option_button.dart';
+import '../items.dart';
 
-class ResetGameDialog extends StatelessWidget {
+class ResetGameDialog extends StatefulWidget {
+  final List<Item> playersList;
+  final List<Item> defaultPlayersList;
 
   const ResetGameDialog({
     super.key,
+    required this.playersList,
+    required this.defaultPlayersList,
   });
+
+  @override
+  _ResetGameDialogState createState() => _ResetGameDialogState();
+}
+
+class _ResetGameDialogState extends State<ResetGameDialog> {
+
+  void resetPlayer (Item player, Item playerDefaultState) {
+    setState(() {
+      player.colorHex = playerDefaultState.colorHex;
+      player.counter = playerDefaultState.counter;
+      player.playerCounters.clear();
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +53,14 @@ class ResetGameDialog extends StatelessWidget {
                   textSizeScale: 55,
                   text: "Yes",
                   onPressed: () {
-                    print("yes");
+                    for (var i = 0; i < widget.playersList.length; i++) {
+                      resetPlayer(
+                          widget.playersList[i],
+                          widget.defaultPlayersList[i],
+                      );
+                    }
+                    Navigator.of(context).pop();
+                    Navigator.of(context).pop();
                   }
               ),
             ],

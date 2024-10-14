@@ -103,9 +103,8 @@ class _CountersDialogState extends State<CountersDialog> {
           setState(() {
             // Toggle the button state
             buttonStates[label] = !buttonStates[label]!;
-            widget.player.player_counters.add(C_Item(counter_icon: icon, counter_amount: 0));
+            widget.player.playerCounters.add(C_Item(counter_icon: icon, counter_amount: 0));
           });
-          print(label);
         },
         icon: Icon(
           icon,

@@ -20,7 +20,7 @@ class CountersDisplayCard extends StatelessWidget {
             width: constraints.maxWidth,
             height: constraints.maxHeight,
             child: ListView.builder(
-              itemCount: player.player_counters.length,
+              itemCount: player.playerCounters.length,
               itemBuilder: (context, index) {
                 return Padding(
                   padding: const EdgeInsets.all(8.0),

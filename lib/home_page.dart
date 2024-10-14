@@ -1,31 +1,57 @@
 import 'package:flutter/material.dart';
+import 'player_interface.dart';
 import 'player_options_components/options_dialog.dart';
 import 'player_counters_components/counters_dialog.dart';
 import 'items.dart';
-import 'player_inerface.dart';
+import 'player_counters_components/c_items.dart';
+import 'counters_icons_icons.dart';
 
 Item player1 = Item(
     counter: 40,
     colorHex: "0xff504bff",
-    player_counters: [],
+    playerCounters: [],
+    id: 0);
+
+Item d_player1 = Item(
+    counter: 40,
+    colorHex: "0xff504bff",
+    playerCounters: [],
     id: 0);
 
 Item player2 = Item(
     counter: 40,
     colorHex: "0xffffce00",
-    player_counters: [],
+    playerCounters: [],
+    id: 1);
+
+Item d_player2 = Item(
+    counter: 40,
+    colorHex: "0xffffce00",
+    playerCounters: [],
     id: 1);
 
 Item player3 = Item(
     counter: 40,
     colorHex: "0xffff504b",
-    player_counters: [],
+    playerCounters: [],
+    id: 2);
+
+Item d_player3 = Item(
+    counter: 40,
+    colorHex: "0xffff504b",
+    playerCounters: [],
     id: 2);
 
 Item player4 = Item(
     counter: 40,
     colorHex: "0xff00ce51",
-    player_counters: [],
+    playerCounters: [],
+    id: 3);
+
+Item d_player4 = Item(
+    counter: 40,
+    colorHex: "0xff00ce51",
+    playerCounters: [],
     id: 3);
 
 class HomePage extends StatefulWidget {
@@ -37,30 +63,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   List<Item> items = [player1, player2, player3, player4];
-
-  void minus(Item player) {
-    setState(() {
-      player.counter -= 1;
-    });
-  }
-
-  void bigMinus(Item player) {
-    setState(() {
-      player.counter -= 5;
-    });
-  }
-
-  void plus(Item player) {
-    setState(() {
-      player.counter += 1;
-    });
-  }
-
-  void bigPlus(Item player) {
-    setState(() {
-      player.counter += 5;
-    });
-  }
+  List<Item> defaultItems = [d_player1, d_player2, d_player3, d_player4];
 
   void changePlayerColor(Item newItem) {
     String newColor = newItem.colorHex;
@@ -70,13 +73,14 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
-  void _navigateToOptionsDialog(BuildContext context, int playerId, String playerColor) {
+  void _navigateToOptionsDialog(BuildContext context, Item player) {
     showDialog(
       context: context,
       builder: (BuildContext context) {
         return OptionsDialog(
-          playerId: playerId,
-          playerColor: playerColor,
+          player: player,
+          playersList: items,
+          defaultPlayersList: defaultItems,
           onColorSelected: changePlayerColor,
         ); // Your modified widget
       },
@@ -118,23 +122,11 @@ class _HomePageState extends State<HomePage> {
                   if (index % 2 != 0) {
                     return Transform.rotate(
                       angle: 180 * 3.14159 / 180,
-                      child: PlayerInerface(
+                      child: PlayerInterface(
                         player: item,
                         aspectRatio: aspectRatio,
-                        topOnTap: () {
-                          minus(item);
-                        },
-                        topOnLongTap: () {
-                          bigMinus(item);
-                        },
-                        bottomOnTap: () {
-                          plus(item);
-                        },
-                        bottomOnLongTap: () {
-                          bigPlus(item);
-                        },
                         onSettingsTap: () {
-                          _navigateToOptionsDialog(context, item.id, item.colorHex);
+                          _navigateToOptionsDialog(context, item);
                         },
                         onCountersTap: () {
                           _navigateToCountersDialog(context, item);
@@ -142,23 +134,11 @@ class _HomePageState extends State<HomePage> {
                       ),
                     );
                   }
-                  return PlayerInerface(
+                  return PlayerInterface(
                     player: item,
                     aspectRatio: aspectRatio,
-                    topOnTap: () {
-                      minus(item);
-                    },
-                    topOnLongTap: () {
-                      bigMinus(item);
-                    },
-                    bottomOnTap: () {
-                      plus(item);
-                    },
-                    bottomOnLongTap: () {
-                      bigPlus(item);
-                    },
                     onSettingsTap: () {
-                      _navigateToOptionsDialog(context, item.id, item.colorHex);
+                      _navigateToOptionsDialog(context, item);
                     },
                     onCountersTap: () {
                       _navigateToCountersDialog(context, item);

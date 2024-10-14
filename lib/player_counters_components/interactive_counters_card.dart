@@ -22,25 +22,25 @@ class _InteractiveCountersCardState extends State<InteractiveCountersCard> {
 
   void c_plus(Item player, int index) {
     setState(() {
-      player.player_counters[index].counter_amount += 1;
+      player.playerCounters[index].counter_amount += 1;
     });
   }
 
   void c_bigPlus(Item player, int index) {
     setState(() {
-      player.player_counters[index].counter_amount += 5;
+      player.playerCounters[index].counter_amount += 5;
     });
   }
 
   void c_minus(Item player, int index) {
     setState(() {
-      player.player_counters[index].counter_amount -= 1;
+      player.playerCounters[index].counter_amount -= 1;
     });
   }
 
   void c_bigMinus(Item player, int index) {
     setState(() {
-      player.player_counters[index].counter_amount -= 5;
+      player.playerCounters[index].counter_amount -= 5;
     });
   }
 

@@ -25,7 +25,7 @@ class CountersCard extends StatelessWidget {
                 height: 90,
                 child: Center(
                   child: Text(
-                    player.player_counters[index].counter_amount.toString(),
+                    player.playerCounters[index].counter_amount.toString(),
                     style: const TextStyle(
                       fontSize: 40,
                     ),
@@ -36,7 +36,7 @@ class CountersCard extends StatelessWidget {
             Transform.rotate(
               angle: 90 * 3.14159 / 180,
               child: Icon(
-                player.player_counters[index].counter_icon,
+                player.playerCounters[index].counter_icon,
                 size: 30,
                 color: const Color(0xff504bff),
               ),

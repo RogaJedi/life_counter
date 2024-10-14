@@ -9,14 +9,16 @@ import '../app_settings_components/settings_page.dart';
 class OptionsDialog extends StatefulWidget {
   @override
   _OptionsDialogState createState() => _OptionsDialogState();
-  final int playerId;
-  final String playerColor;
+  final Item player;
+  final List<Item> playersList;
+  final List<Item> defaultPlayersList;
   final Function(Item) onColorSelected;
 
   const OptionsDialog({
     super.key,
-    required this.playerId,
-    required this.playerColor,
+    required this.player,
+    required this.playersList,
+    required this.defaultPlayersList,
     required this.onColorSelected,
   });
 }
@@ -27,7 +29,7 @@ class _OptionsDialogState extends State<OptionsDialog> {
   @override
   void initState() {
     super.initState();
-    String hex = widget.playerColor.replaceAll('0x', '');
+    String hex = widget.player.colorHex.replaceAll('0x', '');
     int colorInt = int.parse(hex, radix: 16);
     currentColor = Color(colorInt);
   }
@@ -40,6 +42,14 @@ class _OptionsDialogState extends State<OptionsDialog> {
     String hexRaw = '#${color.value.toRadixString(16).padLeft(8, '0')}';
     String hexColor = hexRaw.replaceAll('#ff', '0xff');
     return hexColor;
+  }
+
+  void resetPlayer (Item player, Item playerDefaultState) {
+    setState(() {
+      player.colorHex = playerDefaultState.colorHex;
+      player.counter = playerDefaultState.counter;
+      player.playerCounters.clear();
+    });
   }
 
   @override
@@ -77,8 +87,8 @@ class _OptionsDialogState extends State<OptionsDialog> {
                                   Item newItem = Item(
                                     colorHex: colorToHex(currentColor),
                                     counter: 40,
-                                    player_counters: [],
-                                    id: widget.playerId,
+                                    playerCounters: [],
+                                    id: widget.player.id,
                                   );
                                   widget.onColorSelected(newItem);
                                   Navigator.of(context).pop();
@@ -116,7 +126,10 @@ class _OptionsDialogState extends State<OptionsDialog> {
                         showDialog(
                             context: context,
                             builder: (BuildContext context) {
-                              return ResetGameDialog();
+                              return ResetGameDialog(
+                                  playersList: widget.playersList,
+                                  defaultPlayersList: widget.defaultPlayersList,
+                              );
                             }
                         );
                       },

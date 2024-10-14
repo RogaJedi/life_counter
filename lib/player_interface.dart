@@ -4,23 +4,15 @@ import 'player_card_components/interactive_player_card.dart';
 import 'player_counters_components/counters_display_card.dart';
 import 'items.dart';
 
-class PlayerInerface extends StatefulWidget {
+class PlayerInterface extends StatefulWidget {
   final Item player;
   final double aspectRatio;
-  final VoidCallback topOnTap;
-  final VoidCallback topOnLongTap;
-  final VoidCallback bottomOnTap;
-  final VoidCallback bottomOnLongTap;
   final VoidCallback onSettingsTap;
   final VoidCallback onCountersTap;
 
-  const PlayerInerface({super.key,
+  const PlayerInterface({super.key,
     required this.player,
     required this.aspectRatio,
-    required this.topOnTap,
-    required this.topOnLongTap,
-    required this.bottomOnTap,
-    required this.bottomOnLongTap,
     required this.onSettingsTap,
     required this.onCountersTap,
   });
@@ -30,7 +22,7 @@ class PlayerInerface extends StatefulWidget {
   _PlayerInterfaceState createState() => _PlayerInterfaceState();
 }
 
-class _PlayerInterfaceState extends State<PlayerInerface> {
+class _PlayerInterfaceState extends State<PlayerInterface> {
   bool _isTopCardVisible = true;
   double _topCardPosition = 0;
   double _bottomCardPosition = 0;
@@ -141,10 +133,6 @@ class _PlayerInterfaceState extends State<PlayerInerface> {
               child: InteractivePlayerCard(
                 player: widget.player,
                 aspectRatio: widget.aspectRatio,
-                topOnTap: widget.topOnTap,
-                topOnLongTap: widget.topOnLongTap,
-                bottomOnTap: widget.bottomOnTap,
-                bottomOnLongTap: widget.bottomOnLongTap,
               ),
             ),
           ),
