@@ -4,26 +4,28 @@ Life counter app for MTG and other games
 
 ![alt_text](https://github.com/RogaJedi/life_counter/blob/media/Raccoon_Counter.png)
 
-Gain or loss of HP
-
 Use a single tap to change your HP by 1 or hold to change it by 5
 
-![alt_text](https://github.com/RogaJedi/life_counter/blob/media/LC-0.3-demo-1.gif)
+![alt_text](https://github.com/RogaJedi/life_counter/blob/media/LC-beta-demo-1.gif)
 
-Open options
+Swipe up or down to open options or reveal your counters
 
-Swipe down to open options and swipe up to close them
+![alt_text](https://github.com/RogaJedi/life_counter/blob/media/LC-beta-demo-2.gif)
 
-![alt_text](https://github.com/RogaJedi/life_counter/blob/media/LC-0.3-demo-2.gif)
+Use a plus icon to add or remove counters
 
-Change your color
+![alt_text](https://github.com/RogaJedi/life_counter/blob/media/LC-beta-demo-6.gif)
 
-Use colorpicker to set your color to the one you like
+Options menu can be opened by pressing a gear button
 
-![alt_text](https://github.com/RogaJedi/life_counter/blob/media/LC-0.3-demo-3.gif)
+Change your color to the one you like by using a colorpicker
 
-Roll dice and flip coins
+![alt_text](https://github.com/RogaJedi/life_counter/blob/media/LC-beta-demo-3.gif)
 
-Get randomized results for D6, D20, or a coin
+In "Dice & Coin" you can get randomized results for D6, D20, or a coin
 
-![alt_text](https://github.com/RogaJedi/life_counter/blob/media/LC-0.3-demo-4.gif)
+![alt_text](https://github.com/RogaJedi/life_counter/blob/media/LC-beta-demo-4.gif)
+
+If you want to start a new game, you can use "Reset Game" option
+
+![alt_text](https://github.com/RogaJedi/life_counter/blob/media/LC-beta-demo-5.gif)
