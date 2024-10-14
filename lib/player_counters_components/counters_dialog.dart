@@ -46,7 +46,7 @@ class _CountersDialogState extends State<CountersDialog> {
       title: const Text("Add Counters"),
       content: SizedBox(
         width: screenWidth * 0.6,
-        height: screenHeight * 0.55,
+        height: screenHeight * 0.4,
         child: Center(
           child: GridView.count(
             crossAxisCount: 3, // Adjust this value to change the number of columns
