@@ -4,18 +4,22 @@ import '../items.dart';
 class PlayerCard extends StatelessWidget {
   final Item player;
   final double aspectRatio;
+  final String layoutMode;
 
   const PlayerCard({
     super.key,
     required this.player,
     required this.aspectRatio,
+    required this.layoutMode,
   });
 
   @override
   Widget build(BuildContext context) {
+
     String hex = player.colorHex.replaceAll('0x', '');
     int colorInt = int.parse(hex, radix: 16);
     double textSize = aspectRatio * 200;
+
     return Card(
       color: Color(colorInt),
       child: Center(

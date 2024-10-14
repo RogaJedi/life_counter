@@ -7,12 +7,12 @@ class SettingsButton extends StatelessWidget {
   final VoidCallback onPressed;
 
   const SettingsButton({
-    Key? key,
+    super.key,
     required this.screenWidth,
     required this.screenHeight,
     required this.text,
     required this.onPressed,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +33,7 @@ class SettingsButton extends StatelessWidget {
             text,
             style: TextStyle(
               fontSize: ((screenWidth / 2) / (screenHeight / 2)) * 60,
-              color: Color(0xff504bff),
+              color: const Color(0xff504bff),
             ),
           ),
         ),

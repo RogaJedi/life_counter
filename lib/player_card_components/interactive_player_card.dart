@@ -6,11 +6,13 @@ import '../custom_button.dart';
 class InteractivePlayerCard extends StatefulWidget {
   final Item player;
   final double aspectRatio;
+  final String layoutMode;
 
   const InteractivePlayerCard({
     super.key,
     required this.player,
     required this.aspectRatio,
+    required this.layoutMode,
   });
 
   @override
@@ -50,6 +52,7 @@ class _InteractivePlayerCardState extends State<InteractivePlayerCard> {
         PlayerCard(
           player: widget.player,
           aspectRatio: widget.aspectRatio,
+          layoutMode: widget.layoutMode,
         ),
         Padding(
           padding: const EdgeInsets.all(3.0),

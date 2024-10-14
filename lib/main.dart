@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'layouts/2_players.dart';
 import 'layouts/4_players_A.dart';
+
+//TODO: make it possible to save user's preferred layout and life amount.
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();

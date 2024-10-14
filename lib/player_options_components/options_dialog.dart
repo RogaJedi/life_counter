@@ -112,7 +112,7 @@ class _OptionsDialogState extends State<OptionsDialog> {
                           showDialog(
                               context: context,
                               builder: (BuildContext context) {
-                                return DiceAndCoinDialog();
+                                return const DiceAndCoinDialog();
                               }
                           );
                         },
@@ -147,7 +147,7 @@ class _OptionsDialogState extends State<OptionsDialog> {
                       onPressed: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => SettingsPage()),
+                          MaterialPageRoute(builder: (context) => const SettingsPage()),
                         );
                       },
                     ),

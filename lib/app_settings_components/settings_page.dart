@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'settings_button.dart';
 import 'package:raccoon_counter/player_options_components/option_button.dart';
 
+//TODO: create layouts and make it possible to select them in here.
+
 class SettingsPage extends StatefulWidget {
-  const SettingsPage({Key? key}) : super(key: key);
+  const SettingsPage({super.key});
 
   @override
   _SettingsPageState createState() => _SettingsPageState();
@@ -77,7 +79,7 @@ class _SettingsPageState extends State<SettingsPage> {
               "Amount of players",
               style: TextStyle(
                 fontSize: ((screenWidth / 2) / (screenHeight / 2)) * 70,
-                color: Color(0xff504bff),
+                color: const Color(0xff504bff),
               ),
             ),
           ),

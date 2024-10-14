@@ -98,7 +98,7 @@ class _TwoPlayersState extends State<TwoPlayers> {
                   final item = items[index];
                   if (index == 1) {
                     return Transform.rotate(
-                      angle: 180 * 3.14159 / 180,
+                      angle: 270 * 3.14159 / 180,
                       child: PlayerInterface(
                         player: item,
                         aspectRatio: aspectRatio,
@@ -108,18 +108,23 @@ class _TwoPlayersState extends State<TwoPlayers> {
                         onCountersTap: () {
                           _navigateToCountersDialog(context, item);
                         },
+                        layoutMode: '2',
                       ),
                     );
                   }
-                  return PlayerInterface(
-                    player: item,
-                    aspectRatio: aspectRatio,
-                    onSettingsTap: () {
-                      _navigateToOptionsDialog(context, item);
-                    },
-                    onCountersTap: () {
-                      _navigateToCountersDialog(context, item);
-                    },
+                  return Transform.rotate(
+                    angle: 90 * 3.14159 / 180,
+                    child: PlayerInterface(
+                      player: item,
+                      aspectRatio: aspectRatio,
+                      onSettingsTap: () {
+                        _navigateToOptionsDialog(context, item);
+                      },
+                      onCountersTap: () {
+                        _navigateToCountersDialog(context, item);
+                      },
+                      layoutMode: '2',
+                    ),
                   );
                 },
               ),

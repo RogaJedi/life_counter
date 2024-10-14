@@ -3,6 +3,8 @@ import 'package:raccoon_counter/counters_icons_icons.dart';
 import '../items.dart';
 import 'c_items.dart';
 
+//TODO: make buttons remember their state and make it possible to remove counters if a counter's button is disabled.
+
 class CountersDialog extends StatefulWidget {
   final Item player;
 
@@ -85,14 +87,14 @@ class _CountersDialogState extends State<CountersDialog> {
             color: Colors.grey.withOpacity(0.3),
             spreadRadius: 1,
             blurRadius: 5,
-            offset: Offset(0, 3),
+            offset: const Offset(0, 3),
           ),
         ],
       ),
       child: IconButton(
         style: ButtonStyle(
           backgroundColor: WidgetStateProperty.all(
-            buttonStates[label]! ? Color(0xfffaff4b) : Colors.white,
+            buttonStates[label]! ? const Color(0xfffaff4b) : Colors.white,
           ),
           padding: WidgetStateProperty.all(EdgeInsets.all(screenHeight * 0.02)),
           shape: WidgetStateProperty.all(RoundedRectangleBorder(
@@ -109,7 +111,7 @@ class _CountersDialogState extends State<CountersDialog> {
         icon: Icon(
           icon,
           size: screenHeight * 0.04,
-          color: Color(0xff504bff),
+          color: const Color(0xff504bff),
         ),
       ),
     );

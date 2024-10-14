@@ -6,10 +6,10 @@ class CountersCard extends StatelessWidget {
   final int index;
 
   const CountersCard({
-    Key? key,
+    super.key,
     required this.player,
     required this.index,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

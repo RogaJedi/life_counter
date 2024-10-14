@@ -6,9 +6,9 @@ class CountersDisplayCard extends StatelessWidget {
   final Item player;
 
   const CountersDisplayCard({
-    Key? key,
+    super.key,
     required this.player,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

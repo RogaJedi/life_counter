@@ -25,7 +25,7 @@ class DiceAndCoinDialog extends StatelessWidget {
             children: [
               IconButton(
                 style: ButtonStyle(
-                  backgroundColor: WidgetStateProperty.all(Color(0xff504bff)),
+                  backgroundColor: WidgetStateProperty.all(const Color(0xff504bff)),
                   padding: WidgetStateProperty.all(EdgeInsets.all(screenHeight * 0.03)),
                 ),
                 onPressed: () {
@@ -41,7 +41,7 @@ class DiceAndCoinDialog extends StatelessWidget {
               const SizedBox(height: 8),
               IconButton(
                 style: ButtonStyle(
-                  backgroundColor: WidgetStateProperty.all(Color(0xff504bff)),
+                  backgroundColor: WidgetStateProperty.all(const Color(0xff504bff)),
                   padding: WidgetStateProperty.all(EdgeInsets.all(screenHeight * 0.03)),
                 ),
                 onPressed: () {
@@ -57,7 +57,7 @@ class DiceAndCoinDialog extends StatelessWidget {
               const SizedBox(height: 8),
               IconButton(
                 style: ButtonStyle(
-                  backgroundColor: WidgetStateProperty.all(Color(0xff504bff)),
+                  backgroundColor: WidgetStateProperty.all(const Color(0xff504bff)),
                   padding: WidgetStateProperty.all(EdgeInsets.all(screenHeight * 0.03)),
                 ),
                 onPressed: () {

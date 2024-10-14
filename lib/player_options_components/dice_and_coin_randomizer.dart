@@ -50,14 +50,13 @@ class _RandomizerDialog extends StatefulWidget {
   final String Function(int) getTextForNumber;
 
   const _RandomizerDialog({
-    Key? key,
     required this.max,
     required this.title,
     required this.screenWidth,
     required this.screenHeight,
     required this.textSize,
     required this.getTextForNumber,
-  }) : super(key: key);
+  });
 
   @override
   _RandomizerDialogState createState() => _RandomizerDialogState();

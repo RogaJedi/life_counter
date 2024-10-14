@@ -4,17 +4,21 @@ import 'player_card_components/interactive_player_card.dart';
 import 'player_counters_components/counters_display_card.dart';
 import 'items.dart';
 
+// TODO: fix interface.
+
 class PlayerInterface extends StatefulWidget {
   final Item player;
   final double aspectRatio;
   final VoidCallback onSettingsTap;
   final VoidCallback onCountersTap;
+  final String layoutMode;
 
   const PlayerInterface({super.key,
     required this.player,
     required this.aspectRatio,
     required this.onSettingsTap,
     required this.onCountersTap,
+    required this.layoutMode,
   });
 
 
@@ -36,7 +40,7 @@ class _PlayerInterfaceState extends State<PlayerInterface> {
         children: [
           // Settings card
           AnimatedPositioned(
-            duration: Duration(milliseconds: 300),
+            duration: const Duration(milliseconds: 300),
             curve: Curves.easeInOut,
             left: -_bottomCardPosition,
             right: _bottomCardPosition,
@@ -67,7 +71,7 @@ class _PlayerInterfaceState extends State<PlayerInterface> {
           ),
           //Counters card
           AnimatedPositioned(
-            duration: Duration(milliseconds: 300),
+            duration: const Duration(milliseconds: 300),
             curve: Curves.easeInOut,
             left: -_rightCardPosition,
             right: _rightCardPosition,
@@ -94,7 +98,7 @@ class _PlayerInterfaceState extends State<PlayerInterface> {
           ),
           // Top card
           AnimatedPositioned(
-            duration: Duration(milliseconds: 300),
+            duration: const Duration(milliseconds: 300),
             curve: Curves.easeInOut,
             left: -_topCardPosition,
             right: _topCardPosition,
@@ -133,6 +137,7 @@ class _PlayerInterfaceState extends State<PlayerInterface> {
               child: InteractivePlayerCard(
                 player: widget.player,
                 aspectRatio: widget.aspectRatio,
+                layoutMode: widget.layoutMode,
               ),
             ),
           ),

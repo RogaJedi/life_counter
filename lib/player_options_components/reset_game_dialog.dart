@@ -45,7 +45,7 @@ class _ResetGameDialogState extends State<ResetGameDialog> {
                 "Are you sure?",
                 style: TextStyle(
                   fontSize: (screenWidth / screenHeight) * 55,
-                  color: Color(0xff504bff),
+                  color: const Color(0xff504bff),
                 ),
               ),
               const SizedBox(height: 8),
