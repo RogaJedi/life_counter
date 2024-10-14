@@ -20,10 +20,13 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double screenWidth = MediaQuery.of(context).size.width;
+    double screenHeight = MediaQuery.of(context).size.height;
+    double aspectRatio = (screenWidth / 2) / (screenHeight / 2);
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(fontFamily: 'K2D'),
-      home: const FourPlayersA(),
+      home: FourPlayersA(aspectRatio: aspectRatio),
     );
   }
 }

@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:raccoon_counter/counters_icons_icons.dart';
 import '../items.dart';
 import 'c_items.dart';
-
-//TODO: make buttons remember their state and make it possible to remove counters if a counter's button is disabled.
+import 'counters_button.dart';
 
 class CountersDialog extends StatefulWidget {
   final Item player;
@@ -18,7 +17,26 @@ class CountersDialog extends StatefulWidget {
 }
 
 class _CountersDialogState extends State<CountersDialog> {
-  Map<String, bool> buttonStates = {};
+
+  late Map<String, bool> buttonStates;
+
+  @override
+  void initState() {
+    super.initState();
+    buttonStates = widget.player.counterButtonStates;
+  }
+
+  void onButtonPressed(IconData icon, String label) {
+    setState(() {
+      buttonStates[label] = !buttonStates[label]!;
+      widget.player.counterButtonStates = buttonStates; // Update player's state
+      if (buttonStates[label]!) {
+        widget.player.playerCounters.add(C_Item(counter_icon: icon, counter_amount: 0));
+      } else {
+        widget.player.playerCounters.removeWhere((item) => item.counter_icon == icon);
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -35,21 +53,114 @@ class _CountersDialogState extends State<CountersDialog> {
             mainAxisSpacing: 10,
             crossAxisSpacing: 10,
             children: [
-              _buildIconButton(context, CountersIcons.circle, "player A", screenHeight),
-              _buildIconButton(context, CountersIcons.circle, "player B", screenHeight),
-              _buildIconButton(context, CountersIcons.circle, "player C", screenHeight),
-              _buildIconButton(context, CountersIcons.sun, "white", screenHeight),
-              _buildIconButton(context, CountersIcons.tint, "blue", screenHeight),
-              _buildIconButton(context, CountersIcons.skull, "black", screenHeight),
-              _buildIconButton(context, CountersIcons.fire_alt, "red", screenHeight),
-              _buildIconButton(context, CountersIcons.tree, "green", screenHeight),
-              _buildIconButton(context, CountersIcons.vial, "poison", screenHeight),
-              _buildIconButton(context, CountersIcons.graduation_cap, "experience", screenHeight),
-              _buildIconButton(context, CountersIcons.radiation, "radiation", screenHeight),
-              _buildIconButton(context, CountersIcons.clock, "time", screenHeight),
-
-
-
+              CountersButton(
+                  icon: CountersIcons.circle,
+                  label: "player A",
+                  screenHeight: screenHeight,
+                  buttonStates: buttonStates,
+                  onTap: () {
+                    onButtonPressed(CountersIcons.circle, "player A");
+                  }
+              ),
+              CountersButton(
+                  icon: CountersIcons.circle,
+                  label: "player B",
+                  screenHeight: screenHeight,
+                  buttonStates: buttonStates,
+                  onTap: () {
+                    onButtonPressed(CountersIcons.circle, "player B");
+                  }
+              ),
+              CountersButton(
+                  icon: CountersIcons.circle,
+                  label: "player C",
+                  screenHeight: screenHeight,
+                  buttonStates: buttonStates,
+                  onTap: () {
+                    onButtonPressed(CountersIcons.circle, "player C");
+                  }
+              ),
+              CountersButton(
+                  icon: CountersIcons.sun,
+                  label: "white",
+                  screenHeight: screenHeight,
+                  buttonStates: buttonStates,
+                  onTap: () {
+                    onButtonPressed(CountersIcons.sun, "white");
+                  }
+              ),
+              CountersButton(
+                  icon: CountersIcons.tint,
+                  label: "blue",
+                  screenHeight: screenHeight,
+                  buttonStates: buttonStates,
+                  onTap: () {
+                    onButtonPressed(CountersIcons.tint, "blue");
+                  }
+              ),
+              CountersButton(
+                  icon: CountersIcons.skull,
+                  label: "black",
+                  screenHeight: screenHeight,
+                  buttonStates: buttonStates,
+                  onTap: () {
+                    onButtonPressed(CountersIcons.skull, "black");
+                  }
+              ),
+              CountersButton(
+                  icon: CountersIcons.fire_alt,
+                  label: "red",
+                  screenHeight: screenHeight,
+                  buttonStates: buttonStates,
+                  onTap: () {
+                    onButtonPressed(CountersIcons.fire_alt, "red");
+                  }
+              ),
+              CountersButton(
+                  icon: CountersIcons.tree,
+                  label: "green",
+                  screenHeight: screenHeight,
+                  buttonStates: buttonStates,
+                  onTap: () {
+                    onButtonPressed(CountersIcons.tree, "green");
+                  }
+              ),
+              CountersButton(
+                  icon: CountersIcons.vial,
+                  label: "poison",
+                  screenHeight: screenHeight,
+                  buttonStates: buttonStates,
+                  onTap: () {
+                    onButtonPressed(CountersIcons.vial, "poison");
+                  }
+              ),
+              CountersButton(
+                  icon: CountersIcons.graduation_cap,
+                  label: "experience",
+                  screenHeight: screenHeight,
+                  buttonStates: buttonStates,
+                  onTap: () {
+                    onButtonPressed(CountersIcons.graduation_cap, "experience");
+                  }
+              ),
+              CountersButton(
+                  icon: CountersIcons.radiation,
+                  label: "radiation",
+                  screenHeight: screenHeight,
+                  buttonStates: buttonStates,
+                  onTap: () {
+                    onButtonPressed(CountersIcons.radiation, "radiation");
+                  }
+              ),
+              CountersButton(
+                  icon: CountersIcons.clock,
+                  label: "time",
+                  screenHeight: screenHeight,
+                  buttonStates: buttonStates,
+                  onTap: () {
+                    onButtonPressed(CountersIcons.clock, "time");
+                  }
+              ),
             ],
           ),
         ),
@@ -74,47 +185,4 @@ class _CountersDialogState extends State<CountersDialog> {
       ],
     );
   }
-
-  Widget _buildIconButton(BuildContext context, IconData icon, String label, double screenHeight) {
-    // Initialize the state for this button if it doesn't exist
-    buttonStates.putIfAbsent(label, () => false);
-
-    return Container(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(10),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.grey.withOpacity(0.3),
-            spreadRadius: 1,
-            blurRadius: 5,
-            offset: const Offset(0, 3),
-          ),
-        ],
-      ),
-      child: IconButton(
-        style: ButtonStyle(
-          backgroundColor: WidgetStateProperty.all(
-            buttonStates[label]! ? const Color(0xfffaff4b) : Colors.white,
-          ),
-          padding: WidgetStateProperty.all(EdgeInsets.all(screenHeight * 0.02)),
-          shape: WidgetStateProperty.all(RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(10),
-          )),
-        ),
-        onPressed: () {
-          setState(() {
-            // Toggle the button state
-            buttonStates[label] = !buttonStates[label]!;
-            widget.player.playerCounters.add(C_Item(counter_icon: icon, counter_amount: 0));
-          });
-        },
-        icon: Icon(
-          icon,
-          size: screenHeight * 0.04,
-          color: const Color(0xff504bff),
-        ),
-      ),
-    );
-  }
-
 }

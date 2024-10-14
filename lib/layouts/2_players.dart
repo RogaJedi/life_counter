@@ -8,28 +8,37 @@ Item player1 = Item(
     counter: 40,
     colorHex: "0xff504bff",
     playerCounters: [],
+    counterButtonStates: {},
     id: 0);
 
 Item d_player1 = Item(
     counter: 40,
     colorHex: "0xff504bff",
     playerCounters: [],
+    counterButtonStates: {},
     id: 0);
 
 Item player2 = Item(
     counter: 40,
     colorHex: "0xffff504b",
     playerCounters: [],
+    counterButtonStates: {},
     id: 1);
 
 Item d_player2 = Item(
     counter: 40,
     colorHex: "0xffff504b",
     playerCounters: [],
+    counterButtonStates: {},
     id: 1);
 
 class TwoPlayers extends StatefulWidget {
-  const TwoPlayers({super.key});
+
+  final double aspectRatio;
+
+  const TwoPlayers({super.key,
+    required this.aspectRatio,
+  });
 
   @override
   _TwoPlayersState createState() => _TwoPlayersState();
@@ -75,9 +84,6 @@ class _TwoPlayersState extends State<TwoPlayers> {
 
   @override
   Widget build(BuildContext context) {
-    double screenWidth = MediaQuery.of(context).size.width;
-    double screenHeight = MediaQuery.of(context).size.height;
-    double aspectRatio = (screenWidth / 2) / (screenHeight / 2);
     return Scaffold(
       backgroundColor: Colors.black,
       body: Stack(
@@ -91,7 +97,7 @@ class _TwoPlayersState extends State<TwoPlayers> {
                   crossAxisCount: 1,
                   crossAxisSpacing: 2.0,
                   mainAxisSpacing: 160.0,
-                  childAspectRatio: aspectRatio * 2,
+                  childAspectRatio: widget.aspectRatio * 2,
                 ),
                 itemCount: items.length,
                 itemBuilder: (context, index) {
@@ -101,7 +107,7 @@ class _TwoPlayersState extends State<TwoPlayers> {
                       angle: 270 * 3.14159 / 180,
                       child: PlayerInterface(
                         player: item,
-                        aspectRatio: aspectRatio,
+                        aspectRatio: widget.aspectRatio,
                         onSettingsTap: () {
                           _navigateToOptionsDialog(context, item);
                         },
@@ -115,7 +121,7 @@ class _TwoPlayersState extends State<TwoPlayers> {
                     angle: 90 * 3.14159 / 180,
                     child: PlayerInterface(
                       player: item,
-                      aspectRatio: aspectRatio,
+                      aspectRatio: widget.aspectRatio,
                       onSettingsTap: () {
                         _navigateToOptionsDialog(context, item);
                       },

@@ -90,6 +90,7 @@ class _OptionsDialogState extends State<OptionsDialog> {
                                     colorHex: colorToHex(currentColor),
                                     counter: 40,
                                     playerCounters: [],
+                                    counterButtonStates: {},
                                     id: widget.player.id,
                                   );
                                   widget.onColorSelected(newItem);

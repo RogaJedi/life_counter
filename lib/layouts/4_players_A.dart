@@ -8,52 +8,64 @@ Item player1 = Item(
     counter: 40,
     colorHex: "0xff504bff",
     playerCounters: [],
+    counterButtonStates: {},
     id: 0);
 
 Item d_player1 = Item(
     counter: 40,
     colorHex: "0xff504bff",
     playerCounters: [],
+    counterButtonStates: {},
     id: 0);
 
 Item player2 = Item(
     counter: 40,
     colorHex: "0xffffce00",
     playerCounters: [],
+    counterButtonStates: {},
     id: 1);
 
 Item d_player2 = Item(
     counter: 40,
     colorHex: "0xffffce00",
     playerCounters: [],
+    counterButtonStates: {},
     id: 1);
 
 Item player3 = Item(
     counter: 40,
     colorHex: "0xffff504b",
     playerCounters: [],
+    counterButtonStates: {},
     id: 2);
 
 Item d_player3 = Item(
     counter: 40,
     colorHex: "0xffff504b",
     playerCounters: [],
+    counterButtonStates: {},
     id: 2);
 
 Item player4 = Item(
     counter: 40,
     colorHex: "0xff00ce51",
     playerCounters: [],
+    counterButtonStates: {},
     id: 3);
 
 Item d_player4 = Item(
     counter: 40,
     colorHex: "0xff00ce51",
     playerCounters: [],
+    counterButtonStates: {},
     id: 3);
 
 class FourPlayersA extends StatefulWidget {
-  const FourPlayersA({super.key});
+  final double aspectRatio;
+
+  const FourPlayersA({super.key,
+    required this.aspectRatio,
+  });
 
   @override
   _FourPlayersAState createState() => _FourPlayersAState();
@@ -99,9 +111,6 @@ class _FourPlayersAState extends State<FourPlayersA> {
 
   @override
   Widget build(BuildContext context) {
-    double screenWidth = MediaQuery.of(context).size.width;
-    double screenHeight = MediaQuery.of(context).size.height;
-    double aspectRatio = (screenWidth / 2) / (screenHeight / 2);
     return Scaffold(
       backgroundColor: Colors.black,
       body: Stack(
@@ -115,7 +124,7 @@ class _FourPlayersAState extends State<FourPlayersA> {
                   crossAxisCount: 2,
                   crossAxisSpacing: 2.0,
                   mainAxisSpacing: 1.0,
-                  childAspectRatio: aspectRatio * 1,
+                  childAspectRatio: widget.aspectRatio * 1,
                 ),
                 itemCount: items.length,
                 itemBuilder: (context, index) {
@@ -125,7 +134,7 @@ class _FourPlayersAState extends State<FourPlayersA> {
                       angle: 180 * 3.14159 / 180,
                       child: PlayerInterface(
                         player: item,
-                        aspectRatio: aspectRatio,
+                        aspectRatio: widget.aspectRatio,
                         onSettingsTap: () {
                           _navigateToOptionsDialog(context, item);
                         },
@@ -137,7 +146,7 @@ class _FourPlayersAState extends State<FourPlayersA> {
                   }
                   return PlayerInterface(
                     player: item,
-                    aspectRatio: aspectRatio,
+                    aspectRatio: widget.aspectRatio,
                     onSettingsTap: () {
                       _navigateToOptionsDialog(context, item);
                     },
