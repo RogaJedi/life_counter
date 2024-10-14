@@ -90,7 +90,7 @@ class _TwoPlayersState extends State<TwoPlayers> {
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 1,
                   crossAxisSpacing: 2.0,
-                  mainAxisSpacing: 1.0,
+                  mainAxisSpacing: 160.0,
                   childAspectRatio: aspectRatio * 2,
                 ),
                 itemCount: items.length,
@@ -108,7 +108,6 @@ class _TwoPlayersState extends State<TwoPlayers> {
                         onCountersTap: () {
                           _navigateToCountersDialog(context, item);
                         },
-                        layoutMode: '2',
                       ),
                     );
                   }
@@ -123,7 +122,6 @@ class _TwoPlayersState extends State<TwoPlayers> {
                       onCountersTap: () {
                         _navigateToCountersDialog(context, item);
                       },
-                      layoutMode: '2',
                     ),
                   );
                 },

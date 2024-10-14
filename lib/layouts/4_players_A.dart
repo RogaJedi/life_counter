@@ -132,7 +132,6 @@ class _FourPlayersAState extends State<FourPlayersA> {
                         onCountersTap: () {
                           _navigateToCountersDialog(context, item);
                         },
-                        layoutMode: '4A',
                       ),
                     );
                   }
@@ -145,7 +144,6 @@ class _FourPlayersAState extends State<FourPlayersA> {
                     onCountersTap: () {
                       _navigateToCountersDialog(context, item);
                     },
-                    layoutMode: '4A',
                   );
                 },
               ),

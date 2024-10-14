@@ -4,13 +4,11 @@ import '../items.dart';
 class PlayerCard extends StatelessWidget {
   final Item player;
   final double aspectRatio;
-  final String layoutMode;
 
   const PlayerCard({
     super.key,
     required this.player,
     required this.aspectRatio,
-    required this.layoutMode,
   });
 
   @override
