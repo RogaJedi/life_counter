@@ -3,8 +3,6 @@ import 'player_interface.dart';
 import 'player_options_components/options_dialog.dart';
 import 'player_counters_components/counters_dialog.dart';
 import 'items.dart';
-import 'player_counters_components/c_items.dart';
-import 'counters_icons_icons.dart';
 
 Item player1 = Item(
     counter: 40,
@@ -82,6 +80,9 @@ class _HomePageState extends State<HomePage> {
           playersList: items,
           defaultPlayersList: defaultItems,
           onColorSelected: changePlayerColor,
+          onResetComplete: () {
+            setState(() {});
+          },
         ); // Your modified widget
       },
     );

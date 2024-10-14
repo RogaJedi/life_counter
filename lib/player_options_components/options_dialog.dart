@@ -13,6 +13,7 @@ class OptionsDialog extends StatefulWidget {
   final List<Item> playersList;
   final List<Item> defaultPlayersList;
   final Function(Item) onColorSelected;
+  final Function() onResetComplete;
 
   const OptionsDialog({
     super.key,
@@ -20,6 +21,7 @@ class OptionsDialog extends StatefulWidget {
     required this.playersList,
     required this.defaultPlayersList,
     required this.onColorSelected,
+    required this.onResetComplete,
   });
 }
 
@@ -127,8 +129,9 @@ class _OptionsDialogState extends State<OptionsDialog> {
                             context: context,
                             builder: (BuildContext context) {
                               return ResetGameDialog(
-                                  playersList: widget.playersList,
-                                  defaultPlayersList: widget.defaultPlayersList,
+                                playersList: widget.playersList,
+                                defaultPlayersList: widget.defaultPlayersList,
+                                onResetComplete: widget.onResetComplete,
                               );
                             }
                         );

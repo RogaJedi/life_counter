@@ -5,11 +5,13 @@ import '../items.dart';
 class ResetGameDialog extends StatefulWidget {
   final List<Item> playersList;
   final List<Item> defaultPlayersList;
+  final Function() onResetComplete;
 
   const ResetGameDialog({
     super.key,
     required this.playersList,
     required this.defaultPlayersList,
+    required this.onResetComplete,
   });
 
   @override
@@ -18,11 +20,11 @@ class ResetGameDialog extends StatefulWidget {
 
 class _ResetGameDialogState extends State<ResetGameDialog> {
 
-  void resetPlayer (Item player, Item playerDefaultState) {
+  void resetPlayer (int index) {
     setState(() {
-      player.colorHex = playerDefaultState.colorHex;
-      player.counter = playerDefaultState.counter;
-      player.playerCounters.clear();
+      widget.playersList[index].colorHex = widget.defaultPlayersList[index].colorHex;
+      widget.playersList[index].counter = widget.defaultPlayersList[index].counter;
+      widget.playersList[index].playerCounters.clear();
     });
   }
 
@@ -54,11 +56,9 @@ class _ResetGameDialogState extends State<ResetGameDialog> {
                   text: "Yes",
                   onPressed: () {
                     for (var i = 0; i < widget.playersList.length; i++) {
-                      resetPlayer(
-                          widget.playersList[i],
-                          widget.defaultPlayersList[i],
-                      );
+                      resetPlayer(i);
                     }
+                    widget.onResetComplete();
                     Navigator.of(context).pop();
                     Navigator.of(context).pop();
                   }
