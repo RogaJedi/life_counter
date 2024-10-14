@@ -6,11 +6,13 @@ import '../custom_button.dart';
 class InteractiveCountersCard extends StatefulWidget {
   final Item player;
   final int index;
+  final double aspectRatio;
 
   const InteractiveCountersCard({
     super.key,
     required this.player,
     required this.index,
+    required this.aspectRatio,
   });
 
   @override
@@ -49,7 +51,11 @@ class _InteractiveCountersCardState extends State<InteractiveCountersCard> {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        CountersCard(player: widget.player, index: widget.index),
+        CountersCard(
+          player: widget.player,
+          index: widget.index,
+          aspectRatio: widget.aspectRatio,
+        ),
         Padding(
           padding: const EdgeInsets.all(3.0),
           child: Row(

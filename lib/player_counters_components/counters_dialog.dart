@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:raccoon_counter/counters_icons_icons.dart';
+import 'package:raccoon_counter/counters_icons.dart';
 import '../items.dart';
 import 'c_items.dart';
 import 'counters_button.dart';
@@ -46,7 +46,7 @@ class _CountersDialogState extends State<CountersDialog> {
       title: const Text("Add Counters"),
       content: SizedBox(
         width: screenWidth * 0.6,
-        height: screenHeight * 0.4,
+        height: screenHeight * 0.55,
         child: Center(
           child: GridView.count(
             crossAxisCount: 3, // Adjust this value to change the number of columns
@@ -54,30 +54,30 @@ class _CountersDialogState extends State<CountersDialog> {
             crossAxisSpacing: 10,
             children: [
               CountersButton(
-                  icon: CountersIcons.circle,
+                  icon: CountersIcons.dice_one,
                   label: "player A",
                   screenHeight: screenHeight,
                   buttonStates: buttonStates,
                   onTap: () {
-                    onButtonPressed(CountersIcons.circle, "player A");
+                    onButtonPressed(CountersIcons.dice_one, "player A");
                   }
               ),
               CountersButton(
-                  icon: CountersIcons.circle,
+                  icon: CountersIcons.dice_two,
                   label: "player B",
                   screenHeight: screenHeight,
                   buttonStates: buttonStates,
                   onTap: () {
-                    onButtonPressed(CountersIcons.circle, "player B");
+                    onButtonPressed(CountersIcons.dice_two, "player B");
                   }
               ),
               CountersButton(
-                  icon: CountersIcons.circle,
+                  icon: CountersIcons.dice_three,
                   label: "player C",
                   screenHeight: screenHeight,
                   buttonStates: buttonStates,
                   onTap: () {
-                    onButtonPressed(CountersIcons.circle, "player C");
+                    onButtonPressed(CountersIcons.dice_three, "player C");
                   }
               ),
               CountersButton(

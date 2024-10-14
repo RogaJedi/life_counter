@@ -4,11 +4,13 @@ import '../items.dart';
 class CountersCard extends StatelessWidget {
   final Item player;
   final int index;
+  final double aspectRatio;
 
   const CountersCard({
     super.key,
     required this.player,
     required this.index,
+    required this.aspectRatio,
   });
 
   @override
@@ -26,8 +28,8 @@ class CountersCard extends StatelessWidget {
                 child: Center(
                   child: Text(
                     player.playerCounters[index].counter_amount.toString(),
-                    style: const TextStyle(
-                      fontSize: 40,
+                    style: TextStyle(
+                      fontSize: aspectRatio * 100,
                     ),
                   ),
                 ),
@@ -37,7 +39,7 @@ class CountersCard extends StatelessWidget {
               angle: 90 * 3.14159 / 180,
               child: Icon(
                 player.playerCounters[index].counter_icon,
-                size: 30,
+                size: aspectRatio * 80,
                 color: const Color(0xff504bff),
               ),
             ),

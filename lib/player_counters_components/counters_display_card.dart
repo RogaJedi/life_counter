@@ -4,10 +4,12 @@ import 'interactive_counters_card.dart';
 
 class CountersDisplayCard extends StatelessWidget {
   final Item player;
+  final double aspectRatio;
 
   const CountersDisplayCard({
     super.key,
     required this.player,
+    required this.aspectRatio,
   });
 
   @override
@@ -29,11 +31,12 @@ class CountersDisplayCard extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         SizedBox(
-                          width: 180,
-                          height: 110,
+                          width: aspectRatio * 380,
+                          height: aspectRatio * 250,
                           child: InteractiveCountersCard(
-                              player: player,
-                              index: index,
+                            player: player,
+                            index: index,
+                            aspectRatio: aspectRatio,
                           ),
                         ),
                       ],

@@ -52,7 +52,10 @@ class _PlayerInterfaceState extends State<PlayerInterface> {
         controller: _pageController,
         onPageChanged: _onPageChanged,
         children: [
-          CountersDisplayCard(player: widget.player),
+          CountersDisplayCard(
+            player: widget.player,
+            aspectRatio: widget.aspectRatio,
+          ),
           InteractivePlayerCard(
             player: widget.player,
             aspectRatio: widget.aspectRatio,

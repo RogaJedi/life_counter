@@ -113,15 +113,6 @@ class _SettingsPageState extends State<SettingsPage> {
                   print("4");
                 },
               ),
-              const SizedBox(width: 8),
-              SettingsButton(
-                screenWidth: screenWidth,
-                screenHeight: screenHeight,
-                text: "5",
-                onPressed: () {
-                  print("5");
-                },
-              ),
             ],
           ),
           const SizedBox(height: 4),
@@ -131,27 +122,18 @@ class _SettingsPageState extends State<SettingsPage> {
               SettingsButton(
                 screenWidth: screenWidth,
                 screenHeight: screenHeight,
+                text: "5",
+                onPressed: () {
+                  print("5");
+                },
+              ),
+              const SizedBox(width: 8),
+              SettingsButton(
+                screenWidth: screenWidth,
+                screenHeight: screenHeight,
                 text: "6",
                 onPressed: () {
                   print("6");
-                },
-              ),
-              const SizedBox(width: 8),
-              SettingsButton(
-                screenWidth: screenWidth,
-                screenHeight: screenHeight,
-                text: "7",
-                onPressed: () {
-                  print("7");
-                },
-              ),
-              const SizedBox(width: 8),
-              SettingsButton(
-                screenWidth: screenWidth,
-                screenHeight: screenHeight,
-                text: "8",
-                onPressed: () {
-                  print("8");
                 },
               ),
             ],
@@ -166,6 +148,18 @@ class _SettingsPageState extends State<SettingsPage> {
                 onPressed: () {
                   print("select layout");
                 }
+            ),
+          ),
+          const SizedBox(height: 80),
+          Center(
+            child: Container(
+              color: Color(0xffffce00),
+              child: Text(
+                  "Coming soon!",
+                style: TextStyle(
+                  fontSize: screenWidth * 0.15,
+                ),
+              ),
             ),
           ),
         ],
