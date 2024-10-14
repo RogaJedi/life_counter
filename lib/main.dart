@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'home_page.dart';
+import 'layouts/2_players.dart';
+import 'layouts/4_players_A.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -21,7 +22,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(fontFamily: 'K2D'),
-      home: const HomePage(),
+      home: const FourPlayersA(),
     );
   }
 }
