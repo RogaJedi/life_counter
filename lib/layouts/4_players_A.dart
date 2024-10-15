@@ -129,7 +129,6 @@ class _FourPlayersAState extends State<FourPlayersA> {
                 itemCount: items.length,
                 itemBuilder: (context, index) {
                   final item = items[index];
-
                   double turn = 0;
                   if (item.id % 2 != 0) turn = 180;
 
