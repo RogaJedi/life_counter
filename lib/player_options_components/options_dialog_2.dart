@@ -6,16 +6,16 @@ import 'dice_and_coin_dialog.dart';
 import 'reset_game_dialog.dart';
 import '../app_settings_components/settings_page.dart';
 
-class OptionsDialog extends StatefulWidget {
+class OptionsDialog2 extends StatefulWidget {
   @override
-  _OptionsDialogState createState() => _OptionsDialogState();
+  _OptionsDialog2State createState() => _OptionsDialog2State();
   final Item player;
   final List<Item> playersList;
   final List<Item> defaultPlayersList;
   final Function(Item) onColorSelected;
   final Function() onResetComplete;
 
-  const OptionsDialog({
+  const OptionsDialog2({
     super.key,
     required this.player,
     required this.playersList,
@@ -25,7 +25,7 @@ class OptionsDialog extends StatefulWidget {
   });
 }
 
-class _OptionsDialogState extends State<OptionsDialog> {
+class _OptionsDialog2State extends State<OptionsDialog2> {
   late Color currentColor;
 
   @override
@@ -64,16 +64,16 @@ class _OptionsDialogState extends State<OptionsDialog> {
           double turn = 90;
           if (widget.player.id % 2 != 0) turn = 270;
 
-          //TODO adjust the dialog to be horizontal
-
           return AlertDialog(
             title: const Text('Options'),
             content: SizedBox(
               width: screenWidth * 0.6,
               height: screenHeight * 0.4,
               child: Center(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
+                child: GridView.count(
+                  crossAxisCount: 2,
+                  mainAxisSpacing: 10,
+                  crossAxisSpacing: 10,
                   children: [
                     //Change color
                     OptionsButton(
@@ -110,18 +110,18 @@ class _OptionsDialogState extends State<OptionsDialog> {
                     const SizedBox(height: 8),
                     //Dice & coin
                     OptionsButton(
-                        screenWidth: screenWidth,
-                        screenHeight: screenHeight,
-                        textSizeScale: 55,
-                        text: "Dice & Coin",
-                        onPressed: () {
-                          showDialog(
-                              context: context,
-                              builder: (BuildContext context) {
-                                return const DiceAndCoinDialog();
-                              }
-                          );
-                        },
+                      screenWidth: screenWidth,
+                      screenHeight: screenHeight,
+                      textSizeScale: 55,
+                      text: "Dice & Coin",
+                      onPressed: () {
+                        showDialog(
+                            context: context,
+                            builder: (BuildContext context) {
+                              return const DiceAndCoinDialog();
+                            }
+                        );
+                      },
                     ),
                     const SizedBox(height: 8),
                     //Reset game
