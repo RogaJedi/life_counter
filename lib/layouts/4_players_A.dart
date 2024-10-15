@@ -129,30 +129,22 @@ class _FourPlayersAState extends State<FourPlayersA> {
                 itemCount: items.length,
                 itemBuilder: (context, index) {
                   final item = items[index];
-                  if (index % 2 != 0) {
-                    return Transform.rotate(
-                      angle: 180 * 3.14159 / 180,
-                      child: PlayerInterface(
-                        player: item,
-                        aspectRatio: widget.aspectRatio,
-                        onSettingsTap: () {
-                          _navigateToOptionsDialog(context, item);
-                        },
-                        onCountersTap: () {
-                          _navigateToCountersDialog(context, item);
-                        },
-                      ),
-                    );
-                  }
-                  return PlayerInterface(
-                    player: item,
-                    aspectRatio: widget.aspectRatio,
-                    onSettingsTap: () {
-                      _navigateToOptionsDialog(context, item);
-                    },
-                    onCountersTap: () {
-                      _navigateToCountersDialog(context, item);
-                    },
+
+                  double turn = 0;
+                  if (item.id % 2 != 0) turn = 180;
+
+                  return Transform.rotate(
+                    angle: turn * 3.14159 / 180,
+                    child: PlayerInterface(
+                      player: item,
+                      aspectRatio: widget.aspectRatio,
+                      onSettingsTap: () {
+                        _navigateToOptionsDialog(context, item);
+                      },
+                      onCountersTap: () {
+                        _navigateToCountersDialog(context, item);
+                      },
+                    ),
                   );
                 },
               ),
