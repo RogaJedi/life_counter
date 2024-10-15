@@ -46,6 +46,7 @@ class _OptionsDialog2State extends State<OptionsDialog2> {
     return hexColor;
   }
 
+
   void resetPlayer (Item player, Item playerDefaultState) {
     setState(() {
       player.colorHex = playerDefaultState.colorHex;

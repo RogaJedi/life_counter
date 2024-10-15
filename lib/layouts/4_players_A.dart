@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../player_interface.dart';
 import '../player_options_components/options_dialog.dart';
+import '../player_options_components/options_dialog_2.dart';
 import '../player_counters_components/counters_dialog.dart';
 import '../items.dart';
 
