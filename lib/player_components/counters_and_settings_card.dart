@@ -27,7 +27,7 @@ class CountersAndSettingsCard extends StatefulWidget {
 class _CountersAndSettingsCardState extends State<CountersAndSettingsCard>{
   late Color currentColor;
 
-  Color bgColor = const Color(0xff393939);
+  Color bgColor = const Color(0xff353535);
 
   @override
   void initState() {
@@ -109,47 +109,60 @@ class _CountersAndSettingsCardState extends State<CountersAndSettingsCard>{
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: constraints.maxWidth * 0.07,
-                            fontWeight: FontWeight.bold,
                         ),
-                      )
+                      ),
                     ],
                   ),
                 ),
-                IconButton(
-                  style: ButtonStyle(
-                    padding: WidgetStateProperty.all(EdgeInsets.all(constraints.maxWidth * 0.0001)),
-                  ),
-                  onPressed: () {
-                    showDialog(
-                      context: context,
-                      builder: (BuildContext context) {
-                        return StatefulBuilder(
-                          builder: (context, setState) => PickColorDialog(
-                            currentColor: currentColor,
-                            onChanged: (newColor) =>
-                                setState(() => changeColor(newColor)),
-                            onPressed: () {
-                              Item newItem = Item(
-                                colorHex: colorToHex(currentColor),
-                                counter: 40,
-                                playerCounters: [],
-                                counterButtonStates: {},
-                                id: widget.player.id,
+                Transform.rotate(
+                  angle: 90 * 3.14159 / 180,
+                  child: Column(
+                    children: [
+                      IconButton(
+                        style: ButtonStyle(
+                          padding: WidgetStateProperty.all(EdgeInsets.all(constraints.maxWidth * 0.0001)),
+                        ),
+                        onPressed: () {
+                          showDialog(
+                            context: context,
+                            builder: (BuildContext context) {
+                              return StatefulBuilder(
+                                builder: (context, setState) => PickColorDialog(
+                                  currentColor: currentColor,
+                                  onChanged: (newColor) =>
+                                      setState(() => changeColor(newColor)),
+                                  onPressed: () {
+                                    Item newItem = Item(
+                                      colorHex: colorToHex(currentColor),
+                                      counter: 40,
+                                      playerCounters: [],
+                                      counterButtonStates: {},
+                                      id: widget.player.id,
+                                    );
+                                    widget.onColorSelected(newItem, widget.playersList);
+                                    Navigator.of(context).pop();
+                                  },
+                                ),
                               );
-                              widget.onColorSelected(newItem, widget.playersList);
-                              Navigator.of(context).pop();
                             },
-                          ),
-                        );
-                      },
-                    );
-                  },
-                  icon: Icon(
-                      Icons.circle,
-                      size: constraints.maxWidth * 0.4,
-                      color: currentColor
+                          );
+                        },
+                        icon: Icon(
+                            Icons.circle,
+                            size: constraints.maxWidth * 0.4,
+                            color: currentColor
+                        ),
+                      ),
+                      Text(
+                        "BACKGROUND",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: constraints.maxWidth * 0.07,
+                        ),
+                      ),
+                    ],
                   ),
-                ),
+                )
               ],
             ),
           ),

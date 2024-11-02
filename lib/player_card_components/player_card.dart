@@ -23,14 +23,13 @@ class PlayerCard extends StatelessWidget {
       child: Center(
         child: Column(
           children: [
-            SizedBox(height: aspectRatio * 150),
+            SizedBox(height: aspectRatio * 95),
             Transform.rotate(
               angle: 90 * 3.14159 / 180,
               child: Text(
                 "-",
                 style: TextStyle(
-                  fontSize: textSize * 0.2,
-                  fontWeight: FontWeight.bold,
+                  fontSize: textSize * 0.4,
                   color: Colors.white,
                 ),
               ),
@@ -45,7 +44,6 @@ class PlayerCard extends StatelessWidget {
                     player.counter.toString(),
                     style: TextStyle(
                       fontSize: textSize,
-                      fontWeight: FontWeight.bold,
                       color: Colors.white,
                     ),
                   ),
@@ -57,8 +55,7 @@ class PlayerCard extends StatelessWidget {
               child: Text(
                 "+",
                 style: TextStyle(
-                  fontSize: textSize * 0.2,
-                  fontWeight: FontWeight.bold,
+                  fontSize: textSize * 0.4,
                   color: Colors.white,
                 ),
               ),

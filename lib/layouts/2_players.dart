@@ -35,6 +35,7 @@ class TwoPlayers extends StatefulWidget {
 
   final double aspectRatio;
   final Function navigateToOptionsDialog;
+
   final Function(Item, List<Item>) onColorSelected;
 
 
@@ -52,20 +53,6 @@ class TwoPlayers extends StatefulWidget {
 class _TwoPlayersState extends State<TwoPlayers> {
   List<Item> items = [player1, player2];
   List<Item> defaultItems = [d_player1, d_player2];
-
-  void _navigateToCountersDialog(BuildContext context, Item player) {
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return CountersDialog(
-            player: player,
-          onSelectedCounters: () {
-            setState(() {});
-          },
-        ); // Your modified widget
-      },
-    );
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -97,9 +84,7 @@ class _TwoPlayersState extends State<TwoPlayers> {
                       player: item,
                       playersList: items,
                       aspectRatio: widget.aspectRatio,
-                      onCountersTap: () {
-                        _navigateToCountersDialog(context, item);
-                      },
+                      onCountersTap: () {},
                       onColorSelected: widget.onColorSelected,
                     ),
                   );

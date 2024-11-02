@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'items.dart';
 import 'options_components/options_dialog.dart';
+import 'player_components/counters/counters_dialog.dart';
 import 'layouts/4_players_A.dart';
 import 'layouts/2_players.dart';
 
@@ -54,11 +55,30 @@ class _MyAppState extends State<MyApp> {
     );
   }
 
+  void navigateToCountersDialog(
+      BuildContext context,
+      Item player,
+      double aspectRatio
+      ) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return CountersDialog(
+          player: player,
+          aspectRatio: aspectRatio,
+          onSelectedCounters: () {
+            setState(() {});
+          },
+        ); // Your modified widget
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(fontFamily: 'K2D'),
+      theme: ThemeData(fontFamily: 'Bebas'),
       home: Builder(
         builder: (context) {
           double screenWidth = MediaQuery.of(context).size.width;
@@ -67,6 +87,7 @@ class _MyAppState extends State<MyApp> {
           return FourPlayersA(
             aspectRatio: aspectRatio,
             navigateToOptionsDialog: navigateToOptionsDialog,
+            navigateToCountersDialog: navigateToCountersDialog,
           );
         },
       ),

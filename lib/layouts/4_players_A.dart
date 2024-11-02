@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import '../player_interface.dart';
-import '../player_components/counters/counters_dialog.dart';
 import '../items.dart';
 
 Item player1 = Item(
@@ -62,10 +61,12 @@ Item d_player4 = Item(
 class FourPlayersA extends StatefulWidget {
   final double aspectRatio;
   final Function navigateToOptionsDialog;
+  final Function navigateToCountersDialog;
 
   const FourPlayersA({super.key,
     required this.aspectRatio,
     required this.navigateToOptionsDialog,
+    required this.navigateToCountersDialog,
   });
 
   @override
@@ -82,20 +83,6 @@ class _FourPlayersAState extends State<FourPlayersA> {
     setState(() {
       items[playerId].colorHex = newColor;
     });
-  }
-
-  void _navigateToCountersDialog(BuildContext context, Item player) {
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return CountersDialog(
-          player: player,
-          onSelectedCounters: () {
-            setState(() {});
-          },
-        ); // Your modified widget
-      },
-    );
   }
 
   @override
@@ -127,9 +114,7 @@ class _FourPlayersAState extends State<FourPlayersA> {
                       player: item,
                       playersList: items,
                       aspectRatio: widget.aspectRatio,
-                      onCountersTap: () {
-                        _navigateToCountersDialog(context, item);
-                      },
+                      onCountersTap: () => widget.navigateToCountersDialog(context, item, widget.aspectRatio),
                       onColorSelected: changePlayerColor,
                     ),
                   );

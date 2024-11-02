@@ -80,20 +80,6 @@ class _FourPlayersBState extends State<FourPlayersB> {
   List<Item> items = [player1, player2, player3, player4];
   List<Item> defaultItems = [d_player1, d_player2, d_player3, d_player4];
 
-  void _navigateToCountersDialog(BuildContext context, Item player) {
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return CountersDialog(
-          player: player,
-          onSelectedCounters: () {
-            setState(() {});
-          },
-        ); // Your modified widget
-      },
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -121,9 +107,7 @@ class _FourPlayersBState extends State<FourPlayersB> {
                         player: item,
                         playersList: items,
                         aspectRatio: widget.aspectRatio,
-                        onCountersTap: () {
-                          _navigateToCountersDialog(context, item);
-                        },
+                        onCountersTap: () {},
                         onColorSelected: widget.onColorSelected,
                       ),
                     );
@@ -132,9 +116,7 @@ class _FourPlayersBState extends State<FourPlayersB> {
                     player: item,
                     playersList: items,
                     aspectRatio: widget.aspectRatio,
-                    onCountersTap: () {
-                      _navigateToCountersDialog(context, item);
-                    },
+                    onCountersTap: () {},
                     onColorSelected: widget.onColorSelected,
                   );
                 },

@@ -107,6 +107,10 @@ flutter:
     - family: CountersIcons
       fonts:
         - asset: fonts/CountersIcons.ttf
+
+    - family: Bebas
+      fonts:
+        - asset: fonts/BebasNeue-Regular.ttf
   # fonts:
   #   - family: Schyler
   #     fonts:
