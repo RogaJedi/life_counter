@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hsvcolor_picker/flutter_hsvcolor_picker.dart';
+import 'package:smooth_corner/smooth_corner.dart';
 
 class PickColorDialog extends StatelessWidget {
   final Color currentColor;
@@ -21,6 +22,11 @@ class PickColorDialog extends StatelessWidget {
     //Color bgColor_B = const Color(0xff5b5b5b);
 
     return AlertDialog(
+      shape: SmoothRectangleBorder(
+        smoothness: 0.6,
+        borderRadius:
+        BorderRadius.circular(20),
+      ),
       title: const Text("Pick a color"),
       //CHANGE!
       backgroundColor: Colors.white,
@@ -31,10 +37,10 @@ class PickColorDialog extends StatelessWidget {
           child: Card(
             //CHANGE!
             color: Colors.white,
-            shape: const RoundedRectangleBorder(
-              borderRadius: BorderRadius.all(
-                Radius.circular(10.0),
-              ),
+            shape: SmoothRectangleBorder(
+              smoothness: 0.6,
+              borderRadius:
+              BorderRadius.circular(10),
             ),
             elevation: 2.0,
             child: Padding(
@@ -46,6 +52,11 @@ class PickColorDialog extends StatelessWidget {
                     width: screenWidth * 0.5,
                     height: screenHeight * 0.05,
                     child: FloatingActionButton(
+                      shape: SmoothRectangleBorder(
+                        smoothness: 0.6,
+                        borderRadius:
+                        BorderRadius.circular(40),
+                      ),
                       onPressed: null,
                       backgroundColor: currentColor,
                     ),
@@ -68,8 +79,10 @@ class PickColorDialog extends StatelessWidget {
       actions: [
         ElevatedButton(
           style: ElevatedButton.styleFrom(
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(10),
+            shape: SmoothRectangleBorder(
+              smoothness: 0.6,
+              borderRadius:
+              BorderRadius.circular(10),
             ),
           ),
           onPressed: onPressed,
@@ -81,9 +94,12 @@ class PickColorDialog extends StatelessWidget {
           ),
         ),
         ElevatedButton(
+
           style: ElevatedButton.styleFrom(
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(10),
+            shape: SmoothRectangleBorder(
+              smoothness: 0.6,
+              borderRadius:
+              BorderRadius.circular(10),
             ),
           ),
           onPressed: () {

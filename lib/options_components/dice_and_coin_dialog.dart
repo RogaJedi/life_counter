@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:raccoon_counter/custom_icons.dart';
 import 'dice_and_coin_randomizer.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class DiceAndCoinDialog extends StatelessWidget {
 
@@ -14,6 +15,7 @@ class DiceAndCoinDialog extends StatelessWidget {
     double screenHeight = MediaQuery.of(context).size.height;
     double aspectRatio = screenWidth / screenHeight;
     double textSize = aspectRatio * 55;
+    double mult = 0.07;
     return AlertDialog(
       title: const Text("Dice & Coin"),
       content: SizedBox(
@@ -25,23 +27,31 @@ class DiceAndCoinDialog extends StatelessWidget {
             children: [
               IconButton(
                 style: ButtonStyle(
-                  backgroundColor: WidgetStateProperty.all(const Color(0xff504bff)),
                   padding: WidgetStateProperty.all(EdgeInsets.all(screenHeight * 0.03)),
                 ),
                 onPressed: () {
                   showDialog(
-                      context: context,
-                      builder: (BuildContext context) {
-                        return DiceAndCoinRandomizer(max: 6, title: "Roll a D6", screenWidth: screenWidth, screenHeight: screenHeight, textSize: textSize).getDialog(context);
-                      }
+                    context: context,
+                    builder: (BuildContext context) {
+                      return DiceAndCoinRandomizer(
+                        max: 6,
+                        title: "Roll a D6",
+                        screenWidth: screenWidth,
+                        screenHeight: screenHeight,
+                        textSize: textSize,
+                      ).getDialog(context);
+                    },
                   );
                 },
-                icon: Icon(CustomIcons.dice_d6, size: screenHeight * 0.06, color: Colors.white),
+                icon: SvgPicture.asset(
+                  'assets/d6.svg',
+                  height: screenHeight * mult,
+                  width: screenHeight * mult,
+                ),
               ),
-              const SizedBox(height: 8),
+
               IconButton(
                 style: ButtonStyle(
-                  backgroundColor: WidgetStateProperty.all(const Color(0xff504bff)),
                   padding: WidgetStateProperty.all(EdgeInsets.all(screenHeight * 0.03)),
                 ),
                 onPressed: () {
@@ -52,12 +62,14 @@ class DiceAndCoinDialog extends StatelessWidget {
                       }
                   );
                 },
-                icon: Icon(CustomIcons.dice_d20, size: screenHeight * 0.06, color: Colors.white),
+                icon: SvgPicture.asset(
+                  'assets/d20.svg',
+                  height: screenHeight * mult,
+                  width: screenHeight * mult,
+                ),
               ),
-              const SizedBox(height: 8),
               IconButton(
                 style: ButtonStyle(
-                  backgroundColor: WidgetStateProperty.all(const Color(0xff504bff)),
                   padding: WidgetStateProperty.all(EdgeInsets.all(screenHeight * 0.03)),
                 ),
                 onPressed: () {
@@ -68,7 +80,11 @@ class DiceAndCoinDialog extends StatelessWidget {
                       }
                   );
                 },
-                icon: Icon(CustomIcons.coins, size: screenHeight * 0.06, color: Colors.white),
+                icon: SvgPicture.asset(
+                  'assets/coin.svg',
+                  height: screenHeight * mult,
+                  width: screenHeight * mult,
+                ),
               ),
             ],
           ),
