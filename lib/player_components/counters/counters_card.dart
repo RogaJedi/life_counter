@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../items.dart';
+import '../../items.dart';
 
 class CountersCard extends StatelessWidget {
   final Item player;

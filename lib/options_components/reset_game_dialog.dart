@@ -22,7 +22,6 @@ class _ResetGameDialogState extends State<ResetGameDialog> {
 
   void resetPlayer (int index) {
     setState(() {
-      widget.playersList[index].colorHex = widget.defaultPlayersList[index].colorHex;
       widget.playersList[index].counter = widget.defaultPlayersList[index].counter;
       widget.playersList[index].playerCounters.clear();
       widget.playersList[index].counterButtonStates = {};

@@ -1,20 +1,21 @@
 import 'package:flutter/material.dart';
-import 'player_options_components/player_settings_card.dart';
 import 'player_card_components/interactive_player_card.dart';
-import 'player_counters_components/counters_display_card.dart';
+import 'player_components/counters_and_settings_card.dart';
 import 'items.dart';
 
 class PlayerInterface extends StatefulWidget {
   final Item player;
+  final List<Item> playersList;
   final double aspectRatio;
-  final VoidCallback onSettingsTap;
   final VoidCallback onCountersTap;
+  final Function(Item, List<Item>) onColorSelected;
 
   const PlayerInterface({super.key,
     required this.player,
+    required this.playersList,
     required this.aspectRatio,
-    required this.onSettingsTap,
     required this.onCountersTap,
+    required this.onColorSelected,
   });
 
 
@@ -52,18 +53,16 @@ class _PlayerInterfaceState extends State<PlayerInterface> {
         controller: _pageController,
         onPageChanged: _onPageChanged,
         children: [
-          CountersDisplayCard(
+          CountersAndSettingsCard(
             player: widget.player,
+            playersList: widget.playersList,
             aspectRatio: widget.aspectRatio,
+            onCountersTap: widget.onCountersTap,
+            onColorSelected: widget.onColorSelected,
           ),
           InteractivePlayerCard(
             player: widget.player,
             aspectRatio: widget.aspectRatio,
-          ),
-          PlayerSettingsCard(
-            aspectRatio: widget.aspectRatio,
-            onSettingsTap: widget.onSettingsTap,
-            onCountersTap: widget.onCountersTap,
           ),
         ],
       ),

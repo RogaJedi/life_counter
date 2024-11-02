@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hsvcolor_picker/flutter_hsvcolor_picker.dart';
 
-class PickColorForPlayer extends StatelessWidget {
+class PickColorDialog extends StatelessWidget {
   final Color currentColor;
   final ValueChanged<HSVColor> onChanged;
   final void Function() onPressed;
 
-  const PickColorForPlayer({
+  const PickColorDialog({
     super.key,
     required this.currentColor,
     required this.onChanged,
@@ -17,13 +17,20 @@ class PickColorForPlayer extends StatelessWidget {
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
     double screenHeight = MediaQuery.of(context).size.height;
+    //Color bgColor_A = const Color(0xff393939);
+    //Color bgColor_B = const Color(0xff5b5b5b);
+
     return AlertDialog(
       title: const Text("Pick a color"),
+      //CHANGE!
+      backgroundColor: Colors.white,
       content: SingleChildScrollView(
         child:  SizedBox(
           width: screenWidth * 0.6,
           height: screenHeight * 0.4,
           child: Card(
+            //CHANGE!
+            color: Colors.white,
             shape: const RoundedRectangleBorder(
               borderRadius: BorderRadius.all(
                 Radius.circular(10.0),
@@ -35,14 +42,22 @@ class PickColorForPlayer extends StatelessWidget {
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: <Widget>[
-                  FloatingActionButton(
-                    onPressed: null,
-                    backgroundColor: currentColor,
+                  SizedBox(
+                    width: screenWidth * 0.5,
+                    height: screenHeight * 0.05,
+                    child: FloatingActionButton(
+                      onPressed: null,
+                      backgroundColor: currentColor,
+                    ),
                   ),
                   const Divider(),
-                  HSVPicker(
-                    color: HSVColor.fromColor(currentColor),
-                    onChanged: onChanged,
+                  Container(
+                    //CHANGE!
+                    color: Colors.white,
+                    child: HSVPicker(
+                      color: HSVColor.fromColor(currentColor),
+                      onChanged: onChanged,
+                    ),
                   ),
                 ],
               ),

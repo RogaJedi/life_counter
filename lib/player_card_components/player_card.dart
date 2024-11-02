@@ -21,17 +21,50 @@ class PlayerCard extends StatelessWidget {
     return Card(
       color: Color(colorInt),
       child: Center(
-        child: Transform.rotate(
-          angle: 90 * 3.14159 / 180,
-          child: Text(
-            player.counter.toString(),
-            style: TextStyle(
-              fontSize: textSize,
-              fontWeight: FontWeight.bold,
-              color: Colors.white,
+        child: Column(
+          children: [
+            SizedBox(height: aspectRatio * 150),
+            Transform.rotate(
+              angle: 90 * 3.14159 / 180,
+              child: Text(
+                "-",
+                style: TextStyle(
+                  fontSize: textSize * 0.2,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                ),
+              ),
             ),
-          ),
-        ),
+            Transform.rotate(
+              angle: 90 * 3.14159 / 180,
+              child: SizedBox(
+                width: 200,
+                height: 200,
+                child: Center(
+                  child: Text(
+                    player.counter.toString(),
+                    style: TextStyle(
+                      fontSize: textSize,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            Transform.rotate(
+              angle: 90 * 3.14159 / 180,
+              child: Text(
+                "+",
+                style: TextStyle(
+                  fontSize: textSize * 0.2,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                ),
+              ),
+            ),
+          ],
+        )
       ),
     );
   }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:raccoon_counter/items.dart';
 import 'counters_card.dart';
-import '../custom_button.dart';
+import '../../custom_button.dart';
 
 class InteractiveCountersCard extends StatefulWidget {
   final Item player;

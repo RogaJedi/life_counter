@@ -1,4 +1,4 @@
-import 'player_counters_components/c_items.dart';
+import 'player_components/counters/c_items.dart';
 
 class Item {
   String colorHex;

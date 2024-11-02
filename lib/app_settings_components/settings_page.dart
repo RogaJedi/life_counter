@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'settings_button.dart';
-import 'package:raccoon_counter/player_options_components/option_button.dart';
+import '../options_components/option_button.dart';
 
 //TODO: create layouts and make it possible to select them in here.
 

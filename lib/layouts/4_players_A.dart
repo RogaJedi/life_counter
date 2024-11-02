@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import '../player_interface.dart';
-import '../player_options_components/options_dialog.dart';
-import '../player_options_components/options_dialog_2.dart';
-import '../player_counters_components/counters_dialog.dart';
+import '../player_components/counters/counters_dialog.dart';
 import '../items.dart';
 
 Item player1 = Item(
@@ -63,9 +61,11 @@ Item d_player4 = Item(
 
 class FourPlayersA extends StatefulWidget {
   final double aspectRatio;
+  final Function navigateToOptionsDialog;
 
   const FourPlayersA({super.key,
     required this.aspectRatio,
+    required this.navigateToOptionsDialog,
   });
 
   @override
@@ -76,7 +76,7 @@ class _FourPlayersAState extends State<FourPlayersA> {
   List<Item> items = [player1, player2, player3, player4];
   List<Item> defaultItems = [d_player1, d_player2, d_player3, d_player4];
 
-  void changePlayerColor(Item newItem) {
+  void changePlayerColor(Item newItem, List<Item> items) {
     String newColor = newItem.colorHex;
     int playerId = newItem.id;
     setState(() {
@@ -84,28 +84,16 @@ class _FourPlayersAState extends State<FourPlayersA> {
     });
   }
 
-  void _navigateToOptionsDialog(BuildContext context, Item player) {
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return OptionsDialog(
-          player: player,
-          playersList: items,
-          defaultPlayersList: defaultItems,
-          onColorSelected: changePlayerColor,
-          onResetComplete: () {
-            setState(() {});
-          },
-        ); // Your modified widget
-      },
-    );
-  }
-
   void _navigateToCountersDialog(BuildContext context, Item player) {
     showDialog(
       context: context,
       builder: (BuildContext context) {
-        return CountersDialog(player: player); // Your modified widget
+        return CountersDialog(
+          player: player,
+          onSelectedCounters: () {
+            setState(() {});
+          },
+        ); // Your modified widget
       },
     );
   }
@@ -137,16 +125,32 @@ class _FourPlayersAState extends State<FourPlayersA> {
                     angle: turn * 3.14159 / 180,
                     child: PlayerInterface(
                       player: item,
+                      playersList: items,
                       aspectRatio: widget.aspectRatio,
-                      onSettingsTap: () {
-                        _navigateToOptionsDialog(context, item);
-                      },
                       onCountersTap: () {
                         _navigateToCountersDialog(context, item);
                       },
+                      onColorSelected: changePlayerColor,
                     ),
                   );
                 },
+              ),
+            ),
+          ),
+          Center(
+            child: IconButton(
+              style: ButtonStyle(
+                backgroundColor: WidgetStateProperty.all(Colors.black),
+                padding: WidgetStateProperty.all(EdgeInsets.all(widget.aspectRatio * 30)),
+              ),
+              onPressed: () => widget.navigateToOptionsDialog(context, items, defaultItems),
+              icon: Transform.rotate(
+                angle: 90 * 3.14159 / 180,
+                child: Icon(
+                    Icons.settings_sharp,
+                    size: widget.aspectRatio * 60,
+                    color: Colors.white
+                ),
               ),
             ),
           ),
