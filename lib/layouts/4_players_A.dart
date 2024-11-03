@@ -4,68 +4,68 @@ import '../items.dart';
 
 Item player1 = Item(
     counter: 40,
-    colorHex: "0xff504bff",
+    colorHex: "0xffff5c5c",
     playerCounters: [],
     counterButtonStates: {},
     id: 0);
 
 Item d_player1 = Item(
     counter: 40,
-    colorHex: "0xff504bff",
+    colorHex: "0xffff5c5c",
     playerCounters: [],
     counterButtonStates: {},
     id: 0);
 
 Item player2 = Item(
     counter: 40,
-    colorHex: "0xffffce00",
+    colorHex: "0xff675cff",
     playerCounters: [],
     counterButtonStates: {},
     id: 1);
 
 Item d_player2 = Item(
     counter: 40,
-    colorHex: "0xffffce00",
+    colorHex: "0xff675cff",
     playerCounters: [],
     counterButtonStates: {},
     id: 1);
 
 Item player3 = Item(
     counter: 40,
-    colorHex: "0xffff504b",
+    colorHex: "0xff73cf48",
     playerCounters: [],
     counterButtonStates: {},
     id: 2);
 
 Item d_player3 = Item(
     counter: 40,
-    colorHex: "0xffff504b",
+    colorHex: "0xff73cf48",
     playerCounters: [],
     counterButtonStates: {},
     id: 2);
 
 Item player4 = Item(
     counter: 40,
-    colorHex: "0xff00ce51",
+    colorHex: "0xffe87731",
     playerCounters: [],
     counterButtonStates: {},
     id: 3);
 
 Item d_player4 = Item(
     counter: 40,
-    colorHex: "0xff00ce51",
+    colorHex: "0xffe87731",
     playerCounters: [],
     counterButtonStates: {},
     id: 3);
 
 class FourPlayersA extends StatefulWidget {
   final double aspectRatio;
-  final Function navigateToOptionsDialog;
+  final Function navigateToOptionsPage;
   final Function navigateToCountersDialog;
 
   const FourPlayersA({super.key,
     required this.aspectRatio,
-    required this.navigateToOptionsDialog,
+    required this.navigateToOptionsPage,
     required this.navigateToCountersDialog,
   });
 
@@ -128,7 +128,7 @@ class _FourPlayersAState extends State<FourPlayersA> {
                 backgroundColor: WidgetStateProperty.all(Colors.black),
                 padding: WidgetStateProperty.all(EdgeInsets.all(widget.aspectRatio * 30)),
               ),
-              onPressed: () => widget.navigateToOptionsDialog(context, items, defaultItems),
+              onPressed: () => widget.navigateToOptionsPage(context, items, defaultItems, widget.aspectRatio),
               icon: Transform.rotate(
                 angle: 90 * 3.14159 / 180,
                 child: Icon(

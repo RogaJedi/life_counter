@@ -29,13 +29,13 @@ class _CountersDialogState extends State<CountersDialog> {
   @override
   void initState() {
     super.initState();
-    buttonStates = widget.player.counterButtonStates;
+    buttonStates = Map.from(widget.player.counterButtonStates);
   }
 
-  void onButtonPressed(IconData icon, String label) {
+  void onButtonPressed(String icon, String label) {
     setState(() {
-      buttonStates[label] = !buttonStates[label]!;
-      widget.player.counterButtonStates = buttonStates; // Update player's state
+      buttonStates[label] = !(buttonStates[label] ?? false);
+      widget.player.counterButtonStates = Map.from(buttonStates); // Update player's state
       if (buttonStates[label]!) {
         widget.player.playerCounters.add(C_Item(counter_icon: icon, counter_amount: 0));
       } else {
@@ -46,7 +46,6 @@ class _CountersDialogState extends State<CountersDialog> {
 
   @override
   Widget build(BuildContext context) {
-    double screenWidth = MediaQuery.of(context).size.width;
     double screenHeight = MediaQuery.of(context).size.height;
 
     return AlertDialog(
@@ -73,33 +72,6 @@ class _CountersDialogState extends State<CountersDialog> {
                 crossAxisSpacing: 10,
                 children: [
                   CountersButton(
-                      icon: CountersIcons.dice_one,
-                      label: "Player A",
-                      aspectRatio: widget.aspectRatio,
-                      buttonStates: buttonStates,
-                      onTap: () {
-                        onButtonPressed(CountersIcons.dice_one, "player A");
-                      }
-                  ),
-                  CountersButton(
-                      icon: CountersIcons.dice_two,
-                      label: "Player B",
-                      aspectRatio: widget.aspectRatio,
-                      buttonStates: buttonStates,
-                      onTap: () {
-                        onButtonPressed(CountersIcons.dice_two, "player B");
-                      }
-                  ),
-                  CountersButton(
-                      icon: CountersIcons.dice_three,
-                      label: "Player C",
-                      aspectRatio: widget.aspectRatio,
-                      buttonStates: buttonStates,
-                      onTap: () {
-                        onButtonPressed(CountersIcons.dice_three, "player C");
-                      }
-                  ),
-                  CountersButton(
                     icon: SvgPicture.asset(
                       'assets/white.svg',
                     ),
@@ -107,7 +79,7 @@ class _CountersDialogState extends State<CountersDialog> {
                     aspectRatio: widget.aspectRatio,
                     buttonStates: buttonStates,
                     onTap: () {
-                      onButtonPressed(CountersIcons.sun, "white");
+                      onButtonPressed('assets/white.svg', "white");
                     },
                   ),
 
@@ -119,7 +91,7 @@ class _CountersDialogState extends State<CountersDialog> {
                     aspectRatio: widget.aspectRatio,
                     buttonStates: buttonStates,
                     onTap: () {
-                      onButtonPressed(CountersIcons.sun, "blue");
+                      onButtonPressed('assets/blue.svg', "blue");
                     },
                   ),
                   CountersButton(
@@ -130,7 +102,7 @@ class _CountersDialogState extends State<CountersDialog> {
                     aspectRatio: widget.aspectRatio,
                     buttonStates: buttonStates,
                     onTap: () {
-                      onButtonPressed(CountersIcons.sun, "black");
+                      onButtonPressed('assets/black.svg', "black");
                     },
                   ),
                   CountersButton(
@@ -141,7 +113,7 @@ class _CountersDialogState extends State<CountersDialog> {
                     aspectRatio: widget.aspectRatio,
                     buttonStates: buttonStates,
                     onTap: () {
-                      onButtonPressed(CountersIcons.sun, "red");
+                      onButtonPressed('assets/red.svg', "red");
                     },
                   ),
                   CountersButton(
@@ -152,7 +124,7 @@ class _CountersDialogState extends State<CountersDialog> {
                     aspectRatio: widget.aspectRatio,
                     buttonStates: buttonStates,
                     onTap: () {
-                      onButtonPressed(CountersIcons.sun, "green");
+                      onButtonPressed('assets/green.svg', "green");
                     },
                   ),
                   CountersButton(
@@ -163,7 +135,7 @@ class _CountersDialogState extends State<CountersDialog> {
                     aspectRatio: widget.aspectRatio,
                     buttonStates: buttonStates,
                     onTap: () {
-                      onButtonPressed(CountersIcons.sun, "colorless");
+                      onButtonPressed('assets/colorless.svg', "colorless");
                     },
                   ),
                   CountersButton(
@@ -174,7 +146,7 @@ class _CountersDialogState extends State<CountersDialog> {
                     aspectRatio: widget.aspectRatio,
                     buttonStates: buttonStates,
                     onTap: () {
-                      onButtonPressed(CountersIcons.sun, "storm");
+                      onButtonPressed('assets/storm.svg', "storm");
                     },
                   ),
                   //experience
@@ -186,7 +158,7 @@ class _CountersDialogState extends State<CountersDialog> {
                     aspectRatio: widget.aspectRatio,
                     buttonStates: buttonStates,
                     onTap: () {
-                      onButtonPressed(CountersIcons.sun, "poison");
+                      onButtonPressed('assets/poison.svg', "poison");
                     },
                   ),
                   CountersButton(
@@ -197,7 +169,7 @@ class _CountersDialogState extends State<CountersDialog> {
                     aspectRatio: widget.aspectRatio,
                     buttonStates: buttonStates,
                     onTap: () {
-                      onButtonPressed(CountersIcons.sun, "energy");
+                      onButtonPressed('assets/energy.svg', "energy");
                     },
                   ),
                   SizedBox(width: widget.aspectRatio),
@@ -209,7 +181,7 @@ class _CountersDialogState extends State<CountersDialog> {
                     aspectRatio: widget.aspectRatio,
                     buttonStates: buttonStates,
                     onTap: () {
-                      onButtonPressed(CountersIcons.sun, "experience");
+                      onButtonPressed('assets/exp.svg', "experience");
                     },
                   ),
                 ],

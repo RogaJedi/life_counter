@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 
 class C_Item {
-  IconData counter_icon;
+  String counter_icon;
   int counter_amount;
 
   C_Item({

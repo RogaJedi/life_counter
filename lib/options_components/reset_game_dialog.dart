@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'option_button.dart';
 import '../items.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:smooth_corner/smooth_corner.dart';
 
 class ResetGameDialog extends StatefulWidget {
   final List<Item> playersList;
@@ -22,6 +24,7 @@ class _ResetGameDialogState extends State<ResetGameDialog> {
 
   void resetPlayer (int index) {
     setState(() {
+      widget.playersList[index].colorHex = widget.defaultPlayersList[index].colorHex;
       widget.playersList[index].counter = widget.defaultPlayersList[index].counter;
       widget.playersList[index].playerCounters.clear();
       widget.playersList[index].counterButtonStates = {};
@@ -33,7 +36,13 @@ class _ResetGameDialogState extends State<ResetGameDialog> {
     double screenWidth = MediaQuery.of(context).size.width;
     double screenHeight = MediaQuery.of(context).size.height;
     return AlertDialog(
-      title: const Text("Reset game"),
+      backgroundColor: Color(0xff1e1e1e),
+      title: const Text(
+          "Restart game",
+        style: TextStyle(
+          color: Colors.white,
+        ),
+      ),
       content: SizedBox(
         width: screenWidth * 0.6,
         height: screenHeight * 0.4,
@@ -45,46 +54,60 @@ class _ResetGameDialogState extends State<ResetGameDialog> {
                 "Are you sure?",
                 style: TextStyle(
                   fontSize: (screenWidth / screenHeight) * 55,
-                  color: const Color(0xff504bff),
+                  color: Colors.white,
                 ),
               ),
               const SizedBox(height: 8),
-              OptionsButton(
-                  screenWidth: screenWidth,
-                  screenHeight: screenHeight,
-                  textSizeScale: 55,
-                  text: "Yes",
-                  onPressed: () {
-                    for (var i = 0; i < widget.playersList.length; i++) {
-                      resetPlayer(i);
-                    }
-                    widget.onResetComplete();
-                    Navigator.of(context).pop();
-                    Navigator.of(context).pop();
-                  }
+              Row(
+                children: [
+                  SizedBox(
+                    height: screenHeight * 0.065,
+                    width: screenHeight * 0.100,
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Color(0xff73cf48),
+                        shape: SmoothRectangleBorder(
+                          smoothness: 0.6,
+                          borderRadius:
+                          BorderRadius.circular(20),
+                        ),
+                      ),
+                      onPressed: () {
+                        for (var i = 0; i < widget.playersList.length; i++) {
+                          resetPlayer(i);
+                        }
+                        widget.onResetComplete();
+                        Navigator.of(context).pop();
+                        Navigator.of(context).pop();
+                      },
+                      child: SvgPicture.asset('assets/check.svg'),
+                    ),
+                  ),
+                  SizedBox(width: 65),
+                  SizedBox(
+                    height: screenHeight * 0.065,
+                    width: screenHeight * 0.100,
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Color(0xffff014a),
+                        shape: SmoothRectangleBorder(
+                          smoothness: 0.6,
+                          borderRadius:
+                          BorderRadius.circular(20),
+                        ),
+                      ),
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                      },
+                      child: SvgPicture.asset('assets/cross.svg'),
+                    ),
+                  ),
+                ],
               ),
             ],
           ),
         ),
       ),
-      actions: [
-        ElevatedButton(
-          style: ElevatedButton.styleFrom(
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(10),
-            ),
-          ),
-          onPressed: () {
-            Navigator.of(context).pop();
-          },
-          child: const Text(
-            "Cancel",
-            style: TextStyle(
-              color: Color(0xff504bff),
-            ),
-          ),
-        ),
-      ],
     );
   }
 }

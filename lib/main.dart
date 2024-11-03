@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'items.dart';
-import 'options_components/options_dialog.dart';
+import 'options_components/options_page.dart';
 import 'player_components/counters/counters_dialog.dart';
 import 'layouts/4_players_A.dart';
 import 'layouts/2_players.dart';
@@ -36,24 +36,27 @@ class _MyAppState extends State<MyApp> {
   }
 
 
-  void navigateToOptionsDialog(
+  void navigateToOptionsPage(
       BuildContext context,
       List<Item> items,
       List<Item> defaultItems,
+      double aspectRatio,
       ) {
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return OptionsDialog(
-          playersList: items,
-          defaultPlayersList: defaultItems,
-          onResetComplete: () {
-            setState(() {});
-          },
-        ); // Your modified widget
-      },
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => OptionsPage(
+            playersList: items,
+            defaultPlayersList: defaultItems,
+            onResetComplete: () {
+              setState(() {});
+            },
+            aspectRatio: aspectRatio
+        ),
+      ),
     );
   }
+
 
   void navigateToCountersDialog(
       BuildContext context,
@@ -86,7 +89,7 @@ class _MyAppState extends State<MyApp> {
           double aspectRatio = (screenWidth / 2) / (screenHeight / 2);
           return FourPlayersA(
             aspectRatio: aspectRatio,
-            navigateToOptionsDialog: navigateToOptionsDialog,
+            navigateToOptionsPage: navigateToOptionsPage,
             navigateToCountersDialog: navigateToCountersDialog,
           );
         },

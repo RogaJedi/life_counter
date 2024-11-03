@@ -111,6 +111,10 @@ flutter:
     - family: Bebas
       fonts:
         - asset: fonts/BebasNeue-Regular.ttf
+
+    - family: Roboto
+      fonts:
+        - asset: fonts/Roboto-Regular.ttf
   # fonts:
   #   - family: Schyler
   #     fonts:

@@ -18,8 +18,7 @@ class CountersButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    buttonStates.putIfAbsent(label, () => false);
-
+//TODO: FIX BUTTONS PLEASE
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
@@ -29,28 +28,33 @@ class CountersButton extends StatelessWidget {
         child: AnimatedContainer(
           duration: const Duration(milliseconds: 300),
           decoration: BoxDecoration(
-            color: buttonStates[label]! ? const Color(0xff676767) : Color(0xff353535),
-
+            color: buttonStates[label] == true ? const Color(0xff676767) : Color(0xff353535),
             borderRadius: BorderRadius.circular(8),
           ),
           child: Column(
             children: [
-              _buildIcon(),
+              SizedBox(
+                height: aspectRatio * 100,
+                width: aspectRatio * 100,
+                child: icon as Widget,
+              ),
               SizedBox(height: aspectRatio * 7),
               Text(
                 label,
                 style: TextStyle(
                   color: Colors.white,
-                  fontSize: aspectRatio * 35,
+                  fontSize: aspectRatio * 30,
+                  fontFamily: 'Roboto',
                 ),
               ),
             ],
-          )
+          ),
         ),
       ),
     );
   }
 
+  /*
   Widget _buildIcon() {
     if (icon is IconData) {
       return Icon(
@@ -68,4 +72,6 @@ class CountersButton extends StatelessWidget {
       return const SizedBox.shrink();
     }
   }
+
+   */
 }

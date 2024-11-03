@@ -141,13 +141,13 @@ class _SettingsPageState extends State<SettingsPage> {
           const SizedBox(height: 20),
           Center(
             child: OptionsButton(
-                screenWidth: screenWidth * 0.8,
-                screenHeight: screenHeight,
+                aspectRatio: 80,
                 textSizeScale: 80,
                 text: "Select layout",
                 onPressed: () {
                   print("select layout");
-                }
+                },
+              buttonColor: Colors.black,
             ),
           ),
           const SizedBox(height: 80),

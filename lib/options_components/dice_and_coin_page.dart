@@ -3,9 +3,9 @@ import 'package:raccoon_counter/custom_icons.dart';
 import 'dice_and_coin_randomizer.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class DiceAndCoinDialog extends StatelessWidget {
+class DiceAndCoinPage extends StatelessWidget {
 
-  const DiceAndCoinDialog({
+  const DiceAndCoinPage({
     super.key,
   });
 
