@@ -2,9 +2,8 @@ import 'package:flutter/material.dart';
 import '../items.dart';
 import 'package:smooth_corner/smooth_corner.dart';
 import 'option_button.dart';
-import 'dice_and_coin_page.dart';
 import 'reset_game_dialog.dart';
-import '../app_settings_components/settings_page.dart';
+import 'dice_and_coin_page.dart';
 
 class OptionsPage extends StatefulWidget {
   final List<Item> playersList;
@@ -69,11 +68,11 @@ class _OptionsPageState extends State<OptionsPage> {
       },
           () {
         // Function for button 3
-            showDialog(
-                context: context,
-                builder: (BuildContext context) {
-                  return DiceAndCoinPage();
-                }
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => DiceAndCoinPage(),
+                ),
             );
         // Add your specific functionality here
       },

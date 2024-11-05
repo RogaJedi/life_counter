@@ -1,110 +1,130 @@
 import 'package:flutter/material.dart';
-import 'package:raccoon_counter/custom_icons.dart';
-import 'dice_and_coin_randomizer.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:smooth_corner/smooth_corner.dart';
 
 class DiceAndCoinPage extends StatelessWidget {
-
-  const DiceAndCoinPage({
-    super.key,
-  });
+  const DiceAndCoinPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
     double screenHeight = MediaQuery.of(context).size.height;
     double aspectRatio = screenWidth / screenHeight;
-    double textSize = aspectRatio * 55;
-    double mult = 0.07;
-    return AlertDialog(
-      title: const Text("Dice & Coin"),
-      content: SizedBox(
-        width: screenWidth * 0.6,
-        height: screenHeight * 0.4,
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              IconButton(
-                style: ButtonStyle(
-                  padding: WidgetStateProperty.all(EdgeInsets.all(screenHeight * 0.03)),
-                ),
-                onPressed: () {
-                  showDialog(
-                    context: context,
-                    builder: (BuildContext context) {
-                      return DiceAndCoinRandomizer(
-                        max: 6,
-                        title: "Roll a D6",
-                        screenWidth: screenWidth,
-                        screenHeight: screenHeight,
-                        textSize: textSize,
-                      ).getDialog(context);
-                    },
-                  );
-                },
-                icon: SvgPicture.asset(
-                  'assets/d6.svg',
-                  height: screenHeight * mult,
-                  width: screenHeight * mult,
-                ),
-              ),
+    double mult = 0.1;
 
-              IconButton(
-                style: ButtonStyle(
-                  padding: WidgetStateProperty.all(EdgeInsets.all(screenHeight * 0.03)),
-                ),
-                onPressed: () {
-                  showDialog(
-                      context: context,
-                      builder: (BuildContext context) {
-                        return DiceAndCoinRandomizer(max: 20, title: "Roll a D20", screenWidth: screenWidth, screenHeight: screenHeight, textSize: textSize).getDialog(context);
-                      }
-                  );
-                },
-                icon: SvgPicture.asset(
-                  'assets/d20.svg',
-                  height: screenHeight * mult,
-                  width: screenHeight * mult,
-                ),
+    return Scaffold(
+      backgroundColor: const Color(0xff1e1e1e),
+      body: ListView(
+        children: [
+          SizedBox(
+            height: screenHeight * 0.7,
+            width: screenWidth * 0.9,
+            child: Card(
+              shape: SmoothRectangleBorder(
+                smoothness: 0.6,
+                borderRadius: BorderRadius.circular(20),
               ),
-              IconButton(
-                style: ButtonStyle(
-                  padding: WidgetStateProperty.all(EdgeInsets.all(screenHeight * 0.03)),
-                ),
-                onPressed: () {
-                  showDialog(
-                      context: context,
-                      builder: (BuildContext context) {
-                        return DiceAndCoinRandomizer(max: 2, title: "Flip a coin", screenWidth: screenWidth, screenHeight: screenHeight, textSize: textSize).getDialog(context);
-                      }
-                  );
-                },
-                icon: SvgPicture.asset(
-                  'assets/coin.svg',
-                  height: screenHeight * mult,
-                  width: screenHeight * mult,
-                ),
+              color: const Color(0xff73cf48),
+              child: Stack(
+                children: [
+                  Padding(
+                    padding: EdgeInsets.all(screenHeight * 0.02), // Add some padding
+                    child: Center(
+                      child: Column(
+                        children: [
+                          SizedBox(height: screenHeight * 0.065), // Space for the button
+                          SizedBox(height: screenHeight * 0.17),
+                          Text(
+                            "D20 result",
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: aspectRatio * 80,
+                            ),
+                          ),
+                          Text(
+                            "20",
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: aspectRatio * 180,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  Positioned(
+                    top: screenHeight * 0.02, // Adjust this value for vertical positioning
+                    right: screenHeight * 0.02, // Adjust this value for horizontal positioning
+                    child: SizedBox(
+                      height: screenHeight * 0.065,
+                      width: screenHeight * 0.065,
+                      child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Color(0xffff014a),
+                          shape: SmoothRectangleBorder(
+                            smoothness: 0.6,
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                          padding: EdgeInsets.zero, // Remove default padding
+                        ),
+                        onPressed: () {
+                          Navigator.of(context).pop();
+                        },
+                        child: SvgPicture.asset('assets/cross.svg'),
+                      ),
+                    ),
+                  ),
+                ],
               ),
-            ],
+            ),
+          ),
+          Card(
+            color: const Color(0xff353535),
+            child: Column(
+              children: [
+                SizedBox(height: screenHeight * 0.025),
+                Text(
+                  "Tap to roll",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: aspectRatio * 80,
+                  ),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    _buildIconColumn(context, 'assets/d20.svg', 'D20', screenHeight, aspectRatio, mult),
+                    _buildIconColumn(context, 'assets/d6.svg', 'D6', screenHeight, aspectRatio, mult),
+                    _buildIconColumn(context, 'assets/coin.svg', 'Coin', screenHeight, aspectRatio, mult),
+                  ],
+                ),
+                SizedBox(height: screenHeight * 0.025),
+              ],
+            ),
+          )
+        ],
+      ),
+    );
+  }
+
+  Widget _buildIconColumn(BuildContext context, String assetPath, String label, double screenHeight, double aspectRatio, double mult) {
+    return Column(
+      children: [
+        IconButton(
+          onPressed: () {},
+          icon: SvgPicture.asset(
+            assetPath,
+            height: screenHeight * mult,
+            width: screenHeight * mult,
           ),
         ),
-      ),
-      actions: [
-        ElevatedButton(
-          style: ElevatedButton.styleFrom(
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(10),
-            ),
-          ),
-          onPressed: () {
-            Navigator.of(context).pop();
-          },
-          child: const Text(
-            "Cancel",
-            style: TextStyle(
-              color: Color(0xff504bff),
-            ),
+        Text(
+          label,
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: aspectRatio * 60,
+            fontFamily: 'Roboto',
+            fontWeight: FontWeight.bold,
           ),
         ),
       ],

@@ -4,10 +4,12 @@ import 'items.dart';
 import 'options_components/options_page.dart';
 import 'player_components/counters/counters_dialog.dart';
 import 'layouts/4_players_A.dart';
+import 'package:wakelock_plus/wakelock_plus.dart';
 import 'layouts/2_players.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
+  WakelockPlus.enable();
   SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,

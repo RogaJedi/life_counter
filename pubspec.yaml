@@ -40,6 +40,7 @@ dependencies:
   flutter_hsvcolor_picker: ^1.5.1
   smooth_corner: ^1.0.0
   flutter_svg: ^1.0.0
+  wakelock_plus: ^1.2.8
 
 dev_dependencies:
   flutter_test:
