@@ -77,10 +77,8 @@ class _CountersDialogState extends State<CountersDialog> {
                     ),
                     label: "White",
                     aspectRatio: widget.aspectRatio,
-                    buttonStates: buttonStates,
-                    onTap: () {
-                      onButtonPressed('assets/white.svg', "white");
-                    },
+                    isActive: buttonStates['white'] ?? false,
+                    onTap: () => onButtonPressed("assets/white.svg", "white"),
                   ),
 
                   CountersButton(
@@ -89,10 +87,8 @@ class _CountersDialogState extends State<CountersDialog> {
                     ),
                     label: "Blue",
                     aspectRatio: widget.aspectRatio,
-                    buttonStates: buttonStates,
-                    onTap: () {
-                      onButtonPressed('assets/blue.svg', "blue");
-                    },
+                    isActive: buttonStates['blue'] ?? false,
+                    onTap: () => onButtonPressed("assets/blue.svg", "blue"),
                   ),
                   CountersButton(
                     icon: SvgPicture.asset(
@@ -100,10 +96,8 @@ class _CountersDialogState extends State<CountersDialog> {
                     ),
                     label: "Black",
                     aspectRatio: widget.aspectRatio,
-                    buttonStates: buttonStates,
-                    onTap: () {
-                      onButtonPressed('assets/black.svg', "black");
-                    },
+                    isActive: buttonStates['black'] ?? false,
+                    onTap: () => onButtonPressed("assets/black.svg", "black"),
                   ),
                   CountersButton(
                     icon: SvgPicture.asset(
@@ -111,10 +105,8 @@ class _CountersDialogState extends State<CountersDialog> {
                     ),
                     label: "Red",
                     aspectRatio: widget.aspectRatio,
-                    buttonStates: buttonStates,
-                    onTap: () {
-                      onButtonPressed('assets/red.svg', "red");
-                    },
+                    isActive: buttonStates['red'] ?? false,
+                    onTap: () => onButtonPressed("assets/red.svg", "red"),
                   ),
                   CountersButton(
                     icon: SvgPicture.asset(
@@ -122,7 +114,7 @@ class _CountersDialogState extends State<CountersDialog> {
                     ),
                     label: "Green",
                     aspectRatio: widget.aspectRatio,
-                    buttonStates: buttonStates,
+                    isActive: buttonStates['green'] ?? false,
                     onTap: () {
                       onButtonPressed('assets/green.svg', "green");
                     },
@@ -133,10 +125,8 @@ class _CountersDialogState extends State<CountersDialog> {
                     ),
                     label: "Colorless",
                     aspectRatio: widget.aspectRatio,
-                    buttonStates: buttonStates,
-                    onTap: () {
-                      onButtonPressed('assets/colorless.svg', "colorless");
-                    },
+                    isActive: buttonStates['colorless'] ?? false,
+                    onTap: () => onButtonPressed("assets/colorless.svg", "colorless"),
                   ),
                   CountersButton(
                     icon: SvgPicture.asset(
@@ -144,10 +134,8 @@ class _CountersDialogState extends State<CountersDialog> {
                     ),
                     label: "Storm",
                     aspectRatio: widget.aspectRatio,
-                    buttonStates: buttonStates,
-                    onTap: () {
-                      onButtonPressed('assets/storm.svg', "storm");
-                    },
+                    isActive: buttonStates['storm'] ?? false,
+                    onTap: () => onButtonPressed("assets/storm.svg", "storm"),
                   ),
                   //experience
                   CountersButton(
@@ -156,10 +144,8 @@ class _CountersDialogState extends State<CountersDialog> {
                     ),
                     label: "Poison",
                     aspectRatio: widget.aspectRatio,
-                    buttonStates: buttonStates,
-                    onTap: () {
-                      onButtonPressed('assets/poison.svg', "poison");
-                    },
+                    isActive: buttonStates['poison'] ?? false,
+                    onTap: () => onButtonPressed("assets/poison.svg", "poison"),
                   ),
                   CountersButton(
                     icon: SvgPicture.asset(
@@ -167,10 +153,8 @@ class _CountersDialogState extends State<CountersDialog> {
                     ),
                     label: "Energy",
                     aspectRatio: widget.aspectRatio,
-                    buttonStates: buttonStates,
-                    onTap: () {
-                      onButtonPressed('assets/energy.svg', "energy");
-                    },
+                    isActive: buttonStates['energy'] ?? false,
+                    onTap: () => onButtonPressed("assets/energy.svg", "energy"),
                   ),
                   SizedBox(width: widget.aspectRatio),
                   CountersButton(
@@ -179,10 +163,8 @@ class _CountersDialogState extends State<CountersDialog> {
                     ),
                     label: "Experience",
                     aspectRatio: widget.aspectRatio,
-                    buttonStates: buttonStates,
-                    onTap: () {
-                      onButtonPressed('assets/exp.svg', "experience");
-                    },
+                    isActive: buttonStates['experience'] ?? false,
+                    onTap: () => onButtonPressed("assets/exp.svg", "experience"),
                   ),
                 ],
               ),

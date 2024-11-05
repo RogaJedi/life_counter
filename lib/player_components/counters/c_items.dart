@@ -1,4 +1,4 @@
-import 'package:flutter/cupertino.dart';
+
 
 class C_Item {
   String counter_icon;
