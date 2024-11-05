@@ -69,7 +69,12 @@ class _OptionsPageState extends State<OptionsPage> {
       },
           () {
         // Function for button 3
-        print("Button 3 pressed");
+            showDialog(
+                context: context,
+                builder: (BuildContext context) {
+                  return DiceAndCoinPage();
+                }
+            );
         // Add your specific functionality here
       },
           () {
