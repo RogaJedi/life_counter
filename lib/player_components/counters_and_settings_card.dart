@@ -97,7 +97,7 @@ class _CountersAndSettingsCardState extends State<CountersAndSettingsCard>{
                                 ),
                                 child: Icon(
                                   Icons.add,
-                                  size: constraints.maxWidth * 0.31,
+                                  size: constraints.maxWidth * 0.2,
                                   color: Colors.white
                                 ),
                               ),
@@ -106,7 +106,7 @@ class _CountersAndSettingsCardState extends State<CountersAndSettingsCard>{
                               "ADD COUNTER",
                               style: TextStyle(
                                 color: Colors.white,
-                                fontSize: constraints.maxWidth * 0.07,
+                                fontSize: constraints.maxWidth * 0.04,
                               ),
                             ),
                           ],
@@ -146,7 +146,7 @@ class _CountersAndSettingsCardState extends State<CountersAndSettingsCard>{
                               },
                               icon: Icon(
                                 Icons.circle,
-                                size: constraints.maxWidth * 0.4,
+                                size: constraints.maxWidth * 0.2,
                                 color: currentColor
                               ),
                             ),
@@ -154,7 +154,7 @@ class _CountersAndSettingsCardState extends State<CountersAndSettingsCard>{
                               "BACKGROUND",
                               style: TextStyle(
                                 color: Colors.white,
-                                fontSize: constraints.maxWidth * 0.07,
+                                fontSize: constraints.maxWidth * 0.04,
                               ),
                             ),
                           ],

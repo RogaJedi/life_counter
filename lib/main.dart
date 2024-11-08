@@ -3,9 +3,8 @@ import 'package:flutter/services.dart';
 import 'items.dart';
 import 'options_components/options_page.dart';
 import 'player_components/counters/counters_dialog.dart';
-import 'layouts/4_players_A.dart';
 import 'package:wakelock_plus/wakelock_plus.dart';
-import 'layouts/2_players.dart';
+import 'number_of_players/settings_page.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -79,7 +78,6 @@ class _MyAppState extends State<MyApp> {
     );
   }
 
-  @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
@@ -89,7 +87,7 @@ class _MyAppState extends State<MyApp> {
           double screenWidth = MediaQuery.of(context).size.width;
           double screenHeight = MediaQuery.of(context).size.height;
           double aspectRatio = (screenWidth / 2) / (screenHeight / 2);
-          return FourPlayersA(
+          return SettingsPage(
             aspectRatio: aspectRatio,
             navigateToOptionsPage: navigateToOptionsPage,
             navigateToCountersDialog: navigateToCountersDialog,

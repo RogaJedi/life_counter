@@ -59,6 +59,7 @@ class _ResetGameDialogState extends State<ResetGameDialog> {
               ),
               const SizedBox(height: 8),
               Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   SizedBox(
                     height: screenHeight * 0.065,

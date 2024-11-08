@@ -1,9 +1,42 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:smooth_corner/smooth_corner.dart';
+import 'dart:math';
 
-class DiceAndCoinPage extends StatelessWidget {
+class DiceAndCoinPage extends StatefulWidget {
   const DiceAndCoinPage({Key? key}) : super(key: key);
+
+  @override
+  _DiceAndCoinPageState createState() => _DiceAndCoinPageState();
+}
+
+class _DiceAndCoinPageState extends State<DiceAndCoinPage> {
+
+
+  String label = "D20";
+  String result = "20";
+
+  void _generateNewResult(int max) {
+    final random = Random();
+    final randomNumber = 1 + random.nextInt(max);
+    setState(() {
+      if (max == 2) {
+        if (randomNumber == 1) {
+          result = "Heads";
+        } else if (randomNumber == 2) {
+          result = "Tails";
+        }
+      } else {
+        result = "$randomNumber";
+      }
+    });
+  }
+
+  void _generateNewLabel(String newLabel) {
+    setState(() {
+      label = newLabel;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -35,14 +68,14 @@ class DiceAndCoinPage extends StatelessWidget {
                           SizedBox(height: screenHeight * 0.065), // Space for the button
                           SizedBox(height: screenHeight * 0.17),
                           Text(
-                            "D20 result",
+                            "$label result",
                             style: TextStyle(
                               color: Colors.white,
                               fontSize: aspectRatio * 80,
                             ),
                           ),
                           Text(
-                            "20",
+                            "$result",
                             style: TextStyle(
                               color: Colors.white,
                               fontSize: aspectRatio * 180,
@@ -111,7 +144,19 @@ class DiceAndCoinPage extends StatelessWidget {
     return Column(
       children: [
         IconButton(
-          onPressed: () {},
+          onPressed: () {
+            switch (label) {
+              case 'D20':
+                _generateNewLabel("D20");
+                _generateNewResult(20);
+              case 'D6':
+                _generateNewLabel("D6");
+                _generateNewResult(6);
+              case 'Coin':
+                _generateNewLabel("Coin");
+                _generateNewResult(2);
+            }
+          },
           icon: SvgPicture.asset(
             assetPath,
             height: screenHeight * mult,

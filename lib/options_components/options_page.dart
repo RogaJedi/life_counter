@@ -4,6 +4,7 @@ import 'package:smooth_corner/smooth_corner.dart';
 import 'option_button.dart';
 import 'reset_game_dialog.dart';
 import 'dice_and_coin_page.dart';
+import '../number_of_players/settings_page.dart';
 
 class OptionsPage extends StatefulWidget {
   final List<Item> playersList;
@@ -63,7 +64,8 @@ class _OptionsPageState extends State<OptionsPage> {
       },
           () {
         // Function for button 2
-        print("Button 2 pressed");
+        Navigator.pop(context);
+        Navigator.pop(context);
         // Add your specific functionality here
       },
           () {
