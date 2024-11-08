@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:hold_down_button/hold_down_button.dart';
+import 'package:smooth_corner/smooth_corner.dart';
 
 class CustomButton extends StatelessWidget {
+  final double borderRad;
   final VoidCallback onTap;
   final VoidCallback onLongTap;
 
   const CustomButton({
     super.key,
+    required this.borderRad,
     required this.onTap,
     required this.onLongTap,
   });
@@ -33,8 +36,10 @@ class CustomButton extends StatelessWidget {
                   elevation: 0,
                   side: BorderSide.none,
 
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8)
+                  shape: SmoothRectangleBorder(
+                    smoothness: 0.6,
+                    borderRadius:
+                    BorderRadius.circular(borderRad),
                   )
               ),
               onPressed: onTap,

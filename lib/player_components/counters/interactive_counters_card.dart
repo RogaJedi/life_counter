@@ -61,6 +61,7 @@ class _InteractiveCountersCardState extends State<InteractiveCountersCard> {
           child: Row(
             children: [
               CustomButton(
+                borderRad: 60,
                 onTap: () {
                   c_minus(widget.player, widget.index);
                 },
@@ -69,6 +70,7 @@ class _InteractiveCountersCardState extends State<InteractiveCountersCard> {
                 },
               ),
               CustomButton(
+                borderRad: 60,
                 onTap: () {
                   c_plus(widget.player, widget.index);
                 },

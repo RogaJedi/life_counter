@@ -56,20 +56,22 @@ class _InteractivePlayerCardState extends State<InteractivePlayerCard> {
           child: Column(
             children: [
               CustomButton(
-                  onTap: () {
-                    minus(widget.player);
-                  },
-                  onLongTap: () {
-                    bigMinus(widget.player);
-                  },
+                borderRad: 8,
+                onTap: () {
+                  minus(widget.player);
+                },
+                onLongTap: () {
+                  bigMinus(widget.player);
+                },
               ),
               CustomButton(
-                  onTap: () {
-                    plus(widget.player);
-                  },
-                  onLongTap: () {
-                    bigPlus(widget.player);
-                  },
+                borderRad: 8,
+                onTap: () {
+                  plus(widget.player);
+                },
+                onLongTap: () {
+                  bigPlus(widget.player);
+                },
               ),
             ],
           ),
