@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../player_interface.dart';
 import '../items.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 Item player1 = Item(
     counter: 40,
@@ -114,7 +115,6 @@ class _FourPlayersAState extends State<FourPlayersA> {
                     child: PlayerInterface(
                       player: item,
                       playersList: items,
-                      aspectRatio: widget.aspectRatio,
                       onCountersTap: () => widget.navigateToCountersDialog(context, item, widget.aspectRatio),
                       onColorSelected: changePlayerColor,
                     ),
@@ -124,22 +124,25 @@ class _FourPlayersAState extends State<FourPlayersA> {
             ),
           ),
           Center(
-            child: IconButton(
-              style: ButtonStyle(
-                backgroundColor: WidgetStateProperty.all(Colors.black),
-                padding: WidgetStateProperty.all(EdgeInsets.all(widget.aspectRatio * 30)),
-              ),
-              onPressed: () => widget.navigateToOptionsPage(context, items, defaultItems, widget.aspectRatio),
-              icon: Transform.rotate(
-                angle: 90 * 3.14159 / 180,
-                child: Icon(
+            child: SizedBox(
+              width: 56.h,
+              height: 56.h,
+              child: IconButton(
+                style: ButtonStyle(
+                  backgroundColor: WidgetStateProperty.all(Colors.black),
+                ),
+                onPressed: () => widget.navigateToOptionsPage(context, items, defaultItems, widget.aspectRatio),
+                icon: Transform.rotate(
+                  angle: 90 * 3.14159 / 180,
+                  child: Icon(
                     Icons.settings_sharp,
-                    size: widget.aspectRatio * 60,
-                    color: Colors.white
+                    size: 40.h,
+                    color: Colors.white,
+                  ),
                 ),
               ),
             ),
-          ),
+          )
         ],
       ),
     );

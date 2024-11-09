@@ -3,11 +3,11 @@ import 'package:flutter_svg/flutter_svg.dart';
 import '../items.dart';
 import 'counters/interactive_counters_card.dart';
 import 'pick_color_dialog.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CountersAndSettingsCard extends StatefulWidget {
   final Item player;
   final List<Item> playersList;
-  final double aspectRatio;
   final VoidCallback onCountersTap;
   final Function(Item, List<Item>) onColorSelected;
 
@@ -15,7 +15,6 @@ class CountersAndSettingsCard extends StatefulWidget {
     super.key,
     required this.player,
     required this.playersList,
-    required this.aspectRatio,
     required this.onCountersTap,
     required this.onColorSelected,
   });
@@ -50,9 +49,6 @@ class _CountersAndSettingsCardState extends State<CountersAndSettingsCard>{
 
   @override
   Widget build(BuildContext context) {
-    double screenWidth = MediaQuery.of(context).size.width;
-    double screenHeight = MediaQuery.of(context).size.height;
-
     return LayoutBuilder(
       builder: (context, constraints) {
         return Card(
@@ -68,12 +64,11 @@ class _CountersAndSettingsCardState extends State<CountersAndSettingsCard>{
                     padding: const EdgeInsets.all(2.0),
                     child: Center(
                       child: SizedBox(
-                        width: screenWidth * 0.35,
-                        height: screenHeight * 0.075,
+                        width: 137.w,
+                        height: 56.h,
                         child: InteractiveCountersCard(
                           player: widget.player,
                           index: index,
-                          aspectRatio: widget.aspectRatio,
                         ),
                       ),
                     ),
@@ -83,13 +78,23 @@ class _CountersAndSettingsCardState extends State<CountersAndSettingsCard>{
                     children: [
                       if (widget.player.playerCounters.isNotEmpty)
                         //DIVIDER
-                        Container(
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(10), // Adjust this value to change the roundness
-                          ),
-                          height: screenHeight * 0.0032,
-                          width: screenWidth * 0.35,
+                        Column(
+                          children: [
+                            SizedBox(
+                              height: 16.h,
+                            ),
+                            Container(
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(10), // Adjust this value to change the roundness
+                              ),
+                              height: 3.h,
+                              width: 142.1.w,
+                            ),
+                            SizedBox(
+                              height: 16.h,
+                            ),
+                          ],
                         ),
                       Transform.rotate(
                         angle: 90 * 3.14159 / 180,
@@ -99,14 +104,14 @@ class _CountersAndSettingsCardState extends State<CountersAndSettingsCard>{
                               onPressed: widget.onCountersTap,
                               icon: SvgPicture.asset(
                                 'assets/add_counter.svg',
-                                height: screenHeight * 0.075,
+                                height: 70.h,
                               ),
                             ),
                             Text(
                               "ADD COUNTER",
                               style: TextStyle(
                                 color: Colors.white,
-                                fontSize: screenHeight * 0.022,
+                                fontSize: 24.sp,
                               ),
                             ),
                           ],
@@ -143,7 +148,7 @@ class _CountersAndSettingsCardState extends State<CountersAndSettingsCard>{
                               },
                               icon: SvgPicture.asset(
                                 'assets/white.svg',
-                                height: screenHeight * 0.075,
+                                height: 70.h,
                                 color: currentColor,
                               ),
                             ),
@@ -151,7 +156,7 @@ class _CountersAndSettingsCardState extends State<CountersAndSettingsCard>{
                               "BACKGROUND",
                               style: TextStyle(
                                 color: Colors.white,
-                                fontSize: screenHeight * 0.022,
+                                fontSize: 24.sp,
                               ),
                             ),
                           ],

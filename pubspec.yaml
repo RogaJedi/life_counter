@@ -41,6 +41,7 @@ dependencies:
   smooth_corner: ^1.0.0
   flutter_svg: ^1.0.0
   wakelock_plus: ^1.2.8
+  flutter_screenutil: ^5.9.3
 
 dev_dependencies:
   flutter_test:

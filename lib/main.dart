@@ -5,6 +5,7 @@ import 'options_components/options_page.dart';
 import 'player_components/counters/counters_dialog.dart';
 import 'package:wakelock_plus/wakelock_plus.dart';
 import 'layouts/4_players_A.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -52,7 +53,9 @@ class _MyAppState extends State<MyApp> {
             onResetComplete: () {
               setState(() {});
             },
-            aspectRatio: aspectRatio
+            aspectRatio: aspectRatio,
+            navigateToOptionsPage: navigateToOptionsPage,
+            navigateToCountersDialog: navigateToCountersDialog,
         ),
       ),
     );
@@ -69,7 +72,6 @@ class _MyAppState extends State<MyApp> {
       builder: (BuildContext context) {
         return CountersDialog(
           player: player,
-          aspectRatio: aspectRatio,
           onSelectedCounters: () {
             setState(() {});
           },
@@ -78,22 +80,30 @@ class _MyAppState extends State<MyApp> {
     );
   }
 
+  @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(fontFamily: 'Bebas'),
-      home: Builder(
-        builder: (context) {
-          double screenWidth = MediaQuery.of(context).size.width;
-          double screenHeight = MediaQuery.of(context).size.height;
-          double aspectRatio = (screenWidth / 2) / (screenHeight / 2);
-          return FourPlayersA(
-            aspectRatio: aspectRatio,
-            navigateToOptionsPage: navigateToOptionsPage,
-            navigateToCountersDialog: navigateToCountersDialog,
-          );
-        },
-      ),
+    return ScreenUtilInit(
+      designSize: const Size(369, 780), // Your design draft size
+      minTextAdapt: true,
+      splitScreenMode: true,
+      builder: (context, child) {
+        return MaterialApp(
+          debugShowCheckedModeBanner: false,
+          theme: ThemeData(fontFamily: 'Bebas'),
+          home: Builder(
+            builder: (context) {
+              double screenWidth = MediaQuery.of(context).size.width;
+              double screenHeight = MediaQuery.of(context).size.height;
+              double aspectRatio = (screenWidth / 2) / (screenHeight / 2);
+              return FourPlayersA(
+                aspectRatio: aspectRatio,
+                navigateToOptionsPage: navigateToOptionsPage,
+                navigateToCountersDialog: navigateToCountersDialog,
+              );
+            },
+          ),
+        );
+      },
     );
   }
 }

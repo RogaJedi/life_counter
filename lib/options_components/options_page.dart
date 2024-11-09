@@ -5,12 +5,15 @@ import 'option_button.dart';
 import 'reset_game_dialog.dart';
 import 'dice_and_coin_page.dart';
 import '../number_of_players/settings_page.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class OptionsPage extends StatefulWidget {
   final List<Item> playersList;
   final List<Item> defaultPlayersList;
   final Function() onResetComplete;
   final double aspectRatio;
+  final Function navigateToOptionsPage;
+  final Function navigateToCountersDialog;
 
   const OptionsPage({
     Key? key,
@@ -18,6 +21,8 @@ class OptionsPage extends StatefulWidget {
     required this.defaultPlayersList,
     required this.onResetComplete,
     required this.aspectRatio,
+    required this.navigateToOptionsPage,
+    required this.navigateToCountersDialog,
   }) : super(key: key);
 
   @override
@@ -67,8 +72,16 @@ class _OptionsPageState extends State<OptionsPage> {
       },
           () {
         // Function for button 2
-        Navigator.pop(context);
-        Navigator.pop(context);
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => SettingsPage(
+                    aspectRatio: widget.aspectRatio,
+                    navigateToOptionsPage: widget.navigateToOptionsPage,
+                    navigateToCountersDialog: widget.navigateToCountersDialog
+                ),
+              ),
+            );
         // Add your specific functionality here
       },
           () {
@@ -114,8 +127,8 @@ class _OptionsPageState extends State<OptionsPage> {
           SizedBox(height: widget.aspectRatio * 50),
           Center(
             child: SizedBox(
-              height: widget.aspectRatio * 90,
-              width: widget.aspectRatio * 300,
+              height: 43.h,
+              width: 157.w,
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Color(0xff1e1e1e),
@@ -128,12 +141,12 @@ class _OptionsPageState extends State<OptionsPage> {
                 ),
                 onPressed: () {},
                 child: Text(
-                    "Got feedback?",
+                  "Got feedback?",
                   style: TextStyle(
                     color: Colors.white,
                     fontFamily: 'Roboto',
                     fontWeight: FontWeight.bold,
-                    fontSize: widget.aspectRatio * 30,
+                    fontSize: 17.sp,
                   ),
                 ),
               ),
@@ -143,7 +156,7 @@ class _OptionsPageState extends State<OptionsPage> {
             "Settings",
             style: TextStyle(
               color: Colors.white,
-              fontSize: widget.aspectRatio * 100,
+              fontSize: 35.sp,
             ),
           ),
           Expanded(
@@ -160,8 +173,6 @@ class _OptionsPageState extends State<OptionsPage> {
                   padding: EdgeInsets.all(10),
                   itemBuilder: (context, index) {
                     return OptionsButton(
-                      aspectRatio: widget.aspectRatio,
-                      textSizeScale: 50, // Adjust this value to change text size
                       text: _getButtonInfo(index),
                       onPressed: _getButtonFunction(index),
                       buttonColor: _getButtonColor(index),
@@ -173,11 +184,11 @@ class _OptionsPageState extends State<OptionsPage> {
           ),
           Center(
             child: SizedBox(
-              height: widget.aspectRatio * 120,
-              width: widget.aspectRatio * 700,
+              height: 56.h,
+              width: 353.w,
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Color(0xffff014a),
+                  backgroundColor: Color(0xFFFF6666),
                   shape: SmoothRectangleBorder(
                     smoothness: 0.6,
                     borderRadius:
@@ -191,7 +202,7 @@ class _OptionsPageState extends State<OptionsPage> {
                     color: Colors.white,
                     fontFamily: 'Roboto',
                     fontWeight: FontWeight.bold,
-                    fontSize: widget.aspectRatio * 50,
+                    fontSize: 24.sp,
                   ),
                 ),
               ),

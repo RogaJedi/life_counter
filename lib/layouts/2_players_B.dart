@@ -1,31 +1,32 @@
 import 'package:flutter/material.dart';
 import '../player_interface.dart';
 import '../items.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 Item player1 = Item(
     counter: 40,
-    colorHex: "0xff504bff",
+    colorHex: "0xFF67E55C",
     playerCounters: [],
     counterButtonStates: {},
     id: 0);
 
 Item d_player1 = Item(
     counter: 40,
-    colorHex: "0xff504bff",
+    colorHex: "0xFF67E55C",
     playerCounters: [],
     counterButtonStates: {},
     id: 0);
 
 Item player2 = Item(
     counter: 40,
-    colorHex: "0xffff504b",
+    colorHex: "0xFFFFC34D",
     playerCounters: [],
     counterButtonStates: {},
     id: 1);
 
 Item d_player2 = Item(
     counter: 40,
-    colorHex: "0xffff504b",
+    colorHex: "0xFFFFC34D",
     playerCounters: [],
     counterButtonStates: {},
     id: 1);
@@ -71,7 +72,6 @@ class _TwoPlayersBState extends State<TwoPlayersB> {
                 child: PlayerInterface(
                     player: items[0],
                     playersList: items,
-                    aspectRatio: widget.aspectRatio,
                     onCountersTap: () => widget.navigateToCountersDialog(context, items[0], widget.aspectRatio),
                     onColorSelected: changePlayerColor
                 ),
@@ -80,26 +80,30 @@ class _TwoPlayersBState extends State<TwoPlayersB> {
                 child: PlayerInterface(
                     player: items[1],
                     playersList: items,
-                    aspectRatio: widget.aspectRatio,
                     onCountersTap: () => widget.navigateToCountersDialog(context, items[1], widget.aspectRatio),
                     onColorSelected: changePlayerColor
                 ),
               ),
             ],
           ),
-          Center(
-            child: IconButton(
-              style: ButtonStyle(
-                backgroundColor: WidgetStateProperty.all(Colors.black),
-                padding: WidgetStateProperty.all(EdgeInsets.all(widget.aspectRatio * 30)),
-              ),
-              onPressed: () => widget.navigateToOptionsPage(context, items, defaultItems, widget.aspectRatio),
-              icon: Transform.rotate(
-                angle: 90 * 3.14159 / 180,
-                child: Icon(
+          Positioned(
+            top: 365.h,
+            right: 20.w,
+            child: SizedBox(
+              width: 56.h,
+              height: 56.h,
+              child: IconButton(
+                style: ButtonStyle(
+                  backgroundColor: WidgetStateProperty.all(Colors.black),
+                ),
+                onPressed: () => widget.navigateToOptionsPage(context, items, defaultItems, widget.aspectRatio),
+                icon: Transform.rotate(
+                  angle: 90 * 3.14159 / 180,
+                  child: Icon(
                     Icons.settings_sharp,
-                    size: widget.aspectRatio * 60,
-                    color: Colors.white
+                    size: 40.h,
+                    color: Colors.white,
+                  ),
                 ),
               ),
             ),

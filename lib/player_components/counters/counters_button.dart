@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CountersButton extends StatefulWidget {
   final dynamic icon;
   final String label;
-  final double aspectRatio;
   final bool isActive;
   final VoidCallback onTap;
 
@@ -11,7 +11,6 @@ class CountersButton extends StatefulWidget {
     Key? key,
     required this.icon,
     required this.label,
-    required this.aspectRatio,
     required this.isActive,
     required this.onTap,
   }) : super(key: key);
@@ -37,17 +36,18 @@ class _CountersButtonState extends State<CountersButton> {
           ),
           child: Column(
             children: [
+              SizedBox(height: 5.h),
               SizedBox(
-                height: widget.aspectRatio * 100,
-                width: widget.aspectRatio * 100,
+                height: 45.h,
+                width: 45.h,
                 child: widget.icon as Widget,
               ),
-              SizedBox(height: widget.aspectRatio * 7),
+              SizedBox(height: 2.h),
               Text(
                 widget.label,
                 style: TextStyle(
                   color: Colors.white,
-                  fontSize: widget.aspectRatio * 30,
+                  fontSize: 14.sp,
                   fontFamily: 'Roboto',
                 ),
               ),

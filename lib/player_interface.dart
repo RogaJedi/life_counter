@@ -6,14 +6,12 @@ import 'items.dart';
 class PlayerInterface extends StatefulWidget {
   final Item player;
   final List<Item> playersList;
-  final double aspectRatio;
   final VoidCallback onCountersTap;
   final Function(Item, List<Item>) onColorSelected;
 
   const PlayerInterface({super.key,
     required this.player,
     required this.playersList,
-    required this.aspectRatio,
     required this.onCountersTap,
     required this.onColorSelected,
   });
@@ -56,13 +54,11 @@ class _PlayerInterfaceState extends State<PlayerInterface> {
           CountersAndSettingsCard(
             player: widget.player,
             playersList: widget.playersList,
-            aspectRatio: widget.aspectRatio,
             onCountersTap: widget.onCountersTap,
             onColorSelected: widget.onColorSelected,
           ),
           InteractivePlayerCard(
             player: widget.player,
-            aspectRatio: widget.aspectRatio,
           ),
         ],
       ),

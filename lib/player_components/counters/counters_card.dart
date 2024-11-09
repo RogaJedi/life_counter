@@ -2,17 +2,16 @@ import 'package:flutter/material.dart';
 import '../../items.dart';
 import 'package:smooth_corner/smooth_corner.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CountersCard extends StatelessWidget {
   final Item player;
   final int index;
-  final double aspectRatio;
 
   const CountersCard({
     super.key,
     required this.player,
     required this.index,
-    required this.aspectRatio,
   });
 
   final double mult = 40;
@@ -20,7 +19,6 @@ class CountersCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
-    double mult = 0.03;
 
     return SizedBox(
       child: Card(
@@ -42,7 +40,7 @@ class CountersCard extends StatelessWidget {
                   "–",
                   style: TextStyle(
                     color: Colors.white,
-                    fontSize: aspectRatio * 70,
+                    fontSize: 32.sp,
                     fontFamily: 'Roboto',
                   ),
                 ),
@@ -52,7 +50,7 @@ class CountersCard extends StatelessWidget {
                 angle: 90 * 3.14159 / 180,
                 child: SvgPicture.asset(
                     player.playerCounters[index].counter_icon,
-                  width: screenWidth * 0.07,
+                  width: 32.w,
                 ),
               ),
               SizedBox(width: screenWidth * 0.015),
@@ -65,7 +63,7 @@ class CountersCard extends StatelessWidget {
                     child: Text(
                       player.playerCounters[index].counter_amount.toString(),
                       style: TextStyle(
-                        fontSize: aspectRatio * 50,
+                        fontSize: 24.sp,
                         color: Colors.white,
                       ),
                     ),
@@ -79,7 +77,7 @@ class CountersCard extends StatelessWidget {
                   "+",
                   style: TextStyle(
                     color: Colors.white,
-                    fontSize: aspectRatio * 60,
+                    fontSize: 32.sp,
                     fontFamily: 'Roboto',
                   ),
                 ),

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:smooth_corner/smooth_corner.dart';
 import 'dart:math';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class DiceAndCoinPage extends StatefulWidget {
   const DiceAndCoinPage({Key? key}) : super(key: key);
@@ -50,39 +51,36 @@ class _DiceAndCoinPageState extends State<DiceAndCoinPage> {
       body: ListView(
         children: [
           SizedBox(
-            height: screenHeight * 0.7,
-            width: screenWidth * 0.9,
+            height: 559.h,
+            width: 373.w,
             child: Card(
               shape: SmoothRectangleBorder(
                 smoothness: 0.6,
                 borderRadius: BorderRadius.circular(20),
               ),
-              color: const Color(0xff73cf48),
+              color: const Color(0xFF67E55C),
               child: Stack(
                 children: [
-                  Padding(
-                    padding: EdgeInsets.all(screenHeight * 0.02), // Add some padding
-                    child: Center(
-                      child: Column(
-                        children: [
-                          SizedBox(height: screenHeight * 0.065), // Space for the button
-                          SizedBox(height: screenHeight * 0.17),
-                          Text(
-                            "$label result",
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: aspectRatio * 80,
-                            ),
+                  Center(
+                    child: Column(
+                      children: [
+                        SizedBox(height: screenHeight * 0.065), // Space for the button
+                        SizedBox(height: screenHeight * 0.17),
+                        Text(
+                          "$label result",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 28.sp,
                           ),
-                          Text(
-                            "$result",
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: aspectRatio * 180,
-                            ),
+                        ),
+                        Text(
+                          "$result",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 90.sp,
                           ),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
                   ),
                   Positioned(
@@ -93,7 +91,7 @@ class _DiceAndCoinPageState extends State<DiceAndCoinPage> {
                       width: screenHeight * 0.065,
                       child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: Color(0xffff014a),
+                          backgroundColor: Color(0xFFFF6666),
                           shape: SmoothRectangleBorder(
                             smoothness: 0.6,
                             borderRadius: BorderRadius.circular(20),
@@ -112,28 +110,31 @@ class _DiceAndCoinPageState extends State<DiceAndCoinPage> {
               ),
             ),
           ),
-          Card(
-            color: const Color(0xff353535),
-            child: Column(
-              children: [
-                SizedBox(height: screenHeight * 0.025),
-                Text(
-                  "Tap to roll",
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: aspectRatio * 80,
+          SizedBox(
+            width: 373.w,
+            height: 213.h,
+            child: Card(
+              color: const Color(0xff353535),
+              child: Column(
+                children: [
+                  SizedBox(height: screenHeight * 0.025),
+                  Text(
+                    "Tap to roll",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 30.sp,
+                    ),
                   ),
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    _buildIconColumn(context, 'assets/d20.svg', 'D20', screenHeight, aspectRatio, mult),
-                    _buildIconColumn(context, 'assets/d6.svg', 'D6', screenHeight, aspectRatio, mult),
-                    _buildIconColumn(context, 'assets/coin.svg', 'Coin', screenHeight, aspectRatio, mult),
-                  ],
-                ),
-                SizedBox(height: screenHeight * 0.025),
-              ],
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      _buildIconColumn(context, 'assets/d20.svg', 'D20', screenHeight, aspectRatio, mult),
+                      _buildIconColumn(context, 'assets/d6.svg', 'D6', screenHeight, aspectRatio, mult),
+                      _buildIconColumn(context, 'assets/coin.svg', 'Coin', screenHeight, aspectRatio, mult),
+                    ],
+                  ),
+                ],
+              ),
             ),
           )
         ],
@@ -160,15 +161,15 @@ class _DiceAndCoinPageState extends State<DiceAndCoinPage> {
           },
           icon: SvgPicture.asset(
             assetPath,
-            height: screenHeight * mult,
-            width: screenHeight * mult,
+            height: 90.h,
+            width: 90.h,
           ),
         ),
         Text(
           label,
           style: TextStyle(
             color: Colors.white,
-            fontSize: aspectRatio * 60,
+            fontSize: 24.sp,
             fontFamily: 'Roboto',
             fontWeight: FontWeight.bold,
           ),
