@@ -102,6 +102,7 @@ class _DiceAndCoinPageState extends State<DiceAndCoinPage> {
                         ),
                         onPressed: () {
                           Navigator.of(context).pop();
+                          Navigator.of(context).pop();
                         },
                         child: SvgPicture.asset('assets/cross.svg'),
                       ),

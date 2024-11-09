@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'counters_icons.dart';
 import '../../items.dart';
 import 'c_items.dart';
 import 'counters_button.dart';

@@ -4,56 +4,56 @@ import '../items.dart';
 
 Item player1 = Item(
     counter: 40,
-    colorHex: "0xffff5c5c",
+    colorHex: "0xFFFF6666",
     playerCounters: [],
     counterButtonStates: {},
     id: 0);
 
 Item d_player1 = Item(
     counter: 40,
-    colorHex: "0xffff5c5c",
+    colorHex: "0xFFFF6666",
     playerCounters: [],
     counterButtonStates: {},
     id: 0);
 
 Item player2 = Item(
     counter: 40,
-    colorHex: "0xff675cff",
+    colorHex: "0xFF67E55C",
     playerCounters: [],
     counterButtonStates: {},
     id: 1);
 
 Item d_player2 = Item(
     counter: 40,
-    colorHex: "0xff675cff",
+    colorHex: "0xFF67E55C",
     playerCounters: [],
     counterButtonStates: {},
     id: 1);
 
 Item player3 = Item(
     counter: 40,
-    colorHex: "0xff73cf48",
+    colorHex: "0xFF5CC3E5",
     playerCounters: [],
     counterButtonStates: {},
     id: 2);
 
 Item d_player3 = Item(
     counter: 40,
-    colorHex: "0xff73cf48",
+    colorHex: "0xFF5CC3E5",
     playerCounters: [],
     counterButtonStates: {},
     id: 2);
 
 Item player4 = Item(
     counter: 40,
-    colorHex: "0xffe87731",
+    colorHex: "0xFFFFC34D",
     playerCounters: [],
     counterButtonStates: {},
     id: 3);
 
 Item d_player4 = Item(
     counter: 40,
-    colorHex: "0xffe87731",
+    colorHex: "0xFFFFC34D",
     playerCounters: [],
     counterButtonStates: {},
     id: 3);

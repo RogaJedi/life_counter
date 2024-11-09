@@ -21,48 +21,46 @@ class PlayerCard extends StatelessWidget {
     return Card(
       color: Color(colorInt),
       child: Center(
-        child: Expanded(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Transform.rotate(
-                angle: 90 * 3.14159 / 180,
-                child: Text(
-                  "-",
-                  style: TextStyle(
-                    fontSize: textSize * 0.4,
-                    color: Colors.white,
-                  ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Transform.rotate(
+              angle: 90 * 3.14159 / 180,
+              child: Text(
+                "-",
+                style: TextStyle(
+                  fontSize: textSize * 0.4,
+                  color: Colors.white,
                 ),
               ),
-              Transform.rotate(
-                angle: 90 * 3.14159 / 180,
-                child: SizedBox(
-                  width: 200,
-                  height: 200,
-                  child: Center(
-                    child: Text(
-                      player.counter.toString(),
-                      style: TextStyle(
-                        fontSize: textSize,
-                        color: Colors.white,
-                      ),
+            ),
+            Transform.rotate(
+              angle: 90 * 3.14159 / 180,
+              child: SizedBox(
+                width: 200,
+                height: 200,
+                child: Center(
+                  child: Text(
+                    player.counter.toString(),
+                    style: TextStyle(
+                      fontSize: textSize,
+                      color: Colors.white,
                     ),
                   ),
                 ),
               ),
-              Transform.rotate(
-                angle: 90 * 3.14159 / 180,
-                child: Text(
-                  "+",
-                  style: TextStyle(
-                    fontSize: textSize * 0.4,
-                    color: Colors.white,
-                  ),
+            ),
+            Transform.rotate(
+              angle: 90 * 3.14159 / 180,
+              child: Text(
+                "+",
+                style: TextStyle(
+                  fontSize: textSize * 0.4,
+                  color: Colors.white,
                 ),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

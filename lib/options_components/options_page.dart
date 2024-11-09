@@ -28,15 +28,15 @@ class _OptionsPageState extends State<OptionsPage> {
 
   Color _getButtonColor(int index) {
     List<Color> colors = [
-      Color(0xff676767),
-      //0xfffe0167
-      Color(0xff676767),
-      //0xfffe9801
-      Color(0xff8bc24a),
-      Color(0xff0167fe),
-      Color(0xff9801fe),
-      Color(0xff676767),
-      //0xff01e6fe
+      Color(0xFF676767),
+      //0xFF5CC3E5
+      Color(0xFF676767),
+      //0xFFC973E5
+      Color(0xFFE573B6),
+      Color(0xFFFF6666),
+      Color(0xFFFFC34D),
+      Color(0xFF676767),
+      //0xFF5AD863
     ];
     return colors[index % colors.length];
   }
