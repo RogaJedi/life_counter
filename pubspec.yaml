@@ -79,6 +79,7 @@ flutter:
     - assets/d20.svg
     - assets/check.svg
     - assets/cross.svg
+    - assets/add_counter.svg
 
   # To add assets to your application, add an assets section, like this:
   # assets:
@@ -97,18 +98,6 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   fonts:
-    - family: K2D
-      fonts:
-        - asset: fonts/K2D-Medium.ttf
-
-    - family: CustomIcons
-      fonts:
-        - asset: fonts/CustomIcons.ttf
-
-    - family: CountersIcons
-      fonts:
-        - asset: fonts/CountersIcons.ttf
-
     - family: Bebas
       fonts:
         - asset: fonts/BebasNeue-Regular.ttf

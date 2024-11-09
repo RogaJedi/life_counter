@@ -4,7 +4,7 @@ import 'items.dart';
 import 'options_components/options_page.dart';
 import 'player_components/counters/counters_dialog.dart';
 import 'package:wakelock_plus/wakelock_plus.dart';
-import 'number_of_players/settings_page.dart';
+import 'layouts/4_players_A.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -87,7 +87,7 @@ class _MyAppState extends State<MyApp> {
           double screenWidth = MediaQuery.of(context).size.width;
           double screenHeight = MediaQuery.of(context).size.height;
           double aspectRatio = (screenWidth / 2) / (screenHeight / 2);
-          return SettingsPage(
+          return FourPlayersA(
             aspectRatio: aspectRatio,
             navigateToOptionsPage: navigateToOptionsPage,
             navigateToCountersDialog: navigateToCountersDialog,

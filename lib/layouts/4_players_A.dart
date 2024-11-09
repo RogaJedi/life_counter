@@ -95,6 +95,7 @@ class _FourPlayersAState extends State<FourPlayersA> {
             padding: const EdgeInsets.all(1.0),
             child: Center(
               child: GridView.builder(
+
                 padding: const EdgeInsets.all(2.0),
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2,

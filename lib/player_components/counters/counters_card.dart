@@ -19,55 +19,74 @@ class CountersCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      color: Color(0xff353535),
-      shape: SmoothRectangleBorder(
-        smoothness: 0.6,
-        borderRadius:
-        BorderRadius.circular(60),
-        side: BorderSide(color: Colors.white, width: 2),
-      ),
-      elevation: 0,
-      child: Center(
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: [
-            Transform.rotate(
-              angle: 90 * 3.14159 / 180,
-              child: Icon(
-                Icons.remove,
-                size: aspectRatio * 40,
-                color: Colors.white,
-              ),
-            ),
-            SizedBox(width: aspectRatio * mult),
-            Transform.rotate(
-              angle: 90 * 3.14159 / 180,
-              child: SvgPicture.asset(player.playerCounters[index].counter_icon),
-            ),
-            SizedBox(width: aspectRatio * mult),
-            Transform.rotate(
-              angle: 90 * 3.14159 / 180,
-              child: Center(
+    double screenWidth = MediaQuery.of(context).size.width;
+    double mult = 0.03;
+
+    return SizedBox(
+      child: Card(
+        color: Color(0xff353535),
+        shape: SmoothRectangleBorder(
+          smoothness: 0.6,
+          borderRadius:
+          BorderRadius.circular(40),
+          side: BorderSide(color: Colors.white, width: 1.25),
+        ),
+        elevation: 0,
+        child: Center(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Transform.rotate(
+                angle: 90 * 3.14159 / 180,
                 child: Text(
-                  player.playerCounters[index].counter_amount.toString(),
+                  "–",
                   style: TextStyle(
-                    fontSize: aspectRatio * 70,
                     color: Colors.white,
+                    fontSize: aspectRatio * 70,
+                    fontFamily: 'Roboto',
                   ),
                 ),
               ),
-            ),
-            SizedBox(width: aspectRatio * mult),
-            Transform.rotate(
-              angle: 90 * 3.14159 / 180,
-              child: Icon(
-                Icons.add,
-                size: aspectRatio * 40,
-                color: Colors.white,
+              SizedBox(width: screenWidth * 0.02),
+              Transform.rotate(
+                angle: 90 * 3.14159 / 180,
+                child: SvgPicture.asset(
+                    player.playerCounters[index].counter_icon,
+                  width: screenWidth * 0.07,
+                ),
               ),
-            ),
-          ],
+              SizedBox(width: screenWidth * 0.015),
+              Transform.rotate(
+                angle: 90 * 3.14159 / 180,
+                child: SizedBox(
+                  width: screenWidth * 0.055,
+                  height: screenWidth * 0.09,
+                  child: Center(
+                    child: Text(
+                      player.playerCounters[index].counter_amount.toString(),
+                      style: TextStyle(
+                        fontSize: aspectRatio * 50,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              SizedBox(width: screenWidth * 0.03),
+              Transform.rotate(
+                angle: 90 * 3.14159 / 180,
+                child: Text(
+                  "+",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: aspectRatio * 60,
+                    fontFamily: 'Roboto',
+                  ),
+                ),
+              ),
+              SizedBox(width: screenWidth * 0.01),
+            ],
+          ),
         ),
       ),
     );
