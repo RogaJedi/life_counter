@@ -96,8 +96,8 @@ class _FourPlayersAState extends State<FourPlayersA> {
             padding: const EdgeInsets.all(1.0),
             child: Center(
               child: GridView.builder(
-
                 padding: const EdgeInsets.all(2.0),
+                physics: const NeverScrollableScrollPhysics(),
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2,
                   crossAxisSpacing: 2.0,
@@ -109,7 +109,6 @@ class _FourPlayersAState extends State<FourPlayersA> {
                   final item = items[index];
                   double turn = 0;
                   if (item.id % 2 != 0) turn = 180;
-
                   return Transform.rotate(
                     angle: turn * 3.14159 / 180,
                     child: PlayerInterface(

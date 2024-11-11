@@ -163,7 +163,7 @@ class _CountersDialogState extends State<CountersDialog> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             SizedBox(
-              width: 118.w,
+              width: 105.w,
               height: 56.h,
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
@@ -182,7 +182,7 @@ class _CountersDialogState extends State<CountersDialog> {
             ),
             SizedBox(width: 16.w),
             SizedBox(
-              width: 118.w,
+              width: 105.w,
               height: 56.h,
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(

@@ -38,8 +38,8 @@ class _CountersButtonState extends State<CountersButton> {
             children: [
               SizedBox(height: 5.h),
               SizedBox(
-                height: 45.h,
-                width: 45.h,
+                height: 40.h,
+                width: 40.h,
                 child: widget.icon as Widget,
               ),
               SizedBox(height: 2.h),

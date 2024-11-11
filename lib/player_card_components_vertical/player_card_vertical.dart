@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import '../items.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class PlayerCard extends StatelessWidget {
+class PlayerCardVertical extends StatelessWidget {
   final Item player;
 
-  const PlayerCard({
+  const PlayerCardVertical({
     super.key,
     required this.player,
   });
@@ -19,13 +19,13 @@ class PlayerCard extends StatelessWidget {
     return Card(
       color: Color(colorInt),
       child: Center(
-        child: Column(
+        child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Transform.rotate(
-              angle: 90 * 3.14159 / 180,
+              angle: 180 * 3.14159 / 180,
               child: Text(
-                "-",
+                "+",
                 style: TextStyle(
                   fontSize: 32.sp,
                   color: Colors.white,
@@ -33,7 +33,7 @@ class PlayerCard extends StatelessWidget {
               ),
             ),
             Transform.rotate(
-              angle: 90 * 3.14159 / 180,
+              angle: 180 * 3.14159 / 180,
               child: SizedBox(
                 width: 200.h,
                 height: 200.h,
@@ -49,9 +49,9 @@ class PlayerCard extends StatelessWidget {
               ),
             ),
             Transform.rotate(
-              angle: 90 * 3.14159 / 180,
+              angle: 180 * 3.14159 / 180,
               child: Text(
-                "+",
+                "-",
                 style: TextStyle(
                   fontSize: 32.sp,
                   color: Colors.white,

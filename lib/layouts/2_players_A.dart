@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../player_interface.dart';
+import '../player_interface_vertical.dart';
 import '../items.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -31,13 +31,13 @@ Item d_player2 = Item(
     counterButtonStates: {},
     id: 1);
 
-class TwoPlayersB extends StatefulWidget {
+class TwoPlayersA extends StatefulWidget {
 
   final double aspectRatio;
   final Function navigateToOptionsPage;
   final Function navigateToCountersDialog;
 
-  const TwoPlayersB({super.key,
+  const TwoPlayersA({super.key,
     required this.aspectRatio,
     required this.navigateToOptionsPage,
     required this.navigateToCountersDialog,
@@ -45,10 +45,10 @@ class TwoPlayersB extends StatefulWidget {
   });
 
   @override
-  _TwoPlayersBState createState() => _TwoPlayersBState();
+  _TwoPlayersAState createState() => _TwoPlayersAState();
 }
 
-class _TwoPlayersBState extends State<TwoPlayersB> {
+class _TwoPlayersAState extends State<TwoPlayersA> {
   List<Item> items = [player1, player2];
   List<Item> defaultItems = [d_player1, d_player2];
 
@@ -68,8 +68,9 @@ class _TwoPlayersBState extends State<TwoPlayersB> {
         children: [
           Column(
             children: [
+              //angle: 180 * 3.14159 / 180,
               Expanded(
-                child: PlayerInterface(
+                child: PlayerInterfaceVertical(
                     player: items[0],
                     playersList: items,
                     onCountersTap: () => widget.navigateToCountersDialog(context, items[0], widget.aspectRatio),
@@ -77,18 +78,19 @@ class _TwoPlayersBState extends State<TwoPlayersB> {
                 ),
               ),
               Expanded(
-                child: PlayerInterface(
-                    player: items[1],
-                    playersList: items,
-                    onCountersTap: () => widget.navigateToCountersDialog(context, items[1], widget.aspectRatio),
-                    onColorSelected: changePlayerColor
+                child: Transform.rotate(
+                  angle: 180 * 3.14159 / 180,
+                  child: PlayerInterfaceVertical(
+                      player: items[1],
+                      playersList: items,
+                      onCountersTap: () => widget.navigateToCountersDialog(context, items[1], widget.aspectRatio),
+                      onColorSelected: changePlayerColor
+                  ),
                 ),
               ),
             ],
           ),
-          Positioned(
-            top: 362.25.h,
-            right: 20.w,
+          Center(
             child: SizedBox(
               width: 56.h,
               height: 56.h,

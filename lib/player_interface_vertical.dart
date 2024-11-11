@@ -1,34 +1,35 @@
 import 'package:flutter/material.dart';
-import 'player_card_components/interactive_player_card.dart';
+import 'player_card_components_vertical/interactive_player_card_vertical.dart';
 import 'player_components/counters_and_settings_card.dart';
 import 'items.dart';
 
-class PlayerInterface extends StatefulWidget {
+class PlayerInterfaceVertical extends StatefulWidget {
   final Item player;
   final List<Item> playersList;
   final VoidCallback onCountersTap;
   final Function(Item, List<Item>) onColorSelected;
 
-  const PlayerInterface({super.key,
+  const PlayerInterfaceVertical({
+    Key? key,
     required this.player,
     required this.playersList,
     required this.onCountersTap,
     required this.onColorSelected,
-  });
-
+  }) : super(key: key);
 
   @override
-  _PlayerInterfaceState createState() => _PlayerInterfaceState();
+  _PlayerInterfaceVerticalState createState() => _PlayerInterfaceVerticalState();
 }
 
-class _PlayerInterfaceState extends State<PlayerInterface> {
-  late PageController _pageController;
-  int _currentPage = 1;
+class _PlayerInterfaceVerticalState extends State<PlayerInterfaceVertical> {
+  static const int _initialPage = 1;
+  late final PageController _pageController;
+  int _currentPage = _initialPage;
 
   @override
   void initState() {
     super.initState();
-    _pageController = PageController(initialPage: _currentPage);
+    _pageController = PageController(initialPage: _initialPage);
   }
 
   @override
@@ -38,9 +39,7 @@ class _PlayerInterfaceState extends State<PlayerInterface> {
   }
 
   void _onPageChanged(int page) {
-    setState(() {
-      _currentPage = page;
-    });
+    setState(() => _currentPage = page);
   }
 
   @override
@@ -49,6 +48,7 @@ class _PlayerInterfaceState extends State<PlayerInterface> {
       backgroundColor: Colors.black,
       body: PageView(
         controller: _pageController,
+        scrollDirection: Axis.vertical,
         onPageChanged: _onPageChanged,
         children: [
           CountersAndSettingsCard(
@@ -56,11 +56,9 @@ class _PlayerInterfaceState extends State<PlayerInterface> {
             playersList: widget.playersList,
             onCountersTap: widget.onCountersTap,
             onColorSelected: widget.onColorSelected,
-            turn: 0,
+            turn: 90,
           ),
-          InteractivePlayerCard(
-            player: widget.player,
-          ),
+          InteractivePlayerCardVertical(player: widget.player),
         ],
       ),
     );

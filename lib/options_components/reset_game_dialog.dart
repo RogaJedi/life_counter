@@ -56,7 +56,26 @@ class _ResetGameDialogState extends State<ResetGameDialog> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   SizedBox(
-                    width: 118.w,
+                    width: 105.w,
+                    height: 56.h,
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Color(0xFFFF6666),
+                        shape: SmoothRectangleBorder(
+                          smoothness: 0.6,
+                          borderRadius:
+                          BorderRadius.circular(20),
+                        ),
+                      ),
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                      },
+                      child: SvgPicture.asset('assets/cross.svg'),
+                    ),
+                  ),
+                  SizedBox(width: 16.w),
+                  SizedBox(
+                    width: 105.w,
                     height: 56.h,
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
@@ -76,25 +95,6 @@ class _ResetGameDialogState extends State<ResetGameDialog> {
                         Navigator.of(context).pop();
                       },
                       child: SvgPicture.asset('assets/check.svg'),
-                    ),
-                  ),
-                  SizedBox(width: 16.w),
-                  SizedBox(
-                    width: 118.w,
-                    height: 56.h,
-                    child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Color(0xFFFF6666),
-                        shape: SmoothRectangleBorder(
-                          smoothness: 0.6,
-                          borderRadius:
-                          BorderRadius.circular(20),
-                        ),
-                      ),
-                      onPressed: () {
-                        Navigator.of(context).pop();
-                      },
-                      child: SvgPicture.asset('assets/cross.svg'),
                     ),
                   ),
                 ],

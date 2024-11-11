@@ -4,7 +4,7 @@ import 'package:smooth_corner/smooth_corner.dart';
 import 'option_button.dart';
 import 'reset_game_dialog.dart';
 import 'dice_and_coin_page.dart';
-import '../number_of_players/settings_page.dart';
+import '../number_of_players/selector_page.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class OptionsPage extends StatefulWidget {
@@ -33,15 +33,13 @@ class _OptionsPageState extends State<OptionsPage> {
 
   Color _getButtonColor(int index) {
     List<Color> colors = [
-      Color(0xFF676767),
-      //0xFF5CC3E5
-      Color(0xFF676767),
-      //0xFFC973E5
-      Color(0xFFE573B6),
-      Color(0xFFFF6666),
-      Color(0xFFFFC34D),
-      Color(0xFF676767),
-      //0xFF5AD863
+      const Color(0xFF5CC3E5),
+      const Color(0xFFC973E5),
+      const Color(0xFFE573B6),
+      const Color(0xFFFF6666),
+      const Color(0xFFFFC34D),
+      const Color(0xFF5AD863),
+      //0xFF676767
     ];
     return colors[index % colors.length];
   }
@@ -75,7 +73,7 @@ class _OptionsPageState extends State<OptionsPage> {
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => SettingsPage(
+                builder: (context) => SelectorPage(
                     aspectRatio: widget.aspectRatio,
                     navigateToOptionsPage: widget.navigateToOptionsPage,
                     navigateToCountersDialog: widget.navigateToCountersDialog
@@ -121,7 +119,7 @@ class _OptionsPageState extends State<OptionsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xff1e1e1e),
+      backgroundColor: const Color(0xff1e1e1e),
       body: Column(
         children: [
           SizedBox(height: widget.aspectRatio * 50),
@@ -131,7 +129,7 @@ class _OptionsPageState extends State<OptionsPage> {
               width: 157.w,
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Color(0xff1e1e1e),
+                  backgroundColor: const Color(0xff1e1e1e),
                   shape: SmoothRectangleBorder(
                     smoothness: 0.6,
                     borderRadius:
@@ -163,6 +161,7 @@ class _OptionsPageState extends State<OptionsPage> {
             child: LayoutBuilder(
               builder: (context, constraints) { // Subtracting for spacing
                 return GridView.builder(
+                  physics: const NeverScrollableScrollPhysics(),
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2,
                     mainAxisSpacing: 10,
@@ -170,7 +169,7 @@ class _OptionsPageState extends State<OptionsPage> {
                     childAspectRatio: 2,
                   ),
                   itemCount: 6, // Or however many buttons you have
-                  padding: EdgeInsets.all(10),
+                  padding: const EdgeInsets.all(10),
                   itemBuilder: (context, index) {
                     return OptionsButton(
                       text: _getButtonInfo(index),
@@ -188,7 +187,7 @@ class _OptionsPageState extends State<OptionsPage> {
               width: 353.w,
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Color(0xFFFF6666),
+                  backgroundColor: const Color(0xFFFF6666),
                   shape: SmoothRectangleBorder(
                     smoothness: 0.6,
                     borderRadius:
