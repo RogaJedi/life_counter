@@ -194,6 +194,9 @@ class _SelectorPageState extends State<SelectorPage>{
                     ),
                     onPressed: () {
                       if (chosenLayout != null) {
+                        Navigator.of(context).pop();
+                        Navigator.of(context).pop();
+                        Navigator.of(context).pop();
                         Navigator.push(
                           context,
                           MaterialPageRoute(
