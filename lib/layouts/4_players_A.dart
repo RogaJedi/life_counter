@@ -114,7 +114,7 @@ class _FourPlayersAState extends State<FourPlayersA> {
                     child: PlayerInterface(
                       player: item,
                       playersList: items,
-                      onCountersTap: () => widget.navigateToCountersDialog(context, item, widget.aspectRatio),
+                      onCountersTap: () => widget.navigateToCountersDialog(context, item, widget.aspectRatio, 2, turn.toInt()),
                       onColorSelected: changePlayerColor,
                     ),
                   );

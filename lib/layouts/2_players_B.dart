@@ -72,7 +72,7 @@ class _TwoPlayersBState extends State<TwoPlayersB> {
                 child: PlayerInterface(
                     player: items[0],
                     playersList: items,
-                    onCountersTap: () => widget.navigateToCountersDialog(context, items[0], widget.aspectRatio),
+                    onCountersTap: () => widget.navigateToCountersDialog(context, items[0], widget.aspectRatio, 2, 0),
                     onColorSelected: changePlayerColor
                 ),
               ),
@@ -80,7 +80,7 @@ class _TwoPlayersBState extends State<TwoPlayersB> {
                 child: PlayerInterface(
                     player: items[1],
                     playersList: items,
-                    onCountersTap: () => widget.navigateToCountersDialog(context, items[1], widget.aspectRatio),
+                    onCountersTap: () => widget.navigateToCountersDialog(context, items[1], widget.aspectRatio, 2, 0),
                     onColorSelected: changePlayerColor
                 ),
               ),

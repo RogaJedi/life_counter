@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'items.dart';
 import 'options_components/options_page.dart';
-import 'player_components/counters/counters_dialog.dart';
+import 'player_components/counters_dialog.dart';
+import 'player_components/counters_dialog_horizontal.dart';
 import 'package:wakelock_plus/wakelock_plus.dart';
 import 'layouts/4_players_A.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -65,17 +66,34 @@ class _MyAppState extends State<MyApp> {
   void navigateToCountersDialog(
       BuildContext context,
       Item player,
-      double aspectRatio
+      double aspectRatio,
+      int mode,
+      int turn,
       ) {
     showDialog(
       context: context,
       builder: (BuildContext context) {
-        return CountersDialog(
-          player: player,
-          onSelectedCounters: () {
-            setState(() {});
-          },
-        ); // Your modified widget
+        if (mode == 1) {
+          return Transform.rotate(
+            angle: turn * 3.14159 / 180,
+            child: CountersDialog(
+              player: player,
+              onSelectedCounters: () {
+                setState(() {});
+              },
+            ),
+          );
+        } else {
+          return Transform.rotate(
+            angle: turn * 3.14159 / 180,
+            child: CountersDialogHorizontal(
+              player: player,
+              onSelectedCounters: () {
+                setState(() {});
+              },
+            ),
+          );
+        }
       },
     );
   }

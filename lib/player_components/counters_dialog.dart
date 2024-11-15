@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import '../../items.dart';
-import 'c_items.dart';
-import 'counters_button.dart';
+import '../items.dart';
+import 'counters/c_items.dart';
+import 'counters/counters_button.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:smooth_corner/smooth_corner.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
