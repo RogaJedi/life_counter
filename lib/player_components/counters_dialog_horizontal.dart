@@ -48,52 +48,79 @@ class _CountersDialogHorizontalState extends State<CountersDialogHorizontal> {
       backgroundColor: Color(0xff1e1e1e),
       content: SizedBox(
         width: 328.w,
-        height: 547.h,
+        height: 420.h,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                SizedBox(
-                  width: 56.w,
-                  height: 241.5.h,
-                  child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Color(0xFFFF6666),
-                      shape: SmoothRectangleBorder(
-                        smoothness: 0.6,
-                        borderRadius:
-                        BorderRadius.circular(20),
+                Stack(
+                  alignment: Alignment.center, // This will center the icon on the button
+                  children: [
+                    SizedBox(
+                      width: 50.w,
+                      height: 190.h,
+                      child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Color(0xFFFF6666),
+                          shape: SmoothRectangleBorder(
+                            smoothness: 0.6,
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                          padding: EdgeInsets.zero, // Remove default padding
+                        ),
+                        onPressed: () {
+                          Navigator.of(context).pop();
+                        },
+                        child: SizedBox.shrink(), // Use SizedBox.shrink() instead of empty Text
                       ),
                     ),
-                    onPressed: () {
-                      Navigator.of(context).pop();
-                    },
-                    child: SvgPicture.asset('assets/cross.svg'),
-                  ),
+                    SizedBox(
+                      width: 24.w, // Adjust this value to change icon size
+                      height: 24.h, // Adjust this value to change icon size
+                      child: SvgPicture.asset(
+                        'assets/cross.svg',
+                        fit: BoxFit.contain, // This will scale the SVG to fit within the SizedBox
+                      ),
+                    ),
+                  ],
                 ),
                 SizedBox(height: 17.h,),
-                SizedBox(
-                  width: 56.w,
-                  height: 241.5.h,
-                  child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Color(0xFF67E55C),
-                      shape: SmoothRectangleBorder(
-                        smoothness: 0.6,
-                        borderRadius:
-                        BorderRadius.circular(20),
+                Stack(
+                  alignment: Alignment.center,
+                  children: [
+                    SizedBox(
+                      width: 50.w,
+                      height: 190.h,
+                      child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Color(0xFF67E55C),
+                          shape: SmoothRectangleBorder(
+                            smoothness: 0.6,
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                          padding: EdgeInsets.zero, // Remove default padding
+                        ),
+                        onPressed: () {
+                          widget.onSelectedCounters();
+                          Navigator.of(context).pop();
+                        },
+                        child: SizedBox.shrink(), // Use SizedBox.shrink() instead of empty child
                       ),
                     ),
-                    onPressed: () {
-                      widget.onSelectedCounters();
-                      Navigator.of(context).pop();
-                    },
-                    child: Transform.rotate(
+                    SizedBox(
+                      width: 24.w, // Adjust this value to change icon size
+                      height: 24.h, // Adjust this value to change icon size
+                      child: Transform.rotate(
                         angle: 90 * 3.14159 / 180,
-                        child: SvgPicture.asset('assets/check.svg')),
-                  ),
+                        child: SvgPicture.asset(
+                          'assets/check.svg',
+                          fit: BoxFit.contain, // This will scale the SVG to fit within the SizedBox
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ],
             ),
@@ -101,7 +128,8 @@ class _CountersDialogHorizontalState extends State<CountersDialogHorizontal> {
 
             SizedBox(
               width: 160.w,
-              height: 480.h,
+              height: 410.h,
+
               child: Card(
                 color: Color(0xff353535),
                 child: GridView.count(
@@ -230,6 +258,7 @@ class _CountersDialogHorizontalState extends State<CountersDialogHorizontal> {
 
             Column(
               children: [
+                SizedBox(height: 10.h,),
                 RotatedBox(
                   quarterTurns: 1,
                   child: Text(

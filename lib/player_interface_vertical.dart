@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'player_card_components_vertical/interactive_player_card_vertical.dart';
+import 'player_card_components/interactive_player_card.dart';
 import 'player_components/counters_and_settings_card.dart';
+import 'player_components/pick_color_card.dart';
 import 'items.dart';
 
 class PlayerInterfaceVertical extends StatefulWidget {
@@ -22,14 +23,14 @@ class PlayerInterfaceVertical extends StatefulWidget {
 }
 
 class _PlayerInterfaceVerticalState extends State<PlayerInterfaceVertical> {
-  static const int _initialPage = 1;
-  late final PageController _pageController;
-  int _currentPage = _initialPage;
+  late PageController _pageController;
+  int _currentPage = 1;
+  bool _showPickColorCard = false;
 
   @override
   void initState() {
     super.initState();
-    _pageController = PageController(initialPage: _initialPage);
+    _pageController = PageController(initialPage: _currentPage);
   }
 
   @override
@@ -39,26 +40,50 @@ class _PlayerInterfaceVerticalState extends State<PlayerInterfaceVertical> {
   }
 
   void _onPageChanged(int page) {
-    setState(() => _currentPage = page);
+    setState(() {
+      _currentPage = page;
+    });
+  }
+
+  void _togglePickColorCard() {
+    setState(() {
+      _showPickColorCard = !_showPickColorCard;
+    });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
-      body: PageView(
-        controller: _pageController,
-        scrollDirection: Axis.vertical,
-        onPageChanged: _onPageChanged,
+      body: Stack(
         children: [
-          CountersAndSettingsCard(
-            player: widget.player,
-            playersList: widget.playersList,
-            onCountersTap: widget.onCountersTap,
-            onColorSelected: widget.onColorSelected,
-            turn: 90,
+          PageView(
+            controller: _pageController,
+            onPageChanged: _onPageChanged,
+            scrollDirection: Axis.vertical,
+            children: [
+              CountersAndSettingsCard(
+                player: widget.player,
+                playersList: widget.playersList,
+                onCountersTap: widget.onCountersTap,
+                onColorSelected: widget.onColorSelected,
+                turn: 0,
+                onPickColorTap: _togglePickColorCard,
+              ),
+              InteractivePlayerCard(
+                player: widget.player,
+              ),
+            ],
           ),
-          InteractivePlayerCardVertical(player: widget.player),
+          if (_showPickColorCard)
+            PickColorCard(
+              player: widget.player,
+              playersList: widget.playersList,
+              onCountersTap: widget.onCountersTap,
+              onColorSelected: widget.onColorSelected,
+              turn: 0,
+              onClose: _togglePickColorCard,
+            ),
         ],
       ),
     );

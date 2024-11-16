@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'player_card_components/interactive_player_card.dart';
 import 'player_components/counters_and_settings_card.dart';
+import 'player_components/pick_color_card.dart';
 import 'items.dart';
 
 class PlayerInterface extends StatefulWidget {
@@ -9,13 +10,13 @@ class PlayerInterface extends StatefulWidget {
   final VoidCallback onCountersTap;
   final Function(Item, List<Item>) onColorSelected;
 
-  const PlayerInterface({super.key,
+  const PlayerInterface({
+    Key? key,
     required this.player,
     required this.playersList,
     required this.onCountersTap,
     required this.onColorSelected,
-  });
-
+  }) : super(key: key);
 
   @override
   _PlayerInterfaceState createState() => _PlayerInterfaceState();
@@ -24,6 +25,7 @@ class PlayerInterface extends StatefulWidget {
 class _PlayerInterfaceState extends State<PlayerInterface> {
   late PageController _pageController;
   int _currentPage = 1;
+  bool _showPickColorCard = false;
 
   @override
   void initState() {
@@ -43,24 +45,44 @@ class _PlayerInterfaceState extends State<PlayerInterface> {
     });
   }
 
+  void _togglePickColorCard() {
+    setState(() {
+      _showPickColorCard = !_showPickColorCard;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
-      body: PageView(
-        controller: _pageController,
-        onPageChanged: _onPageChanged,
+      body: Stack(
         children: [
-          CountersAndSettingsCard(
-            player: widget.player,
-            playersList: widget.playersList,
-            onCountersTap: widget.onCountersTap,
-            onColorSelected: widget.onColorSelected,
-            turn: 0,
+          PageView(
+            controller: _pageController,
+            onPageChanged: _onPageChanged,
+            children: [
+              CountersAndSettingsCard(
+                player: widget.player,
+                playersList: widget.playersList,
+                onCountersTap: widget.onCountersTap,
+                onColorSelected: widget.onColorSelected,
+                turn: 0,
+                onPickColorTap: _togglePickColorCard,
+              ),
+              InteractivePlayerCard(
+                player: widget.player,
+              ),
+            ],
           ),
-          InteractivePlayerCard(
-            player: widget.player,
-          ),
+          if (_showPickColorCard)
+            PickColorCard(
+              player: widget.player,
+              playersList: widget.playersList,
+              onCountersTap: widget.onCountersTap,
+              onColorSelected: widget.onColorSelected,
+              turn: 0,
+              onClose: _togglePickColorCard,
+            ),
         ],
       ),
     );

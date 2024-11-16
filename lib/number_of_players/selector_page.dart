@@ -28,7 +28,7 @@ class SelectorPage extends StatefulWidget {
 
 class _SelectorPageState extends State<SelectorPage>{
 
-  late Widget chosenLayout;
+  late Function() createChosenLayout;
 
   Map<String, List<Color>> layoutButtonsColors = {
     "L2A": [Color(0xFF1E1E1E), Color(0xFF676767)],
@@ -36,7 +36,7 @@ class _SelectorPageState extends State<SelectorPage>{
     "L4A": [Color(0xFF1E1E1E), Color(0xFF676767)],
   };
 
-  void onSelectLayout(String layout, Widget theLayout){
+  void onSelectLayout(String layout, Function() createLayout) {
     setState(() {
       layoutButtonsColors = {
         "L2A": [Color(0xFF1E1E1E), Color(0xFF676767)],
@@ -44,7 +44,7 @@ class _SelectorPageState extends State<SelectorPage>{
         "L4A": [Color(0xFF1E1E1E), Color(0xFF676767)],
       };
       layoutButtonsColors[layout] = [Color(0xFFFFC34D), Color(0xFFFFC34D)];
-      chosenLayout = theLayout;
+      createChosenLayout = createLayout;
     });
   }
 
@@ -76,24 +76,12 @@ class _SelectorPageState extends State<SelectorPage>{
                     GestureDetector(
                       onTap: () => onSelectLayout(
                         "L2A",
-                        TwoPlayersA(
+                            () => TwoPlayersA(
                           aspectRatio: widget.aspectRatio,
                           navigateToOptionsPage: widget.navigateToOptionsPage,
                           navigateToCountersDialog: widget.navigateToCountersDialog
                         ),
                       ),
-                      /*
-                      () => Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => TwoPlayersA(
-                              aspectRatio: widget.aspectRatio,
-                              navigateToOptionsPage: widget.navigateToOptionsPage,
-                              navigateToCountersDialog: widget.navigateToCountersDialog
-                          ),
-                        ),
-                      ),
-                       */
                       child: L2A(currentColors: layoutButtonsColors["L2A"] ?? []),
                     ),
 
@@ -102,24 +90,12 @@ class _SelectorPageState extends State<SelectorPage>{
                     GestureDetector(
                       onTap: () => onSelectLayout(
                         "L2B",
-                        TwoPlayersB(
+                            () => TwoPlayersB(
                             aspectRatio: widget.aspectRatio,
                             navigateToOptionsPage: widget.navigateToOptionsPage,
                             navigateToCountersDialog: widget.navigateToCountersDialog
                         ),
                       ),
-                      /*
-                      () => Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => TwoPlayersB(
-                              aspectRatio: widget.aspectRatio,
-                              navigateToOptionsPage: widget.navigateToOptionsPage,
-                              navigateToCountersDialog: widget.navigateToCountersDialog
-                          ),
-                        ),
-                      ),
-                       */
                       child: L2B(currentColors: layoutButtonsColors["L2B"] ?? []),
                     ),
                   ],
@@ -134,24 +110,12 @@ class _SelectorPageState extends State<SelectorPage>{
                     GestureDetector(
                       onTap: () => onSelectLayout(
                         "L4A",
-                        FourPlayersA(
+                            () => FourPlayersA(
                             aspectRatio: widget.aspectRatio,
                             navigateToOptionsPage: widget.navigateToOptionsPage,
                             navigateToCountersDialog: widget.navigateToCountersDialog
                         ),
                       ),
-                      /*
-                      () => Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => FourPlayersA(
-                              aspectRatio: widget.aspectRatio,
-                              navigateToOptionsPage: widget.navigateToOptionsPage,
-                              navigateToCountersDialog: widget.navigateToCountersDialog
-                          ),
-                        ),
-                      ),
-                       */
                       child: L4A(currentColors: layoutButtonsColors["L4A"] ?? []),
                     ),
                   ],
@@ -193,18 +157,15 @@ class _SelectorPageState extends State<SelectorPage>{
                       ),
                     ),
                     onPressed: () {
-                      if (chosenLayout != null) {
-                        Navigator.of(context).pop();
-                        Navigator.of(context).pop();
-                        Navigator.of(context).pop();
-                        Navigator.push(
+                      if (createChosenLayout != null) {
+                        Navigator.of(context).popUntil((route) => route.isFirst);
+                        Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => chosenLayout,
+                            builder: (context) => createChosenLayout(),
                           ),
                         );
                       }
-                      // If chosenLayout is null, the button will do nothing
                     },
                     child: SvgPicture.asset('assets/check.svg'),
                   ),

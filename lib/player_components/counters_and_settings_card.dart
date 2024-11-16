@@ -9,6 +9,7 @@ class CountersAndSettingsCard extends StatefulWidget {
   final Item player;
   final List<Item> playersList;
   final VoidCallback onCountersTap;
+  final VoidCallback onPickColorTap;
   final Function(Item, List<Item>) onColorSelected;
   final int turn;
 
@@ -17,6 +18,7 @@ class CountersAndSettingsCard extends StatefulWidget {
     required this.player,
     required this.playersList,
     required this.onCountersTap,
+    required this.onPickColorTap,
     required this.onColorSelected,
     required this.turn,
   });
@@ -126,30 +128,7 @@ class _CountersAndSettingsCardState extends State<CountersAndSettingsCard>{
                           child: Column(
                             children: [
                               IconButton(
-                                onPressed: () {
-                                  showDialog(
-                                    context: context,
-                                    builder: (BuildContext context) {
-                                      return StatefulBuilder(
-                                        builder: (context, setState) => PickColorDialog(
-                                          currentColor: currentColor,
-                                          onChanged: (newColor) => setState(() => changeColor(newColor)),
-                                          onPressed: () {
-                                            Item newItem = Item(
-                                              colorHex: colorToHex(currentColor),
-                                              counter: 40,
-                                              playerCounters: [],
-                                              counterButtonStates: {},
-                                              id: widget.player.id,
-                                            );
-                                            widget.onColorSelected(newItem, widget.playersList);
-                                            Navigator.of(context).pop();
-                                          },
-                                        ),
-                                      );
-                                    },
-                                  );
-                                },
+                                onPressed: widget.onPickColorTap,
                                 icon: SvgPicture.asset(
                                   'assets/white.svg',
                                   height: 70.h,
