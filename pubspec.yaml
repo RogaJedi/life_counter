@@ -81,6 +81,7 @@ flutter:
     - assets/check.svg
     - assets/cross.svg
     - assets/add_counter.svg
+    - assets/back.svg
 
   # To add assets to your application, add an assets section, like this:
   # assets:

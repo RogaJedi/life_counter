@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'player_card_components/interactive_player_card.dart';
 import 'player_components/counters_and_settings_card.dart';
-import 'player_components/pick_color_card.dart';
+import 'player_components/color_picker/pick_color_card.dart';
 import 'items.dart';
 
 class PlayerInterfaceVertical extends StatefulWidget {
@@ -60,7 +60,6 @@ class _PlayerInterfaceVerticalState extends State<PlayerInterfaceVertical> {
           PageView(
             controller: _pageController,
             onPageChanged: _onPageChanged,
-            scrollDirection: Axis.vertical,
             children: [
               CountersAndSettingsCard(
                 player: widget.player,

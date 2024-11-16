@@ -70,16 +70,19 @@ class _TwoPlayersAState extends State<TwoPlayersA> {
             children: [
               //angle: 180 * 3.14159 / 180,
               Expanded(
-                child: PlayerInterfaceVertical(
-                    player: items[0],
-                    playersList: items,
-                    onCountersTap: () => widget.navigateToCountersDialog(context, items[0], widget.aspectRatio, 1, 180),
-                    onColorSelected: changePlayerColor
+                child: RotatedBox(
+                  quarterTurns: 1,
+                  child: PlayerInterfaceVertical(
+                      player: items[0],
+                      playersList: items,
+                      onCountersTap: () => widget.navigateToCountersDialog(context, items[0], widget.aspectRatio, 1, 180),
+                      onColorSelected: changePlayerColor
+                  ),
                 ),
               ),
               Expanded(
-                child: Transform.rotate(
-                  angle: 180 * 3.14159 / 180,
+                child: RotatedBox(
+                  quarterTurns: 3,
                   child: PlayerInterfaceVertical(
                       player: items[1],
                       playersList: items,

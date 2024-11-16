@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import '../items.dart';
+import '../../items.dart';
 import 'pick_color_dialog.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -50,6 +50,113 @@ class _PickColorCardState extends State<PickColorCard>{
     return hexColor;
   }
 
+
+
+
+  List<Widget> presetColors = [
+
+    Container(
+      height: 80.h,
+      width: 50.w,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10),
+        border: Border.all(color: Color(0xFFE57373), width: 2),
+      ),
+      child: Center(
+        child: Container(
+          height: 70.h,
+          width: 40.w,
+          decoration: BoxDecoration(
+            color: Color(0xFFE57373),
+            borderRadius: BorderRadius.circular(10),
+          ),
+        ),
+      ),
+    ),
+
+    Container(
+      height: 80.h,
+      width: 50.w,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10),
+        border: Border.all(color: Color(0xFF73BFE5), width: 2),
+      ),
+      child: Center(
+        child: Container(
+          height: 70.h,
+          width: 40.w,
+          decoration: BoxDecoration(
+            color: Color(0xFF73BFE5),
+            borderRadius: BorderRadius.circular(10),
+          ),
+        ),
+      ),
+    ),
+
+    Container(
+      height: 80.h,
+      width: 50.w,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10),
+        border: Border.all(color: Color(0xFFE59973), width: 2),
+      ),
+      child: Center(
+        child: Container(
+          height: 70.h,
+          width: 40.w,
+          decoration: BoxDecoration(
+            color: Color(0xFFE59973),
+            borderRadius: BorderRadius.circular(10),
+          ),
+        ),
+      ),
+    ),
+
+    Container(
+      height: 80.h,
+      width: 50.w,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10),
+        border: Border.all(color: Color(0xFF7399E5), width: 2),
+      ),
+      child: Center(
+        child: Container(
+          height: 70.h,
+          width: 40.w,
+          decoration: BoxDecoration(
+            color: Color(0xFF7399E5),
+            borderRadius: BorderRadius.circular(10),
+          ),
+        ),
+      ),
+    ),
+
+    Container(
+      height: 80.h,
+      width: 50.w,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10),
+        border: Border.all(color: Color(0xFFFFC34C), width: 2),
+      ),
+      child: Center(
+        child: Container(
+          height: 70.h,
+          width: 40.w,
+          decoration: BoxDecoration(
+            color: Color(0xFFFFC34C),
+            borderRadius: BorderRadius.circular(10),
+          ),
+        ),
+      ),
+    ),
+
+
+  ];
+
+
+
+
+
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(
@@ -72,9 +179,8 @@ class _PickColorCardState extends State<PickColorCard>{
                             IconButton(
                               onPressed: widget.onClose,
                               icon: SvgPicture.asset(
-                                'assets/white.svg',
+                                'assets/back.svg',
                                 height: 70.h,
-                                color: currentColor,
                               ),
                             ),
                             Text(
@@ -92,14 +198,7 @@ class _PickColorCardState extends State<PickColorCard>{
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Container(
-                        height: 80.h,
-                        width: 50.w,
-                        decoration: BoxDecoration(
-                          color: Color(0xFFE57373),
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                      ),
+                      presetColors[0],
                       SizedBox(width: 10.w,),
                       Container(
                         height: 80.h,
@@ -116,46 +215,18 @@ class _PickColorCardState extends State<PickColorCard>{
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Container(
-                        height: 80.h,
-                        width: 50.w,
-                        decoration: BoxDecoration(
-                          color: Color(0xFF73BFE5),
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                      ),
+                      presetColors[1],
                       SizedBox(width: 10.w,),
-                      Container(
-                        height: 80.h,
-                        width: 50.w,
-                        decoration: BoxDecoration(
-                          color: Color(0xFFE59973),
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                      ),
+                      presetColors[2]
                     ],
                   ),
                   SizedBox(height: 10.h,),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Container(
-                        height: 80.h,
-                        width: 50.w,
-                        decoration: BoxDecoration(
-                          color: Color(0xFF7399E5),
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                      ),
+                      presetColors[3],
                       SizedBox(width: 10.w,),
-                      Container(
-                        height: 80.h,
-                        width: 50.w,
-                        decoration: BoxDecoration(
-                          color: Color(0xFFFFC34C),
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                      ),
+                      presetColors[4]
                     ],
                   ),
                 ],

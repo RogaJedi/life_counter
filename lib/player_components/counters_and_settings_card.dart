@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import '../items.dart';
 import 'counters/interactive_counters_card.dart';
-import 'pick_color_dialog.dart';
+import 'color_picker/pick_color_dialog.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CountersAndSettingsCard extends StatefulWidget {
