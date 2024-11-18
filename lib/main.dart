@@ -29,16 +29,6 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
 
-
-  void changePlayerColor(Item newItem, List<Item> items) {
-    String newColor = newItem.colorHex;
-    int playerId = newItem.id;
-    setState(() {
-      items[playerId].colorHex = newColor;
-    });
-  }
-
-
   void navigateToOptionsPage(
       BuildContext context,
       List<Item> items,

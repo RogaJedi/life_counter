@@ -7,16 +7,14 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CountersAndSettingsCard extends StatefulWidget {
   final Item player;
-  final List<Item> playersList;
   final VoidCallback onCountersTap;
   final VoidCallback onPickColorTap;
-  final Function(Item, List<Item>) onColorSelected;
+  final Function(int, Color) onColorSelected;
   final int turn;
 
   const CountersAndSettingsCard({
     super.key,
     required this.player,
-    required this.playersList,
     required this.onCountersTap,
     required this.onPickColorTap,
     required this.onColorSelected,
@@ -36,10 +34,10 @@ class _CountersAndSettingsCardState extends State<CountersAndSettingsCard>{
   @override
   void initState() {
     super.initState();
-    String hex = widget.player.colorHex.replaceAll('0x', '');
-    int colorInt = int.parse(hex, radix: 16);
-    currentColor = Color(colorInt);
+    currentColor = widget.player.colorHex;
   }
+
+
 
   void changeColor(HSVColor color) {
     setState(() => currentColor = color.toColor());

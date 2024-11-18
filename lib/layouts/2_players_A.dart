@@ -5,28 +5,28 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 Item player1 = Item(
     counter: 40,
-    colorHex: "0xFF67E55C",
+    colorHex: Color(0xFF67E55C),
     playerCounters: [],
     counterButtonStates: {},
     id: 0);
 
 Item d_player1 = Item(
     counter: 40,
-    colorHex: "0xFF67E55C",
+    colorHex: Color(0xFF67E55C),
     playerCounters: [],
     counterButtonStates: {},
     id: 0);
 
 Item player2 = Item(
     counter: 40,
-    colorHex: "0xFFFFC34D",
+    colorHex: Color(0xFFFFC34D),
     playerCounters: [],
     counterButtonStates: {},
     id: 1);
 
 Item d_player2 = Item(
     counter: 40,
-    colorHex: "0xFFFFC34D",
+    colorHex: Color(0xFFFFC34D),
     playerCounters: [],
     counterButtonStates: {},
     id: 1);
@@ -52,9 +52,8 @@ class _TwoPlayersAState extends State<TwoPlayersA> {
   List<Item> items = [player1, player2];
   List<Item> defaultItems = [d_player1, d_player2];
 
-  void changePlayerColor(Item newItem, List<Item> items) {
-    String newColor = newItem.colorHex;
-    int playerId = newItem.id;
+
+  void changePlayerColor(int playerId, Color newColor) {
     setState(() {
       items[playerId].colorHex = newColor;
     });
@@ -74,7 +73,6 @@ class _TwoPlayersAState extends State<TwoPlayersA> {
                   quarterTurns: 1,
                   child: PlayerInterfaceVertical(
                       player: items[0],
-                      playersList: items,
                       onCountersTap: () => widget.navigateToCountersDialog(context, items[0], widget.aspectRatio, 1, 180),
                       onColorSelected: changePlayerColor
                   ),
@@ -85,7 +83,6 @@ class _TwoPlayersAState extends State<TwoPlayersA> {
                   quarterTurns: 3,
                   child: PlayerInterfaceVertical(
                       player: items[1],
-                      playersList: items,
                       onCountersTap: () => widget.navigateToCountersDialog(context, items[1], widget.aspectRatio, 1, 0),
                       onColorSelected: changePlayerColor
                   ),

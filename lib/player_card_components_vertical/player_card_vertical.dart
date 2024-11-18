@@ -13,11 +13,8 @@ class PlayerCardVertical extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    String hex = player.colorHex.replaceAll('0x', '');
-    int colorInt = int.parse(hex, radix: 16);
-
     return Card(
-      color: Color(colorInt),
+      color: player.colorHex,
       child: Center(
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,

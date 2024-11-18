@@ -6,14 +6,12 @@ import 'items.dart';
 
 class PlayerInterfaceVertical extends StatefulWidget {
   final Item player;
-  final List<Item> playersList;
   final VoidCallback onCountersTap;
-  final Function(Item, List<Item>) onColorSelected;
+  final Function(int, Color) onColorSelected;
 
   const PlayerInterfaceVertical({
     Key? key,
     required this.player,
-    required this.playersList,
     required this.onCountersTap,
     required this.onColorSelected,
   }) : super(key: key);
@@ -63,7 +61,6 @@ class _PlayerInterfaceVerticalState extends State<PlayerInterfaceVertical> {
             children: [
               CountersAndSettingsCard(
                 player: widget.player,
-                playersList: widget.playersList,
                 onCountersTap: widget.onCountersTap,
                 onColorSelected: widget.onColorSelected,
                 turn: 0,
@@ -77,7 +74,6 @@ class _PlayerInterfaceVerticalState extends State<PlayerInterfaceVertical> {
           if (_showPickColorCard)
             PickColorCard(
               player: widget.player,
-              playersList: widget.playersList,
               onCountersTap: widget.onCountersTap,
               onColorSelected: widget.onColorSelected,
               turn: 0,

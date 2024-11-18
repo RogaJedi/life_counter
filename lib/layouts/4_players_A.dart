@@ -5,56 +5,56 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 Item player1 = Item(
     counter: 40,
-    colorHex: "0xFFFF6666",
+    colorHex: Color(0xFFFF6666),
     playerCounters: [],
     counterButtonStates: {},
     id: 0);
 
 Item d_player1 = Item(
     counter: 40,
-    colorHex: "0xFFFF6666",
+    colorHex: Color(0xFFFF6666),
     playerCounters: [],
     counterButtonStates: {},
     id: 0);
 
 Item player2 = Item(
     counter: 40,
-    colorHex: "0xFF67E55C",
+    colorHex: Color(0xFF67E55C),
     playerCounters: [],
     counterButtonStates: {},
     id: 1);
 
 Item d_player2 = Item(
     counter: 40,
-    colorHex: "0xFF67E55C",
+    colorHex: Color(0xFF67E55C),
     playerCounters: [],
     counterButtonStates: {},
     id: 1);
 
 Item player3 = Item(
     counter: 40,
-    colorHex: "0xFF5CC3E5",
+    colorHex: Color(0xFF5CC3E5),
     playerCounters: [],
     counterButtonStates: {},
     id: 2);
 
 Item d_player3 = Item(
     counter: 40,
-    colorHex: "0xFF5CC3E5",
+    colorHex: Color(0xFF5CC3E5),
     playerCounters: [],
     counterButtonStates: {},
     id: 2);
 
 Item player4 = Item(
     counter: 40,
-    colorHex: "0xFFFFC34D",
+    colorHex: Color(0xFFFFC34D),
     playerCounters: [],
     counterButtonStates: {},
     id: 3);
 
 Item d_player4 = Item(
     counter: 40,
-    colorHex: "0xFFFFC34D",
+    colorHex: Color(0xFFFFC34D),
     playerCounters: [],
     counterButtonStates: {},
     id: 3);
@@ -78,9 +78,7 @@ class _FourPlayersAState extends State<FourPlayersA> {
   List<Item> items = [player1, player2, player3, player4];
   List<Item> defaultItems = [d_player1, d_player2, d_player3, d_player4];
 
-  void changePlayerColor(Item newItem, List<Item> items) {
-    String newColor = newItem.colorHex;
-    int playerId = newItem.id;
+  void changePlayerColor(int playerId, Color newColor) {
     setState(() {
       items[playerId].colorHex = newColor;
     });
@@ -113,7 +111,6 @@ class _FourPlayersAState extends State<FourPlayersA> {
                     angle: turn * 3.14159 / 180,
                     child: PlayerInterface(
                       player: item,
-                      playersList: items,
                       onCountersTap: () => widget.navigateToCountersDialog(context, item, widget.aspectRatio, 2, turn.toInt()),
                       onColorSelected: changePlayerColor,
                     ),

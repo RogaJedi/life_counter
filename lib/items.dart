@@ -1,7 +1,8 @@
 import 'player_components/counters/c_items.dart';
+import 'package:flutter/material.dart';
 
 class Item {
-  String colorHex;
+  Color colorHex;
   int counter;
   List <C_Item> playerCounters;
   Map<String, bool> counterButtonStates = {};
