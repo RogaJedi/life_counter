@@ -4,6 +4,8 @@ import '../../items.dart';
 import 'pick_color_dialog.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'template_color.dart';
+import 'package:smooth_corner/smooth_corner.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class PickColorCard extends StatefulWidget {
   final Item player;
@@ -44,10 +46,23 @@ class _PickColorCardState extends State<PickColorCard>{
     setState(() => currentColor = color.toColor());
   }
 
-  String colorToHex(Color color) {
-    String hexRaw = '#${color.value.toRadixString(16).padLeft(8, '0')}';
-    String hexColor = hexRaw.replaceAll('#ff', '0xff');
-    return hexColor;
+  void onCustomColorTap() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return StatefulBuilder(
+          builder: (context, setState) => PickColorDialog(
+            currentColor: currentColor,
+            onChanged: (newColor) => setState(() => changeColor(newColor)),
+            onPressed: () {
+              Color selectedColor = currentColor;
+              widget.onColorSelected(widget.player.id, selectedColor);
+              Navigator.of(context).pop();
+            },
+          ),
+        );
+      },
+    );
   }
 
   late int lastSelectedColorId = -1;
@@ -66,42 +81,45 @@ class _PickColorCardState extends State<PickColorCard>{
   }
 
   List<List<Color>> presetColors = [
+    [Color(0xFF353535), Color(0xFFFFFFFF)],
+
     [Color(0xFF353535), Color(0xFF73E5E5)],
-
-    [Color(0xFF353535), Color(0xFFE57373)],
-
-    [Color(0xFF353535), Color(0xFF73BFE5)],
-
-    [Color(0xFF353535), Color(0xFFE59973)],
 
     [Color(0xFF353535), Color(0xFF7399E5)],
 
-    [Color(0xFF353535), Color(0xFFFFC34C)],
+    [Color(0xFF353535), Color(0xFFE57373)],
+
+    [Color(0xFF353535), Color(0xFF7399E5)],
+
+    [Color(0xFF353535), Color(0xFFE59973)],
 
     [Color(0xFF353535), Color(0xFF7373E5)],
 
-    [Color(0xFF353535), Color(0xFFE5E573)],
+    [Color(0xFF353535), Color(0xFFFFC34C)],
 
     [Color(0xFF353535), Color(0xFF9973E5)],
 
-    [Color(0xFF353535), Color(0xFFBFE573)],
+    [Color(0xFF353535), Color(0xFFE5E573)],
 
     [Color(0xFF353535), Color(0xFFBF73E5)],
 
-    [Color(0xFF353535), Color(0xFF99E573)],
+    [Color(0xFF353535), Color(0xFFBFE573)],
 
     [Color(0xFF353535), Color(0xFFE573E5)],
 
-    [Color(0xFF353535), Color(0xFF73E573)],
+    [Color(0xFF353535), Color(0xFF99E573)],
 
     [Color(0xFF353535), Color(0xFFE573BF)],
 
-    [Color(0xFF353535), Color(0xFF73E599)],
+    [Color(0xFF353535), Color(0xFF73E573)],
 
     [Color(0xFF353535), Color(0xFFE57399)],
 
-    [Color(0xFF353535), Color(0xFF73E5BF)],
+    [Color(0xFF353535), Color(0xFF73E599)],
 
+    [Color(0xFF353535), Color(0xFFB3B3B3)],
+
+    [Color(0xFF353535), Color(0xFF73E5BF)],
   ];
 
 
@@ -144,48 +162,58 @@ class _PickColorCardState extends State<PickColorCard>{
                           ],
                         ),
                       ),
-                      Container(
-                        height: 90.h,
-                        width: 90.w,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          border: Border.all(color: const Color(0xFF353535), width: 2),
-                        ),
-                        child: Center(
-                          child: Container(
-                            height: 80.h,
-                            width: 80.w,
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                            child: const RotatedBox(quarterTurns: 1, child: Icon(Icons.edit)),
-                          ),
-                        ),
-                      ),
                     ],
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       GestureDetector(
-                        onTap: () => onSelectColor(0),
+                        onTap: () => onSelectColor(1),
                         child: TemplateColor(
-                            borderColor: presetColors[0][0],
-                            mainColor: presetColors[0][1],
+                            borderColor: presetColors[1][0],
+                            mainColor: presetColors[1][1],
                         ),
                       ),
                       SizedBox(width: 10.w,),
                       GestureDetector(
-                        onTap: () => onSelectColor(1),
-                        child: TemplateColor(
-                          borderColor: presetColors[1][0],
-                          mainColor: presetColors[1][1],
+                        onTap: onCustomColorTap,
+                        child: Container(
+                          height: 90.h,
+                          width: 60.w,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            border: Border.all(color: const Color(0xFF353535), width: 2),
+                          ),
+                          child: Center(
+                            child: Container(
+                              height: 80.h,
+                              width: 50.w,
+                              decoration: ShapeDecoration(
+                                shape: SmoothRectangleBorder(
+                                  borderRadius: BorderRadius.circular(10),
+                                  smoothness: 0.6,
+                                ),
+                                gradient: const LinearGradient(
+                                  colors: [Color(0xFFDF8DFF), Color(0xFF2D57FF)],
+                                  begin: Alignment.topLeft,
+                                  end: Alignment.bottomRight,
+                                ),
+                              ),
+                              child: RotatedBox(
+                                  quarterTurns: 1,
+                                  child: Center(
+                                    child: SizedBox(
+                                        height: 30.h,
+                                        width: 30.w,
+                                        child: SvgPicture.asset('assets/edit_icon.svg')),
+                                  )),
+                            ),
+                          ),
                         ),
                       ),
                     ],
                   ),
-                  SizedBox(height: 10.h,),
+                  SizedBox(height: 10.h),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -206,7 +234,7 @@ class _PickColorCardState extends State<PickColorCard>{
                       ),
                     ],
                   ),
-                  SizedBox(height: 10.h,),
+                  SizedBox(height: 10.h),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -227,6 +255,7 @@ class _PickColorCardState extends State<PickColorCard>{
                       ),
                     ],
                   ),
+                  SizedBox(height: 10.h),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -247,6 +276,7 @@ class _PickColorCardState extends State<PickColorCard>{
                       ),
                     ],
                   ),
+                  SizedBox(height: 10.h),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -267,6 +297,7 @@ class _PickColorCardState extends State<PickColorCard>{
                       ),
                     ],
                   ),
+                  SizedBox(height: 10.h),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -287,6 +318,7 @@ class _PickColorCardState extends State<PickColorCard>{
                       ),
                     ],
                   ),
+                  SizedBox(height: 10.h),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -307,6 +339,7 @@ class _PickColorCardState extends State<PickColorCard>{
                       ),
                     ],
                   ),
+                  SizedBox(height: 10.h),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -327,6 +360,7 @@ class _PickColorCardState extends State<PickColorCard>{
                       ),
                     ],
                   ),
+                  SizedBox(height: 10.h),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -343,6 +377,26 @@ class _PickColorCardState extends State<PickColorCard>{
                         child: TemplateColor(
                           borderColor: presetColors[17][0],
                           mainColor: presetColors[17][1],
+                        ),
+                      ),
+                    ],
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      GestureDetector(
+                        onTap: () => onSelectColor(18),
+                        child: TemplateColor(
+                          borderColor: presetColors[18][0],
+                          mainColor: presetColors[18][1],
+                        ),
+                      ),
+                      SizedBox(width: 10.w,),
+                      GestureDetector(
+                        onTap: () => onSelectColor(19),
+                        child: TemplateColor(
+                          borderColor: presetColors[19][0],
+                          mainColor: presetColors[19][1],
                         ),
                       ),
                     ],
@@ -365,14 +419,8 @@ class _PickColorCardState extends State<PickColorCard>{
                                           currentColor: currentColor,
                                           onChanged: (newColor) => setState(() => changeColor(newColor)),
                                           onPressed: () {
-                                            Item newItem = Item(
-                                              colorHex: colorToHex(currentColor),
-                                              counter: 40,
-                                              playerCounters: [],
-                                              counterButtonStates: {},
-                                              id: widget.player.id,
-                                            );
-                                            widget.onColorSelected(newItem, widget.playersList);
+                                            Color selectedColor = currentColor;
+                                            widget.onColorSelected(widget.player.id, currentColor);
                                             Navigator.of(context).pop();
                                           },
                                         ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:smooth_corner/smooth_corner.dart';
 
 class L4A extends StatelessWidget {
   final List<Color> currentColors;
@@ -11,26 +12,24 @@ class L4A extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SmoothContainer(
       width: 107.67.w,
       height: 202.h,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(10),
-        border: Border.all(color: currentColors[0], width: 2),
-      ),
+      smoothness: 0.6,
+      side: BorderSide(color: currentColors[0], width: 2),
+      borderRadius: BorderRadius.circular(14),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Container(
+              SmoothContainer(
                 width: 46.33.w,
                 height: 93.h,
-                decoration: BoxDecoration(
-                  color: currentColors[1],
-                  borderRadius: BorderRadius.circular(10),
-                ),
+                smoothness: 0.6,
+                color: currentColors[1],
+                borderRadius: BorderRadius.circular(10),
                 child: Center(
                   child: Transform.rotate(
                     angle: 90 * 3.14159 / 180,
@@ -45,13 +44,12 @@ class L4A extends StatelessWidget {
                 ),
               ),
               SizedBox(width: 5.w),
-              Container(
+              SmoothContainer(
                 width: 46.33.w,
                 height: 93.h,
-                decoration: BoxDecoration(
-                  color: currentColors[1],
-                  borderRadius: BorderRadius.circular(10),
-                ),
+                smoothness: 0.6,
+                color: currentColors[1],
+                borderRadius: BorderRadius.circular(10),
                 child: Center(
                   child: Transform.rotate(
                     angle: 270 * 3.14159 / 180,
@@ -71,13 +69,12 @@ class L4A extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Container(
+              SmoothContainer(
                 width: 46.33.w,
                 height: 93.h,
-                decoration: BoxDecoration(
-                  color: currentColors[1],
-                  borderRadius: BorderRadius.circular(10),
-                ),
+                smoothness: 0.6,
+                color: currentColors[1],
+                borderRadius: BorderRadius.circular(10),
                 child: Center(
                   child: Transform.rotate(
                     angle: 90 * 3.14159 / 180,
@@ -92,13 +89,12 @@ class L4A extends StatelessWidget {
                 ),
               ),
               SizedBox(width: 5.w),
-              Container(
+              SmoothContainer(
                 width: 46.33.w,
                 height: 93.h,
-                decoration: BoxDecoration(
-                  color: currentColors[1],
-                  borderRadius: BorderRadius.circular(10),
-                ),
+                smoothness: 0.6,
+                color: currentColors[1],
+                borderRadius: BorderRadius.circular(10),
                 child: Center(
                   child: Transform.rotate(
                     angle: 270 * 3.14159 / 180,
