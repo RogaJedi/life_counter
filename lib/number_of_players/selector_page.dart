@@ -4,9 +4,13 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:smooth_corner/smooth_corner.dart';
 import '../layouts/2_players_A.dart';
 import '../layouts/2_players_B.dart';
+import '../layouts/3_players_A.dart';
+import '../layouts/3_players_B.dart';
 import '../layouts/4_players_A.dart';
 import 'l_2_a.dart';
 import 'l_2_b.dart';
+import 'l_3_a.dart';
+import 'l_3_b.dart';
 import 'l_4_a.dart';
 
 class SelectorPage extends StatefulWidget {
@@ -33,6 +37,8 @@ class _SelectorPageState extends State<SelectorPage>{
   Map<String, List<Color>> layoutButtonsColors = {
     "L2A": [Color(0xFF1E1E1E), Color(0xFF676767)],
     "L2B": [Color(0xFF1E1E1E), Color(0xFF676767)],
+    "L3A": [Color(0xFF1E1E1E), Color(0xFF676767)],
+    "L3B": [Color(0xFF1E1E1E), Color(0xFF676767)],
     "L4A": [Color(0xFF1E1E1E), Color(0xFF676767)],
   };
 
@@ -41,6 +47,8 @@ class _SelectorPageState extends State<SelectorPage>{
       layoutButtonsColors = {
         "L2A": [Color(0xFF1E1E1E), Color(0xFF676767)],
         "L2B": [Color(0xFF1E1E1E), Color(0xFF676767)],
+        "L3A": [Color(0xFF1E1E1E), Color(0xFF676767)],
+        "L3B": [Color(0xFF1E1E1E), Color(0xFF676767)],
         "L4A": [Color(0xFF1E1E1E), Color(0xFF676767)],
       };
       layoutButtonsColors[layout] = [Color(0xFFFFC34D), Color(0xFFFFC34D)];
@@ -54,7 +62,7 @@ class _SelectorPageState extends State<SelectorPage>{
 
     return Scaffold(
       backgroundColor: const Color(0xFF1E1E1E),
-      body: Center(
+      body: SafeArea(
         child: Column(
           children: [
             Text(
@@ -65,64 +73,101 @@ class _SelectorPageState extends State<SelectorPage>{
               ),
             ),
             SizedBox(height: 20.h),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-
-                //2 PLAYERS
-                Row(
-                  children: [
-                    SizedBox(width: 10.w),
-                    GestureDetector(
-                      onTap: () => onSelectLayout(
-                        "L2A",
-                            () => TwoPlayersA(
-                          aspectRatio: widget.aspectRatio,
-                          navigateToOptionsPage: widget.navigateToOptionsPage,
-                          navigateToCountersDialog: widget.navigateToCountersDialog
-                        ),
+            Expanded(
+              child: SingleChildScrollView(
+                child: Padding(
+                  padding: EdgeInsets.symmetric(vertical: 20.h),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      //2 PLAYERS
+                      Row(
+                        children: [
+                          SizedBox(width: 10.w),
+                          GestureDetector(
+                            onTap: () => onSelectLayout(
+                              "L2A",
+                                  () => TwoPlayersA(
+                                  aspectRatio: widget.aspectRatio,
+                                  navigateToOptionsPage: widget.navigateToOptionsPage,
+                                  navigateToCountersDialog: widget.navigateToCountersDialog
+                              ),
+                            ),
+                            child: L2A(currentColors: layoutButtonsColors["L2A"] ?? []),
+                          ),
+                          SizedBox(width: 20.w),
+                          GestureDetector(
+                            onTap: () => onSelectLayout(
+                              "L2B",
+                                  () => TwoPlayersB(
+                                  aspectRatio: widget.aspectRatio,
+                                  navigateToOptionsPage: widget.navigateToOptionsPage,
+                                  navigateToCountersDialog: widget.navigateToCountersDialog
+                              ),
+                            ),
+                            child: L2B(currentColors: layoutButtonsColors["L2B"] ?? []),
+                          ),
+                        ],
                       ),
-                      child: L2A(currentColors: layoutButtonsColors["L2A"] ?? []),
-                    ),
+                      SizedBox(height: 20.h),
 
-                    SizedBox(width: 20.w),
 
-                    GestureDetector(
-                      onTap: () => onSelectLayout(
-                        "L2B",
-                            () => TwoPlayersB(
-                            aspectRatio: widget.aspectRatio,
-                            navigateToOptionsPage: widget.navigateToOptionsPage,
-                            navigateToCountersDialog: widget.navigateToCountersDialog
-                        ),
+                      //3 PLAYERS
+                      Row(
+                        children: [
+                          SizedBox(width: 10.w),
+                          GestureDetector(
+                            onTap: () => onSelectLayout(
+                              "L3A",
+                                  () => ThreePlayersA(
+                                  aspectRatio: widget.aspectRatio,
+                                  navigateToOptionsPage: widget.navigateToOptionsPage,
+                                  navigateToCountersDialog: widget.navigateToCountersDialog
+                              ),
+                            ),
+                            child: L3A(currentColors: layoutButtonsColors["L3A"] ?? []),
+                          ),
+                          SizedBox(width: 20.w),
+                          GestureDetector(
+                            onTap: () => onSelectLayout(
+                              "L3B",
+                                  () => ThreePlayersB(
+                                  aspectRatio: widget.aspectRatio,
+                                  navigateToOptionsPage: widget.navigateToOptionsPage,
+                                  navigateToCountersDialog: widget.navigateToCountersDialog
+                              ),
+                            ),
+                            child: L3B(currentColors: layoutButtonsColors["L3B"] ?? []),
+                          ),
+                        ],
                       ),
-                      child: L2B(currentColors: layoutButtonsColors["L2B"] ?? []),
-                    ),
-                  ],
+                      SizedBox(height: 20.h),
+
+
+                      //4 PLAYERS
+                      Row(
+                        children: [
+                          SizedBox(width: 10.w),
+                          GestureDetector(
+                            onTap: () => onSelectLayout(
+                              "L4A",
+                                  () => FourPlayersA(
+                                  aspectRatio: widget.aspectRatio,
+                                  navigateToOptionsPage: widget.navigateToOptionsPage,
+                                  navigateToCountersDialog: widget.navigateToCountersDialog
+                              ),
+                            ),
+                            child: L4A(currentColors: layoutButtonsColors["L4A"] ?? []),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
-
-                SizedBox(height: 20.h),
-
-                //4 PLAYERS
-                Row(
-                  children: [
-                    SizedBox(width: 10.w),
-                    GestureDetector(
-                      onTap: () => onSelectLayout(
-                        "L4A",
-                            () => FourPlayersA(
-                            aspectRatio: widget.aspectRatio,
-                            navigateToOptionsPage: widget.navigateToOptionsPage,
-                            navigateToCountersDialog: widget.navigateToCountersDialog
-                        ),
-                      ),
-                      child: L4A(currentColors: layoutButtonsColors["L4A"] ?? []),
-                    ),
-                  ],
-                ),
-              ],
+              ),
             ),
-            SizedBox(height: 80.h),
+
+            SizedBox(height: 40.h),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -172,6 +217,7 @@ class _SelectorPageState extends State<SelectorPage>{
                 ),
               ],
             ),
+            SizedBox(height: 40.h),
           ],
         ),
       ),
