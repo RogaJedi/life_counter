@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import '../items.dart';
 import 'counters/interactive_counters_card.dart';
-import 'color_picker/pick_color_dialog.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+//TODO: FIX COLOR BUTTON
 
 class CountersAndSettingsCard extends StatefulWidget {
   final Item player;

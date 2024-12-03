@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+//TODO: FIX BUTTON AREA SIZE
+
 class CountersButton extends StatefulWidget {
   final dynamic icon;
   final String label;

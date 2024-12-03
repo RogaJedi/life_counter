@@ -13,6 +13,8 @@ import 'l_3_a.dart';
 import 'l_3_b.dart';
 import 'l_4_a.dart';
 
+//TODO: SHOW CURRENT LAYOUT
+
 class SelectorPage extends StatefulWidget {
 
   final double aspectRatio;

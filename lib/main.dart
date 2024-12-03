@@ -8,6 +8,8 @@ import 'package:wakelock_plus/wakelock_plus.dart';
 import 'layouts/4_players_A.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+//TODO: SWITCH TO USING BLOC
+
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   WakelockPlus.enable();

@@ -3,6 +3,8 @@ import '../player_interface.dart';
 import '../items.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+//TODO: FIX PROPORTIONS
+
 Item player1 = Item(
     counter: 40,
     colorHex: Color(0xFFC973E5),
@@ -97,7 +99,7 @@ class _ThreePlayersBState extends State<ThreePlayersB> {
                     quarterTurns: turn,
                     child: PlayerInterface(
                       player: item,
-                      onCountersTap: () => widget.navigateToCountersDialog(context, item, widget.aspectRatio, 2, turn.toInt()),
+                      onCountersTap: () => widget.navigateToCountersDialog(context, item, widget.aspectRatio, 2, turn * 90),
                       onColorSelected: changePlayerColor,
                     ),
                   );

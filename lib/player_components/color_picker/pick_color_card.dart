@@ -5,7 +5,8 @@ import 'pick_color_dialog.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'template_color.dart';
 import 'package:smooth_corner/smooth_corner.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+
+//TODO: CHANGE COLOR PALLET AND SHOW CURRENT COLOR
 
 class PickColorCard extends StatefulWidget {
   final Item player;
